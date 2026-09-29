@@ -102,3 +102,4 @@ for each row execute procedure public.set_updated_at();
 --     access_expires_at = null,
 --     approved_at = now()
 -- where email = 'YOUR_ADMIN_EMAIL@example.com';
+-- Vercel deployment trigger
