@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { signUp } from "@/app/auth-actions";
+import AuthSubmitButton from "@/components/AuthSubmitButton";
 
 export default async function SignUpPage({
   searchParams,
@@ -31,7 +32,7 @@ export default async function SignUpPage({
             Password
             <input name="password" type="password" minLength={8} autoComplete="new-password" required />
           </label>
-          <button className="primary-btn" type="submit">Create account</button>
+          <AuthSubmitButton idleText="Create account" pendingText="Creating account..." />
         </form>
 
         <p className="auth-small">

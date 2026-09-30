@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { signIn } from "@/app/auth-actions";
+import AuthSubmitButton from "@/components/AuthSubmitButton";
 
 export default async function LoginPage({
   searchParams,
@@ -28,7 +29,7 @@ export default async function LoginPage({
             Password
             <input name="password" type="password" autoComplete="current-password" required />
           </label>
-          <button className="primary-btn" type="submit">Login</button>
+          <AuthSubmitButton idleText="Login" pendingText="Logging in..." />
         </form>
 
         <p className="auth-small">

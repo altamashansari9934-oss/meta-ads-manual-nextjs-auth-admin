@@ -6,6 +6,8 @@ This project includes:
 - React
 - TypeScript
 - Supabase email/password authentication
+- FINAL corrected Audience & Creative Strategy module
+- Data Interpretation removed
 - Admin approval before manual access
 - Revoke / Block / Restore access
 - 30-day / 90-day / 1-year / permanent access
