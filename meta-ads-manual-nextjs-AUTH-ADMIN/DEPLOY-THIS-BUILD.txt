@@ -1,0 +1,27 @@
+DEPLOY THIS BUILD
+
+Verified Audience Full Concept:
+01 -> 02 -> 03 -> ... -> 22
+
+ABSENT:
+- 05-09 grouped section
+- 10-14 grouped section
+- 15-17 grouped section
+- accordion
+- details click-to-open
+- obsolete accordion CSS
+
+PRESENT:
+- every section directly visible
+- same sequential reading pattern as Lead Generation
+- Section 23 remains in Quick Diagnosis
+- Lead Generation preserved
+- E-commerce preserved
+- Auth/Admin preserved
+- no-spinner direct content render preserved
+
+Lead diagnosis cases: 14
+E-commerce diagnosis cases: 16
+
+manual.html SHA256:
+a312f5fd76b0c1b8f7e3a0f94306b568458777b231771b5ccb714ed7838bb3ec
