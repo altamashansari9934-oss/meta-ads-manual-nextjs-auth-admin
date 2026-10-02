@@ -8146,3 +8146,275 @@ Paste this entire code into ONE Elementor HTML widget.
 applyDiagnosisFilters();
 })();
 </script>
+
+<script>
+(function () {
+  var app = document.getElementById('macd-app');
+  if (!app) return;
+
+  var MODE_DEFAULT_PANEL = {
+    audience: 'full',
+    lead: 'testing',
+    ecommerce: 'testing',
+    scaling: 'framework',
+    budget: 'full'
+  };
+
+  function modePanel(mode) {
+    return app.querySelector('#macd-mode-' + mode);
+  }
+
+  function topTab(mode) {
+    return app.querySelector('.macd-mode-tab[data-mode="' + mode + '"]');
+  }
+
+  function currentMode() {
+    var tab = app.querySelector('.macd-mode-tab[aria-selected="true"]');
+    return tab ? tab.getAttribute('data-mode') : 'audience';
+  }
+
+  function currentSubPanel(mode) {
+    var panel = modePanel(mode);
+    if (!panel) return MODE_DEFAULT_PANEL[mode];
+
+    if (mode === 'lead') {
+      var t = panel.querySelector('.macd-main-tab[aria-selected="true"]');
+      return t ? t.getAttribute('data-panel') : 'testing';
+    }
+
+    if (mode === 'ecommerce') {
+      var e = panel.querySelector('.macd-ecom-main-tab[aria-selected="true"]');
+      return e ? e.getAttribute('data-ecom-panel') : 'testing';
+    }
+
+    var x = panel.querySelector('.macd-extra-main-tab[aria-selected="true"]');
+    return x ? x.getAttribute('data-extra-panel') : MODE_DEFAULT_PANEL[mode];
+  }
+
+  function setTopModeState(mode) {
+    app.querySelectorAll('.macd-mode-tab').forEach(function (tab) {
+      var active = tab.getAttribute('data-mode') === mode;
+      tab.classList.toggle('is-active', active);
+      tab.setAttribute('aria-selected', active ? 'true' : 'false');
+      tab.setAttribute('tabindex', active ? '0' : '-1');
+    });
+
+    ['audience','lead','ecommerce','scaling','budget'].forEach(function (m) {
+      var panel = modePanel(m);
+      if (!panel) return;
+      var active = m === mode;
+      panel.hidden = !active;
+      panel.classList.toggle('is-active', active);
+      panel.style.display = active ? '' : 'none';
+    });
+  }
+
+  function setSubPanelState(mode, panelName) {
+    var root = modePanel(mode);
+    if (!root) return;
+
+    if (mode === 'lead') {
+      root.querySelectorAll('.macd-main-tab').forEach(function (tab) {
+        var active = tab.getAttribute('data-panel') === panelName;
+        tab.classList.toggle('is-active', active);
+        tab.setAttribute('aria-selected', active ? 'true' : 'false');
+        tab.setAttribute('tabindex', active ? '0' : '-1');
+      });
+
+      root.querySelectorAll('.macd-tab-panel').forEach(function (panel) {
+        var active = panel.id === 'macd-panel-' + panelName;
+        panel.hidden = !active;
+        panel.classList.toggle('is-active', active);
+        panel.style.display = active ? '' : 'none';
+      });
+      return;
+    }
+
+    if (mode === 'ecommerce') {
+      root.querySelectorAll('.macd-ecom-main-tab').forEach(function (tab) {
+        var active = tab.getAttribute('data-ecom-panel') === panelName;
+        tab.classList.toggle('is-active', active);
+        tab.setAttribute('aria-selected', active ? 'true' : 'false');
+        tab.setAttribute('tabindex', active ? '0' : '-1');
+      });
+
+      root.querySelectorAll('.macd-ecom-tab-panel').forEach(function (panel) {
+        var active = panel.id === 'macd-ecom-panel-' + panelName;
+        panel.hidden = !active;
+        panel.classList.toggle('is-active', active);
+        panel.style.display = active ? '' : 'none';
+      });
+      return;
+    }
+
+    root.querySelectorAll('.macd-extra-main-tab').forEach(function (tab) {
+      var active = tab.getAttribute('data-extra-panel') === panelName;
+      tab.classList.toggle('is-active', active);
+      tab.setAttribute('aria-selected', active ? 'true' : 'false');
+      tab.setAttribute('tabindex', active ? '0' : '-1');
+    });
+
+    root.querySelectorAll('.macd-extra-tab-panel').forEach(function (panel) {
+      var active = panel.id === 'macd-' + mode + '-panel-' + panelName;
+      panel.hidden = !active;
+      panel.classList.toggle('is-active', active);
+      panel.style.display = active ? 'block' : 'none';
+    });
+  }
+
+  function syncSidebar(mode, panelName) {
+    app.querySelectorAll('.macd-side-group').forEach(function (group) {
+      var active = group.getAttribute('data-side-mode') === mode;
+      group.classList.toggle('is-active', active);
+    });
+
+    app.querySelectorAll('.macd-side-link').forEach(function (link) {
+      var active =
+        link.getAttribute('data-side-mode-link') === mode &&
+        link.getAttribute('data-side-panel') === panelName;
+      link.classList.toggle('is-active', active);
+    });
+  }
+
+  function syncBreadcrumb(mode, panelName) {
+    var crumb = app.querySelector('.macd-top-breadcrumb');
+    if (!crumb) return;
+
+    var modeLabel = {
+      audience: 'AUDIENCE & CREATIVE STRATEGY',
+      lead: 'LEAD GENERATION',
+      ecommerce: 'E-COMMERCE',
+      scaling: 'SCALING FRAMEWORK',
+      budget: 'BUDGET ALLOCATION'
+    }[mode] || '';
+
+    var panelLabel =
+      mode === 'audience' ? (panelName === 'quick' ? 'QUICK DIAGNOSIS' : 'FULL CONCEPT') :
+      mode === 'lead' ? (panelName === 'diagnosis' ? 'DIAGNOSIS' : 'TESTING FRAMEWORK') :
+      mode === 'ecommerce' ? (panelName === 'diagnosis' ? 'DIAGNOSIS' : 'TESTING FRAMEWORK') :
+      mode === 'scaling' ? (panelName === 'quick' ? 'QUICK DECISION' : 'SCALING FRAMEWORK') :
+      mode === 'budget' ? (panelName === 'quick' ? 'QUICK DIAGNOSE' : 'FULL CONCEPT') : '';
+
+    crumb.textContent = modeLabel + ' / ' + panelLabel;
+  }
+
+  function activate(mode, panelName, shouldScroll) {
+    if (!MODE_DEFAULT_PANEL[mode]) return;
+
+    panelName = panelName || currentSubPanel(mode) || MODE_DEFAULT_PANEL[mode];
+
+    setTopModeState(mode);
+    setSubPanelState(mode, panelName);
+    syncSidebar(mode, panelName);
+    syncBreadcrumb(mode, panelName);
+
+    app.classList.toggle(
+      'is-diagnosis-view',
+      panelName === 'diagnosis'
+    );
+
+    if (shouldScroll) {
+      var shell = app.querySelector('.macd-shell');
+      if (shell) {
+        var y = shell.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }
+  }
+
+  // Capture phase: stop old/legacy navigation listeners from fighting this controller.
+  document.addEventListener('click', function (event) {
+    var top = event.target.closest('.macd-mode-tab[data-mode]');
+    if (top && app.contains(top)) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      var mode = top.getAttribute('data-mode');
+      activate(mode, currentSubPanel(mode) || MODE_DEFAULT_PANEL[mode], true);
+      return;
+    }
+
+    var sideLink = event.target.closest('.macd-side-link[data-side-mode-link]');
+    if (sideLink && app.contains(sideLink)) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      activate(
+        sideLink.getAttribute('data-side-mode-link'),
+        sideLink.getAttribute('data-side-panel'),
+        true
+      );
+      return;
+    }
+
+    var sideHead = event.target.closest('.macd-side-group-head');
+    if (sideHead && app.contains(sideHead)) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      var group = sideHead.closest('.macd-side-group');
+      var mode = group && group.getAttribute('data-side-mode');
+      if (mode) {
+        var active = group.querySelector('.macd-side-link.is-active');
+        activate(
+          mode,
+          active ? active.getAttribute('data-side-panel') : MODE_DEFAULT_PANEL[mode],
+          true
+        );
+      }
+      return;
+    }
+
+    var extra = event.target.closest('.macd-extra-main-tab[data-extra-group]');
+    if (extra && app.contains(extra)) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      activate(
+        extra.getAttribute('data-extra-group'),
+        extra.getAttribute('data-extra-panel'),
+        false
+      );
+      return;
+    }
+
+    var leadTab = event.target.closest('#macd-mode-lead .macd-main-tab[data-panel]');
+    if (leadTab) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      activate('lead', leadTab.getAttribute('data-panel'), false);
+      return;
+    }
+
+    var ecomTab = event.target.closest('#macd-mode-ecommerce .macd-ecom-main-tab[data-ecom-panel]');
+    if (ecomTab) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      activate('ecommerce', ecomTab.getAttribute('data-ecom-panel'), false);
+      return;
+    }
+  }, true);
+
+  // Re-normalize initial state after legacy initialization has finished.
+  window.setTimeout(function () {
+    var mode = currentMode();
+    activate(mode, currentSubPanel(mode) || MODE_DEFAULT_PANEL[mode], false);
+  }, 0);
+})();
+</script>
+
+<style>
+#macd-app .macd-mode-panel[hidden],
+#macd-app .macd-extra-tab-panel[hidden],
+#macd-app .macd-tab-panel[hidden],
+#macd-app .macd-ecom-tab-panel[hidden] {
+  display: none !important;
+}
+
+#macd-app .macd-mode-panel.is-active:not([hidden]) {
+  display: block !important;
+}
+
+#macd-app #macd-mode-budget .macd-extra-tab-panel.is-active:not([hidden]),
+#macd-app #macd-mode-scaling .macd-extra-tab-panel.is-active:not([hidden]),
+#macd-app #macd-mode-audience .macd-extra-tab-panel.is-active:not([hidden]) {
+  display: block !important;
+}
+</style>
+
