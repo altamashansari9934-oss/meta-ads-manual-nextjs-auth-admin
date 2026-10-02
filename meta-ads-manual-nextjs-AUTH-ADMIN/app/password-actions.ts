@@ -1,7 +1,12 @@
 "use server";
 
+import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { getSiteUrl } from "@/lib/site-url";
+import { passwordUpdateErrorMessage } from "@/lib/auth-errors";
+
+const RECOVERY_COOKIE = "meta_ads_password_recovery";
 
 function enc(value: string) {
   return encodeURIComponent(value);
@@ -15,25 +20,16 @@ export async function requestPasswordReset(formData: FormData) {
   }
 
   const supabase = await createSupabaseServerClient();
+  const siteUrl = getSiteUrl();
 
-  const explicitSiteUrl = process.env.NEXT_PUBLIC_SITE_URL;
-  const vercelUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL;
-  const siteUrl = explicitSiteUrl
-    ? explicitSiteUrl
-    : vercelUrl
-      ? (vercelUrl.startsWith("http") ? vercelUrl : `https://${vercelUrl}`)
-      : "http://localhost:3000";
-
-  const { error } = await supabase.auth.resetPasswordForEmail(email, {
-    redirectTo: `${siteUrl}/update-password`,
+  await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: `${siteUrl}/auth/callback?flow=recovery`,
   });
 
-  // Avoid account enumeration: always show the same user-facing message.
-  if (error) {
-    redirect(`/forgot-password?message=${enc("Agar ye email registered hai to reset link bhej diya gaya hai.")}`);
-  }
-
-  redirect(`/forgot-password?message=${enc("Agar ye email registered hai to reset link bhej diya gaya hai.")}`);
+  // Intentionally identical for existing/non-existing users to prevent account enumeration.
+  redirect(
+    `/forgot-password?message=${enc("Agar ye email registered hai to password reset link bhej diya gaya hai.")}`
+  );
 }
 
 export async function updatePassword(formData: FormData) {
@@ -48,12 +44,35 @@ export async function updatePassword(formData: FormData) {
     redirect(`/update-password?error=${enc("Passwords match nahi kar rahe.")}`);
   }
 
+  const cookieStore = await cookies();
+  const isRecovery = cookieStore.get(RECOVERY_COOKIE)?.value === "1";
+
+  if (!isRecovery) {
+    redirect(
+      `/forgot-password?error=${enc("Password reset session invalid ya expire ho gaya hai. Naya reset link request karein.")}`
+    );
+  }
+
   const supabase = await createSupabaseServerClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    cookieStore.delete(RECOVERY_COOKIE);
+    redirect(
+      `/forgot-password?error=${enc("Password reset session invalid ya expire ho gaya hai. Naya reset link request karein.")}`
+    );
+  }
+
   const { error } = await supabase.auth.updateUser({ password });
 
   if (error) {
-    redirect(`/update-password?error=${enc(error.message)}`);
+    redirect(`/update-password?error=${enc(passwordUpdateErrorMessage(error))}`);
   }
 
-  redirect(`/login?message=${enc("Password successfully update ho gaya. Ab login karein.")}`);
+  cookieStore.delete(RECOVERY_COOKIE);
+  await supabase.auth.signOut();
+
+  redirect(`/login?message=${enc("Password successfully update ho gaya. Ab new password se login karein.")}`);
 }
