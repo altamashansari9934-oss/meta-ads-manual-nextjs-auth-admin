@@ -30,10 +30,7 @@ export async function signUp(formData: FormData) {
     redirect(`/signup?error=${enc(error.message)}`);
   }
 
-  // If email confirmation is disabled, session is available immediately.
-  if (data.session) redirect("/pending");
-
-  redirect(`/login?message=${enc("Account create ho gaya. Email verify karke login karein. Admin approval ke baad manual access milega.")}`);
+  redirect("/check-email");
 }
 
 export async function signIn(formData: FormData) {

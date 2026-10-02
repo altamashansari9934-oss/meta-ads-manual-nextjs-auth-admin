@@ -157,3 +157,51 @@ You can either:
 
 - keep email confirmation enabled (recommended for production), or
 - change the setting during testing in Supabase Auth settings.
+
+
+## Forgot Password setup
+
+This build includes:
+
+- `/forgot-password`
+- `/update-password`
+- reset email through Supabase Auth
+- new password update flow
+
+### Required Supabase settings
+
+1. Open:
+   `Authentication -> URL Configuration`
+
+2. Set **Site URL** to your live app, for example:
+   `https://your-project.vercel.app`
+
+3. Under **Redirect URLs**, add:
+   `https://your-project.vercel.app/update-password`
+
+   Also add your custom domain version later if you use one:
+   `https://yourdomain.com/update-password`
+
+4. Keep Email provider enabled.
+
+5. For production, keep **Confirm email** enabled.
+
+### Required Vercel environment variable
+
+Add:
+
+`NEXT_PUBLIC_SITE_URL=https://your-project.vercel.app`
+
+Then redeploy.
+
+### Email template
+
+Supabase default Reset Password email works automatically.
+You can customize it under:
+
+`Authentication -> Email Templates -> Reset Password`
+
+### Security behavior
+
+The Forgot Password page always shows the same generic success message whether or not the email exists.
+This avoids exposing which email addresses are registered.

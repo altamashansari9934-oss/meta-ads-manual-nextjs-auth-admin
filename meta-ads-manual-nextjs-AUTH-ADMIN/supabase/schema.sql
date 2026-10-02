@@ -18,29 +18,22 @@ create table if not exists public.profiles (
 
 alter table public.profiles enable row level security;
 
-create or replace function public.handle_new_user()
+create or replace function public.handle_verified_user()
 returns trigger
 language plpgsql
 security definer set search_path = public
 as $$
 begin
-  insert into public.profiles (id, email, name)
-  values (
-    new.id,
-    new.email,
-    coalesce(new.raw_user_meta_data->>'full_name', '')
-  )
-  on conflict (id) do nothing;
-
+  if new.email_confirmed_at is not null then
+    insert into public.profiles (id,email,name) values (new.id,new.email,coalesce(new.raw_user_meta_data->>'full_name','')) on conflict (id) do nothing;
+  end if;
   return new;
 end;
 $$;
-
 drop trigger if exists on_auth_user_created on auth.users;
-
-create trigger on_auth_user_created
-after insert on auth.users
-for each row execute procedure public.handle_new_user();
+drop trigger if exists on_auth_user_verified on auth.users;
+create trigger on_auth_user_verified after insert or update of email_confirmed_at on auth.users for each row execute procedure public.handle_verified_user();
+insert into public.profiles (id,email,name) select id,email,coalesce(raw_user_meta_data->>'full_name','') from auth.users where email_confirmed_at is not null on conflict (id) do nothing;
 
 create or replace function public.is_admin()
 returns boolean
