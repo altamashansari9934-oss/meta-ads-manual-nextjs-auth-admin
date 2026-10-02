@@ -1,76 +1,55 @@
-# Supabase Auth + Admin Access Setup
+# Login + Admin Approval Setup
 
-This project uses Supabase SSR with cookie-based sessions, server-side access checks, verified-email profiles, and admin-controlled access.
+The code is complete, but it needs a Supabase project because login/password and user access status need a database.
 
-## Environment variables
+## 1. Create Supabase project
 
-Local `.env.local`:
+Create a project at Supabase.
+
+In Supabase:
+
+- Project Settings
+- API
+
+Copy:
+
+- Project URL
+- anon / public key
+
+## 2. Add environment variables
+
+Create `.env.local` in the project root:
 
 ```env
 NEXT_PUBLIC_SUPABASE_URL=https://YOUR_PROJECT.supabase.co
-NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sb_publishable_YOUR_KEY
-NEXT_PUBLIC_SITE_URL=http://localhost:3000
+NEXT_PUBLIC_SUPABASE_ANON_KEY=YOUR_ANON_KEY
 ```
 
-Vercel Production environment:
+On Vercel, add the same values under:
 
-```env
-NEXT_PUBLIC_SUPABASE_URL=https://YOUR_PROJECT.supabase.co
-NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sb_publishable_YOUR_KEY
-NEXT_PUBLIC_SITE_URL=https://meta-ads-manual-nextjs-auth-admin.vercel.app
-```
+`Project -> Settings -> Environment Variables`
 
-No Supabase secret/service-role key is required by this application.
+Then redeploy.
 
-## Supabase Authentication -> URL Configuration
+## 3. Create database structure
 
-Set Site URL:
+Open:
 
-```text
-https://meta-ads-manual-nextjs-auth-admin.vercel.app
-```
+`Supabase -> SQL Editor`
 
-Add Redirect URLs:
+Run the complete file:
 
-```text
-https://meta-ads-manual-nextjs-auth-admin.vercel.app/auth/callback
-http://localhost:3000/auth/callback
-```
+`supabase/schema.sql`
 
-For Vercel preview deployments, add an appropriate preview wildcard only if you intentionally test auth on previews.
+## 4. Create your own admin account
 
-## Email provider
+Open your deployed website:
 
-Keep Email provider enabled and keep **Confirm email** enabled.
+`/signup`
 
-Signup flow:
+Create your account.
 
-`/signup -> verification email -> /auth/callback?flow=signup -> /login -> profile/access check`
-
-Only verified users receive a `public.profiles` row through the existing database trigger in `supabase/schema.sql`.
-
-## Password reset
-
-Flow:
-
-`/forgot-password -> reset email -> /auth/callback?flow=recovery -> /update-password -> /login`
-
-The callback exchanges the PKCE auth code for a cookie-backed recovery session. `/update-password` requires both the authenticated recovery session and a short-lived HttpOnly recovery marker.
-
-## Database / RLS
-
-Use the existing `supabase/schema.sql`. The existing policies preserve:
-
-- user reads own profile
-- admin reads all profiles
-- admin updates access records
-- normal users cannot update their own role/access status/expiry
-
-No service-role key is used by the browser.
-
-## Admin creation
-
-After your own account is email-verified and its profile exists, run once in Supabase SQL Editor:
+Then in Supabase SQL Editor run:
 
 ```sql
 update public.profiles
@@ -78,44 +57,103 @@ set role = 'admin',
     access_status = 'approved',
     access_expires_at = null,
     approved_at = now()
-where email = 'YOUR_ADMIN_EMAIL@example.com';
+where email = 'YOUR_EMAIL_HERE';
 ```
 
-## Existing access states preserved
+Replace `YOUR_EMAIL_HERE` with your actual login email.
 
-- pending
-- approved
-- revoked
-- blocked
-- expired
-- 30 days
-- 90 days
-- 1 year
-- permanent
-- approve/update
-- revoke
-- block
-- restore
+Sign out and sign in again.
 
-`/manual` remains protected server-side by `requireApprovedUser()`.
-`/admin/users` and all admin mutation actions remain protected server-side by `requireAdmin()`.
+## 5. WHERE YOU CONTROL USERS
 
-`AccessHeartbeat` remains only for periodic access-status checking while the manual is already open. It is not the auth session refresh mechanism; `proxy.ts` refreshes the Supabase SSR session.
+Your admin panel URL is:
 
-## Recommended SSR email-template links (optional but more robust)
-
-The callback supports both PKCE `code` exchange and `token_hash` verification. The default Supabase templates can work with the callback redirect, but for a server-side flow that does not depend on the same browser retaining the PKCE verifier, you can customize the email links to use `TokenHash`.
-
-Confirm signup link example:
-
-```html
-<a href="{{ .RedirectTo }}&token_hash={{ .TokenHash }}&type=email">Confirm email address</a>
+```text
+https://YOUR-DOMAIN.com/admin/users
 ```
 
-Reset password link example:
+For example:
 
-```html
-<a href="{{ .RedirectTo }}&token_hash={{ .TokenHash }}&type=recovery">Reset password</a>
+```text
+https://meta-ads-manual.vercel.app/admin/users
 ```
 
-Because the application passes `/auth/callback?flow=signup` or `/auth/callback?flow=recovery` as `RedirectTo`, these links work with both the configured local URL and production URL, provided both callback URLs are allow-listed in Supabase.
+Only a profile with `role = admin` can open this page.
+
+## Admin panel controls
+
+For every normal user you can:
+
+- Approve for 30 days
+- Approve for 90 days
+- Approve for 1 year
+- Approve permanently
+- Update expiry
+- Revoke access
+- Block access
+- Restore access
+
+## User URLs
+
+Login:
+
+```text
+/login
+```
+
+Signup:
+
+```text
+/signup
+```
+
+Protected manual:
+
+```text
+/manual
+```
+
+Pending approval:
+
+```text
+/pending
+```
+
+Revoked:
+
+```text
+/revoked
+```
+
+Blocked:
+
+```text
+/blocked
+```
+
+Expired:
+
+```text
+/expired
+```
+
+## Security behavior
+
+The manual HTML is stored under the app's server-side `content/` folder, not `public/`.
+
+The `/manual` page checks the authenticated user and profile access status **before** reading and returning the manual.
+
+This means an unapproved visitor cannot simply open `/manual` or a public HTML-file URL.
+
+The manual page also performs a lightweight access check every 30 seconds. If an admin revokes or blocks the account while the manual is open, the user is redirected away on the next check.
+
+Important: content that a user has already viewed cannot be technologically "unseen", but future access and the open session page are cut off by the access checks.
+
+## Email verification
+
+Supabase may require email confirmation by default.
+
+You can either:
+
+- keep email confirmation enabled (recommended for production), or
+- change the setting during testing in Supabase Auth settings.

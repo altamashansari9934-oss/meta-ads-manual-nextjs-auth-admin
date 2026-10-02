@@ -10,7 +10,7 @@ body {
 }
 
 body {
-  overflow-x: hidden;
+  overflow: hidden;
   background: #f4f7fb;
   font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
@@ -470,18 +470,4 @@ body {
 
 @keyframes metaAdsSpin {
   to { transform: rotate(360deg); }
-}
-
-.auth-link-row {
-  margin-top: 12px;
-  text-align: right;
-}
-.auth-link-row a {
-  color: #0d86dc;
-  font-size: 13px;
-  font-weight: 700;
-  text-decoration: none;
-}
-.auth-link-row a:hover {
-  text-decoration: underline;
 }

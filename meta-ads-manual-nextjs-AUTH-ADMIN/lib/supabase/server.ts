@@ -6,7 +6,7 @@ export async function createSupabaseServerClient() {
 
   return createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
       cookies: {
         getAll() {
@@ -18,9 +18,8 @@ export async function createSupabaseServerClient() {
               cookieStore.set(name, value, options);
             });
           } catch {
-            // Server Components can read cookies but cannot always write them.
-            // proxy.ts performs the request/response token refresh; Server Actions
-            // and Route Handlers can still write auth cookies normally.
+            // In a Server Component cookies may be read-only.
+            // Server Actions will still be able to write auth cookies.
           }
         },
       },

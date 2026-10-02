@@ -32,9 +32,7 @@ export default async function LoginPage({
           <AuthSubmitButton idleText="Login" pendingText="Logging in..." />
         </form>
 
-        <div className="auth-link-row"><Link href="/forgot-password">Forgot Password?</Link></div>
-
-<p className="auth-small">
+        <p className="auth-small">
           New user? <Link href="/signup">Create account</Link>
         </p>
       </section>
