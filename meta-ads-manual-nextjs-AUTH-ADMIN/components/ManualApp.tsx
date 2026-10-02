@@ -32,6 +32,20 @@ const defaults: Record<Mode,string> = {
   audience:"full", lead:"testing", ecommerce:"testing", scaling:"framework", budget:"full"
 };
 
+function legacyPanelId(mode: Mode, tab: string) {
+  if (mode === "audience") return `macd-audience-panel-${tab}`;
+  if (mode === "lead") return `macd-panel-${tab}`;
+  if (mode === "ecommerce") return `macd-ecom-panel-${tab}`;
+  if (mode === "scaling") return `macd-scaling-panel-${tab}`;
+  return `macd-budget-panel-${tab}`;
+}
+
+function legacyPanelClass(mode: Mode) {
+  if (mode === "lead") return "macd-tab-panel is-active";
+  if (mode === "ecommerce") return "macd-ecom-tab-panel is-active";
+  return "macd-extra-tab-panel is-active";
+}
+
 export default function ManualApp({ panels }: Props) {
   const [mode, setMode] = useState<Mode>("audience");
   const [activeTabs, setActiveTabs] = useState<Record<Mode,string>>(defaults);
@@ -113,7 +127,18 @@ export default function ManualApp({ panels }: Props) {
           </nav>
 
           <section key={`${mode}-${activeTab}`} className="rewrite-panel">
-            <div dangerouslySetInnerHTML={{__html: content}} />
+            <div
+              id="macd-app"
+              className={`manual-content-compat ${activeTab === "diagnosis" ? "is-diagnosis-view" : ""}`}
+            >
+              <div className="macd-shell manual-content-shell">
+                <div id={`macd-mode-${mode}`} className="macd-mode-panel is-active">
+                  <div id={legacyPanelId(mode, activeTab)} className={legacyPanelClass(mode)}>
+                    <div dangerouslySetInnerHTML={{__html: content}} />
+                  </div>
+                </div>
+              </div>
+            </div>
           </section>
         </div>
       </main>
