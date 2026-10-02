@@ -4703,181 +4703,6 @@
 }
 
 
-/* SCALING FRAMEWORK — same layout language as Lead Generation / E-commerce */
-#macd-app #macd-mode-scaling .scaling-seq-card{margin-bottom:16px!important}
-#macd-app #macd-mode-scaling .scaling-seq-card>h2{margin:0 0 14px!important}
-#macd-app #macd-mode-scaling .macd-content-section h2{font-size:30px!important;line-height:1.16!important;font-weight:700!important;letter-spacing:-.02em!important}
-#macd-app #macd-mode-scaling .macd-content-section h3{font-size:18px!important;line-height:1.28!important}
-#macd-app #macd-mode-scaling .macd-content-section p,
-#macd-app #macd-mode-scaling .macd-content-section li,
-#macd-app #macd-mode-scaling .macd-content-section td{font-size:15.5px!important;line-height:1.62!important}
-#macd-app #macd-mode-scaling .macd-aud-list-row{display:grid;grid-template-columns:16px minmax(0,1fr);gap:6px;align-items:start;margin:7px 0}
-#macd-app #macd-mode-scaling .macd-aud-list-row>span{color:#0d86dc;font-weight:850}
-#macd-app #macd-mode-scaling .macd-aud-list-row p{margin:0}
-#macd-app #macd-mode-scaling .macd-table-wrap{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
-#macd-app #macd-mode-scaling .scaling-decision-card{border-bottom:3px solid #dcebf6!important}
-#macd-app #macd-mode-scaling .scaling-journey-card{border-bottom:3px solid #e6edf4!important}
-@media(max-width:767px){
-  #macd-app #macd-mode-scaling .macd-content-section h2{font-size:22px!important}
-  #macd-app #macd-mode-scaling .macd-content-section p,
-  #macd-app #macd-mode-scaling .macd-content-section li,
-  #macd-app #macd-mode-scaling .macd-content-section td{font-size:14px!important;line-height:1.58!important}
-}
-
-#macd-app #macd-mode-budget .budget-seq-card{margin-bottom:16px!important}#macd-app #macd-mode-budget .budget-seq-card>h2{margin:0 0 14px!important}#macd-app #macd-mode-budget .macd-content-section h2{font-size:30px!important;line-height:1.16!important;font-weight:700!important;letter-spacing:-.02em!important}#macd-app #macd-mode-budget .macd-content-section h3{font-size:18px!important;line-height:1.28!important}#macd-app #macd-mode-budget .macd-content-section p,#macd-app #macd-mode-budget .macd-content-section li,#macd-app #macd-mode-budget .macd-content-section td{font-size:15.5px!important;line-height:1.62!important}#macd-app #macd-mode-budget .macd-aud-list-row{display:grid;grid-template-columns:16px minmax(0,1fr);gap:6px;align-items:start;margin:7px 0}#macd-app #macd-mode-budget .macd-aud-list-row>span{color:#0d86dc;font-weight:850}#macd-app #macd-mode-budget .macd-aud-list-row p{margin:0}#macd-app #macd-mode-budget .macd-table-wrap{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}#macd-app #macd-mode-budget .budget-diagnose-card{border-bottom:3px solid #dcebf6!important}@media(max-width:767px){#macd-app #macd-mode-budget .macd-content-section h2{font-size:22px!important}#macd-app #macd-mode-budget .macd-content-section p,#macd-app #macd-mode-budget .macd-content-section li,#macd-app #macd-mode-budget .macd-content-section td{font-size:14px!important;line-height:1.58!important}}
-/* =========================================================
-   FINAL UI SYNC + LEAD/ECOM CONTENT LANGUAGE
-   ========================================================= */
-
-#macd-app .macd-subhead-row {
-  display: flex !important;
-  align-items: center !important;
-  gap: 9px !important;
-  margin: 17px 0 9px !important;
-  color: #14213b !important;
-}
-
-#macd-app .macd-subhead-row strong {
-  font-size: 16px !important;
-  line-height: 1.35 !important;
-  font-weight: 750 !important;
-}
-
-#macd-app .macd-subhead-dot {
-  width: 9px !important;
-  height: 9px !important;
-  flex: 0 0 9px !important;
-  border-radius: 50% !important;
-  background: #0d86dc !important;
-}
-
-#macd-app .macd-framework-bar {
-  margin: 14px 0 !important;
-  padding: 14px 16px !important;
-  border-radius: 9px !important;
-  background: #10203d !important;
-  color: #fff !important;
-  font-size: 13px !important;
-  line-height: 1.55 !important;
-  font-weight: 700 !important;
-  text-align: center !important;
-  overflow-x: auto !important;
-}
-
-#macd-app .macd-highlight-bar {
-  margin: 12px 0 !important;
-  padding: 13px 15px !important;
-  border-left: 3px solid #0d9ddd !important;
-  border-radius: 8px !important;
-  background: #f3f9fd !important;
-  color: #17304f !important;
-  font-size: 13.5px !important;
-  line-height: 1.55 !important;
-  font-weight: 650 !important;
-}
-
-#macd-app .macd-diagnosis-note,
-#macd-app .macd-action-note {
-  display: grid !important;
-  grid-template-columns: 84px minmax(0,1fr) !important;
-  gap: 10px !important;
-  margin: 8px 0 !important;
-  padding: 11px 13px !important;
-  border-radius: 8px !important;
-  font-size: 13px !important;
-  line-height: 1.5 !important;
-}
-
-#macd-app .macd-diagnosis-note {
-  background: #fff6e9 !important;
-  border: 1px solid #f0dec1 !important;
-}
-
-#macd-app .macd-action-note {
-  background: #eef8f1 !important;
-  border: 1px solid #d4e8d9 !important;
-}
-
-#macd-app .macd-diagnosis-note strong,
-#macd-app .macd-action-note strong {
-  font-size: 10px !important;
-  font-weight: 850 !important;
-  letter-spacing: .05em !important;
-  text-transform: uppercase !important;
-}
-
-/* Scaling and Budget sections use the same card proportions as Lead/E-commerce */
-#macd-app #macd-mode-scaling .macd-content-section,
-#macd-app #macd-mode-budget .macd-content-section {
-  padding: 24px 26px !important;
-  border: 1px solid #d8e2ed !important;
-  border-radius: 14px !important;
-  background: #fff !important;
-  box-shadow: none !important;
-}
-
-#macd-app #macd-mode-scaling .macd-content-section h2,
-#macd-app #macd-mode-budget .macd-content-section h2 {
-  font-size: 28px !important;
-  line-height: 1.18 !important;
-  font-weight: 700 !important;
-}
-
-#macd-app #macd-mode-scaling .macd-content-section p,
-#macd-app #macd-mode-budget .macd-content-section p,
-#macd-app #macd-mode-scaling .macd-content-section td,
-#macd-app #macd-mode-budget .macd-content-section td {
-  font-size: 15px !important;
-  line-height: 1.6 !important;
-}
-
-/* Side navigation active state must visually follow actual mode */
-#macd-app .macd-side-group.is-active > .macd-side-group-head {
-  background: #27496f !important;
-  color: #fff !important;
-}
-
-#macd-app .macd-side-link.is-active {
-  background: #1295db !important;
-  color: #fff !important;
-}
-
-@media (max-width: 767px) {
-  #macd-app #macd-mode-scaling .macd-content-section,
-  #macd-app #macd-mode-budget .macd-content-section {
-    padding: 18px 15px !important;
-  }
-
-  #macd-app #macd-mode-scaling .macd-content-section h2,
-  #macd-app #macd-mode-budget .macd-content-section h2 {
-    font-size: 22px !important;
-  }
-
-  #macd-app .macd-diagnosis-note,
-  #macd-app .macd-action-note {
-    grid-template-columns: 1fr !important;
-  }
-}
-
-
-
-#macd-app .macd-mode-panel[hidden],
-#macd-app .macd-extra-tab-panel[hidden],
-#macd-app .macd-tab-panel[hidden],
-#macd-app .macd-ecom-tab-panel[hidden] {
-  display: none !important;
-}
-
-#macd-app .macd-mode-panel.is-active:not([hidden]) {
-  display: block !important;
-}
-
-#macd-app #macd-mode-budget .macd-extra-tab-panel.is-active:not([hidden]),
-#macd-app #macd-mode-scaling .macd-extra-tab-panel.is-active:not([hidden]),
-#macd-app #macd-mode-audience .macd-extra-tab-panel.is-active:not([hidden]) {
-  display: block !important;
-}
-
 
 html,body{margin:0;background:#f4f7fb}
 .rewrite-app{min-height:100dvh;background:#f4f7fb;color:#11213d}
@@ -4906,9 +4731,9 @@ html,body{margin:0;background:#f4f7fb}
 
 
 /* =========================================================
-   REACT SHELL -> APPROVED LEGACY MANUAL DESIGN COMPATIBILITY
-   Keeps the working React navigation while restoring the
-   original content-card / hero / table / diagnosis styling.
+   VERIFIED BASELINE DESIGN COMPATIBILITY
+   Content styling above is from the user's verified build.
+   React is responsible only for working navigation.
    ========================================================= */
 
 #macd-app.manual-content-compat {
@@ -4923,44 +4748,39 @@ html,body{margin:0;background:#f4f7fb}
   overflow: visible !important;
 }
 
-#macd-app.manual-content-compat .manual-content-shell {
+#macd-app.manual-content-compat .macd-shell.manual-content-shell {
   width: 100% !important;
   max-width: none !important;
+  min-height: 0 !important;
   margin: 0 !important;
   padding: 0 0 64px !important;
+  display: block !important;
+  grid-template-columns: none !important;
   background: transparent !important;
+  overflow: visible !important;
 }
 
-#macd-app.manual-content-compat .macd-mode-panel {
+#macd-app.manual-content-compat .macd-mode-panel,
+#macd-app.manual-content-compat .macd-tab-panel,
+#macd-app.manual-content-compat .macd-ecom-tab-panel,
+#macd-app.manual-content-compat .macd-extra-tab-panel {
   display: block !important;
   width: 100% !important;
 }
 
-#macd-app.manual-content-compat .macd-extra-tab-panel,
-#macd-app.manual-content-compat .macd-tab-panel,
-#macd-app.manual-content-compat .macd-ecom-tab-panel {
-  display: block !important;
-}
-
-/* React shell already owns the module/sub-tab navigation.
-   Never allow legacy sticky navigation rules to affect it. */
 #macd-app.manual-content-compat .macd-main-tabs,
 #macd-app.manual-content-compat .macd-mode-tabs {
   display: none !important;
 }
 
-/* Match the approved desktop content width without touching sidebar/topbar. */
-#macd-app.manual-content-compat .macd-hero,
-#macd-app.manual-content-compat .macd-section-nav,
-#macd-app.manual-content-compat .macd-content-section,
+/* Preserve all original cards, examples, grids, callouts, flows and diagnosis styling. */
 #macd-app.manual-content-compat .macd-card,
-#macd-app.manual-content-compat .macd-diagnosis-grid,
-#macd-app.manual-content-compat .macd-results-panel {
-  max-width: none;
-}
-
-@media (max-width: 900px) {
-  #macd-app.manual-content-compat .manual-content-shell {
-    padding-bottom: 36px !important;
-  }
+#macd-app.manual-content-compat .macd-content-section,
+#macd-app.manual-content-compat .macd-section-nav,
+#macd-app.manual-content-compat .macd-hero,
+#macd-app.manual-content-compat .macd-example,
+#macd-app.manual-content-compat .macd-callout,
+#macd-app.manual-content-compat .macd-question,
+#macd-app.manual-content-compat .macd-flow {
+  box-sizing: border-box !important;
 }
