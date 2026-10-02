@@ -4903,4 +4903,64 @@ html,body{margin:0;background:#f4f7fb}
 .side-link{min-height:40px;border:0;border-radius:9px;background:transparent;color:#9bb9d8;text-align:left;padding:8px 12px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
 .side-link.active{background:#1295db;color:#fff}.mobile-menu{display:none}
 @media(max-width:900px){.rewrite-sidebar{transform:translateX(-100%);transition:.2s ease}.rewrite-app.menu-open .rewrite-sidebar{transform:translateX(0)}.rewrite-main{margin-left:0}.rewrite-topbar{padding:10px 12px}.rewrite-content{padding:12px}.rewrite-search{display:none}.mobile-menu{display:inline-flex;width:36px;height:36px;align-items:center;justify-content:center;border:1px solid #d3dfeb;border-radius:8px;background:#fff}.rewrite-mode-tabs{display:flex;overflow-x:auto}.rewrite-mode-tab{flex:0 0 auto;white-space:nowrap}}
-\n\n/* =========================================================\n   REACT SHELL -> APPROVED LEGACY MANUAL DESIGN COMPATIBILITY\n   Keeps the working React navigation while restoring the\n   original content-card / hero / table / diagnosis styling.\n   ========================================================= */\n\n#macd-app.manual-content-compat {\n  width: 100% !important;\n  max-width: none !important;\n  min-height: 0 !important;\n  margin: 0 !important;\n  display: block !important;\n  grid-template-columns: none !important;\n  background: transparent !important;\n  border-radius: 0 !important;\n  overflow: visible !important;\n}\n\n#macd-app.manual-content-compat .manual-content-shell {\n  width: 100% !important;\n  max-width: none !important;\n  margin: 0 !important;\n  padding: 0 0 64px !important;\n  background: transparent !important;\n}\n\n#macd-app.manual-content-compat .macd-mode-panel {\n  display: block !important;\n  width: 100% !important;\n}\n\n#macd-app.manual-content-compat .macd-extra-tab-panel,\n#macd-app.manual-content-compat .macd-tab-panel,\n#macd-app.manual-content-compat .macd-ecom-tab-panel {\n  display: block !important;\n}\n\n/* React shell already owns the module/sub-tab navigation.\n   Never allow legacy sticky navigation rules to affect it. */\n#macd-app.manual-content-compat .macd-main-tabs,\n#macd-app.manual-content-compat .macd-mode-tabs {\n  display: none !important;\n}\n\n/* Match the approved desktop content width without touching sidebar/topbar. */\n#macd-app.manual-content-compat .macd-hero,\n#macd-app.manual-content-compat .macd-section-nav,\n#macd-app.manual-content-compat .macd-content-section,\n#macd-app.manual-content-compat .macd-card,\n#macd-app.manual-content-compat .macd-diagnosis-grid,\n#macd-app.manual-content-compat .macd-results-panel {\n  max-width: none;\n}\n\n@media (max-width: 900px) {\n  #macd-app.manual-content-compat .manual-content-shell {\n    padding-bottom: 36px !important;\n  }\n}\n
+
+
+/* =========================================================
+   REACT SHELL -> APPROVED LEGACY MANUAL DESIGN COMPATIBILITY
+   Keeps the working React navigation while restoring the
+   original content-card / hero / table / diagnosis styling.
+   ========================================================= */
+
+#macd-app.manual-content-compat {
+  width: 100% !important;
+  max-width: none !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  display: block !important;
+  grid-template-columns: none !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
+}
+
+#macd-app.manual-content-compat .manual-content-shell {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 0 64px !important;
+  background: transparent !important;
+}
+
+#macd-app.manual-content-compat .macd-mode-panel {
+  display: block !important;
+  width: 100% !important;
+}
+
+#macd-app.manual-content-compat .macd-extra-tab-panel,
+#macd-app.manual-content-compat .macd-tab-panel,
+#macd-app.manual-content-compat .macd-ecom-tab-panel {
+  display: block !important;
+}
+
+/* React shell already owns the module/sub-tab navigation.
+   Never allow legacy sticky navigation rules to affect it. */
+#macd-app.manual-content-compat .macd-main-tabs,
+#macd-app.manual-content-compat .macd-mode-tabs {
+  display: none !important;
+}
+
+/* Match the approved desktop content width without touching sidebar/topbar. */
+#macd-app.manual-content-compat .macd-hero,
+#macd-app.manual-content-compat .macd-section-nav,
+#macd-app.manual-content-compat .macd-content-section,
+#macd-app.manual-content-compat .macd-card,
+#macd-app.manual-content-compat .macd-diagnosis-grid,
+#macd-app.manual-content-compat .macd-results-panel {
+  max-width: none;
+}
+
+@media (max-width: 900px) {
+  #macd-app.manual-content-compat .manual-content-shell {
+    padding-bottom: 36px !important;
+  }
+}
