@@ -2350,8 +2350,6 @@ Paste this entire code into ONE Elementor HTML widget.
 
 </section>
 
-</div>
-
 
 
 <section id="macd-mode-budget" class="macd-mode-panel" role="tabpanel" aria-labelledby="macd-mode-tab-budget" hidden><nav class="macd-main-tabs macd-extra-inner-tabs" role="tablist" aria-label="Budget Allocation tabs"><button class="macd-extra-main-tab is-active" id="macd-budget-tab-full" role="tab" aria-selected="true" aria-controls="macd-budget-panel-full" tabindex="0" data-extra-group="budget" data-extra-panel="full">Full Concept</button><button class="macd-extra-main-tab" id="macd-budget-tab-quick" role="tab" aria-selected="false" aria-controls="macd-budget-panel-quick" tabindex="-1" data-extra-group="budget" data-extra-panel="quick">Quick Diagnose</button></nav><section id="macd-budget-panel-full" class="macd-extra-tab-panel is-active" role="tabpanel" aria-labelledby="macd-budget-tab-full"><header class="macd-hero budget-hero"><div class="macd-eyebrow">BUDGET ALLOCATION</div><h1>Meta Ads — Budget Allocation</h1><p class="macd-subtitle">ZERO TO ADVANCED · Detailed Practical Hinglish Notes | Lead Generation + E-commerce + Real Estate</p><p class="macd-intro">Goal: Kisi bhi campaign mein budget allocation se related problem aaye to WHAT → WHY → CHECK → ACTION ke through turant diagnose kar sako.</p></header><div class="macd-section-nav budget-section-nav"><a href="#macd-budget-1">01 Budget Allocation kya hota hai?</a><a href="#macd-budget-2">02 Budget vs Spend vs Allocation vs Reallocation</a><a href="#macd-budget-3">03 Budget Allocation ke 5 core questions</a><a href="#macd-budget-4">04 Budget Allocation ke major buckets</a><a href="#macd-budget-5">05 Testing Budget vs Scaling Budget</a><a href="#macd-budget-6">06 ABO vs CBO — Budget control</a><a href="#macd-budget-7">07 Funnel-based Budget Allocation</a><a href="#macd-budget-8">08 Lead Generation Budget Allocation</a><a href="#macd-budget-9">09 E-commerce Budget Allocation</a><a href="#macd-budget-10">10 Real Estate Budget Allocation</a><a href="#macd-budget-11">11 Winner ko budget kab dena hai?</a><a href="#macd-budget-12">12 Budget badhane par performance kyun deteriorate ho sakti hai?</a><a href="#macd-budget-13">13 Vertical vs Horizontal Budget Allocation</a><a href="#macd-budget-14">14 Incremental Budget — Advanced</a><a href="#macd-budget-15">15 Marginal Thinking</a><a href="#macd-budget-16">16 Budget Reallocation Framework</a></div><article class="macd-card macd-content-section budget-seq-card " id="macd-budget-1"><div class="macd-section-kicker">01</div><h2>Budget Allocation kya hota hai?</h2><p>Budget = available ad-spend resource. Budget Allocation = us total resource ko campaigns, ad sets, testing, winners, audiences, geos, funnel stages, offers ya products ke beech strategic tareeke se distribute karna.</p>
@@ -2498,6 +2496,12 @@ Paste this entire code into ONE Elementor HTML widget.
 <div class="macd-aud-list-row"><span>•</span><p>Advanced Funnel Economics</p></div>
 <div class="macd-aud-list-row"><span>•</span><p>Competitive Intelligence</p></div>
 <div class="macd-aud-list-row"><span>•</span><p>Full Performance Marketing Strategy</p></div></article></section></section>
+
+</div>
+
+
+
+
 
 </div>
 
@@ -7400,6 +7404,8 @@ Paste this entire code into ONE Elementor HTML widget.
     });
 
     if (focusTab) tab.focus();
+  
+    syncAppNavigation();
   }
 
   modeTabs.forEach(function(tab, index) {
@@ -7425,9 +7431,11 @@ Paste this entire code into ONE Elementor HTML widget.
 
   function activateExtraTab(tab, focusTab) {
     var group = tab.getAttribute('data-extra-group');
-    var target = tab.getAttribute('data-extra-panel');
-    var groupTabs = Array.prototype.slice.call(app.querySelectorAll('.macd-extra-main-tab[data-extra-group="' + group + '"]'));
-    var groupPanels = Array.prototype.slice.call(app.querySelectorAll('#macd-mode-' + group + ' .macd-extra-tab-panel'));
+    var panelName = tab.getAttribute('data-extra-panel');
+
+    var groupTabs = app.querySelectorAll(
+      '.macd-extra-main-tab[data-extra-group="' + group + '"]'
+    );
 
     groupTabs.forEach(function(btn) {
       var active = btn === tab;
@@ -7436,13 +7444,19 @@ Paste this entire code into ONE Elementor HTML widget.
       btn.setAttribute('tabindex', active ? '0' : '-1');
     });
 
-    groupPanels.forEach(function(panel) {
-      var active = panel.id === 'macd-' + group + '-panel-' + target;
-      panel.classList.toggle('is-active', active);
-      panel.hidden = !active;
-    });
+    var groupPanel = modePanels[group];
+    if (groupPanel) {
+      groupPanel.querySelectorAll('.macd-extra-tab-panel').forEach(function(panel) {
+        var active =
+          panel.id === 'macd-' + group + '-panel-' + panelName;
+
+        panel.classList.toggle('is-active', active);
+        panel.hidden = !active;
+      });
+    }
 
     if (focusTab) tab.focus();
+    syncAppNavigation();
   }
 
   extraTabs.forEach(function(tab) {
@@ -7531,6 +7545,8 @@ Paste this entire code into ONE Elementor HTML widget.
     });
 
     if (focusTab) tab.focus();
+  
+    syncAppNavigation();
   }
 
   mainTabs.forEach(function(tab, index) {
@@ -7904,22 +7920,28 @@ Paste this entire code into ONE Elementor HTML widget.
 
     function clickExisting(mode, panel) {
       var modeBtn = app.querySelector('.macd-mode-tab[data-mode="' + mode + '"]');
-      if (modeBtn && modeBtn.getAttribute('aria-selected') !== 'true') modeBtn.click();
+      if (modeBtn) activateModeTab(modeBtn, false);
 
-      window.setTimeout(function() {
-        var selector = '';
-        if (mode === 'lead') {
-          selector = '#macd-mode-lead .macd-main-tab[data-panel="' + panel + '"]';
-        } else if (mode === 'ecommerce') {
-          selector = '#macd-mode-ecommerce .macd-ecom-main-tab[data-ecom-panel="' + panel + '"]';
-        } else {
-          selector = '#macd-mode-' + mode + ' .macd-extra-main-tab[data-extra-group="' + mode + '"][data-extra-panel="' + panel + '"]';
-        }
-        var panelBtn = app.querySelector(selector);
-        if (panelBtn && panelBtn.getAttribute('aria-selected') !== 'true') panelBtn.click();
-        syncAppNavigation();
-        window.scrollTo({ top: app.getBoundingClientRect().top + window.scrollY, behavior: 'smooth' });
-      }, 0);
+      var panelBtn = null;
+
+      if (mode === 'lead') {
+        panelBtn = app.querySelector('#macd-mode-lead .macd-main-tab[data-panel="' + panel + '"]');
+        if (panelBtn) panelBtn.click();
+      } else if (mode === 'ecommerce') {
+        panelBtn = app.querySelector('#macd-mode-ecommerce .macd-ecom-main-tab[data-ecom-panel="' + panel + '"]');
+        if (panelBtn) panelBtn.click();
+      } else {
+        panelBtn = app.querySelector(
+          '#macd-mode-' + mode +
+          ' .macd-extra-main-tab[data-extra-group="' + mode + '"][data-extra-panel="' + panel + '"]'
+        );
+        if (panelBtn) activateExtraTab(panelBtn, false);
+      }
+
+      syncAppNavigation();
+
+      var shellTop = app.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ top: shellTop, behavior: 'smooth' });
     }
 
     sidebar.querySelectorAll('.macd-side-link').forEach(function(btn) {
@@ -7977,25 +7999,30 @@ Paste this entire code into ONE Elementor HTML widget.
 
   function getActiveMode() {
     var selected = app.querySelector('.macd-mode-tab[aria-selected="true"]');
-    return selected ? selected.getAttribute('data-mode') : 'lead';
+    return selected ? selected.getAttribute('data-mode') : 'audience';
   }
 
   function getActivePanel() {
     var mode = getActiveMode();
 
     if (mode === 'audience' || mode === 'scaling' || mode === 'budget') {
-      var activeExtra = modePanels[mode] && modePanels[mode].querySelector('.macd-extra-main-tab.is-active');
+      var activeExtra = modePanels[mode] &&
+        modePanels[mode].querySelector('.macd-extra-main-tab[aria-selected="true"]');
+
       if (activeExtra) return activeExtra.getAttribute('data-extra-panel');
+
       if (mode === 'scaling') return 'framework';
       return 'full';
     }
 
     if (mode === 'ecommerce') {
-      var activeEcom = modePanels.ecommerce && modePanels.ecommerce.querySelector('.macd-ecom-main-tab.is-active');
+      var activeEcom = modePanels.ecommerce &&
+        modePanels.ecommerce.querySelector('.macd-ecom-main-tab[aria-selected="true"]');
       return activeEcom ? activeEcom.getAttribute('data-ecom-panel') : 'testing';
     }
 
-    var activeLead = modePanels.lead && modePanels.lead.querySelector('.macd-main-tab.is-active');
+    var activeLead = modePanels.lead &&
+      modePanels.lead.querySelector('.macd-main-tab[aria-selected="true"]');
     return activeLead ? activeLead.getAttribute('data-panel') : 'testing';
   }
 
@@ -8007,52 +8034,44 @@ Paste this entire code into ONE Elementor HTML widget.
 
     var breadcrumb = app.querySelector('.macd-top-breadcrumb');
     if (breadcrumb) {
-      var modeLabel = mode === 'audience' ? 'AUDIENCE & CREATIVE STRATEGY' :
+      var modeLabel =
+        mode === 'audience' ? 'AUDIENCE & CREATIVE STRATEGY' :
+        mode === 'lead' ? 'LEAD GENERATION' :
         mode === 'ecommerce' ? 'E-COMMERCE' :
         mode === 'scaling' ? 'SCALING FRAMEWORK' :
-        mode === 'budget' ? 'BUDGET ALLOCATION' : 'LEAD GENERATION';
+        mode === 'budget' ? 'BUDGET ALLOCATION' : '';
+
       var panelLabel =
-        mode === 'audience' ? (activePanel === 'quick' ? 'QUICK DIAGNOSIS' : 'FULL CONCEPT') :
-        mode === 'scaling' ? (activePanel === 'quick' ? 'QUICK DECISION' : 'SCALING FRAMEWORK') :
-        mode === 'budget' ? (activePanel === 'quick' ? 'QUICK DIAGNOSE' : 'FULL CONCEPT') :
-        mode === 'ecommerce' ? (activePanel === 'diagnosis' ? 'DIAGNOSIS' : 'TESTING FRAMEWORK') :
-        (activePanel === 'diagnosis' ? 'DIAGNOSIS' : 'TESTING FRAMEWORK');
+        mode === 'audience' ? (panel === 'quick' ? 'QUICK DIAGNOSIS' : 'FULL CONCEPT') :
+        mode === 'lead' ? (panel === 'diagnosis' ? 'DIAGNOSIS' : 'TESTING FRAMEWORK') :
+        mode === 'ecommerce' ? (panel === 'diagnosis' ? 'DIAGNOSIS' : 'TESTING FRAMEWORK') :
+        mode === 'scaling' ? (panel === 'quick' ? 'QUICK DECISION' : 'SCALING FRAMEWORK') :
+        mode === 'budget' ? (panel === 'quick' ? 'QUICK DIAGNOSE' : 'FULL CONCEPT') : '';
+
       breadcrumb.textContent = modeLabel + ' / ' + panelLabel;
     }
 
+    app.querySelectorAll('.macd-mode-tab').forEach(function(tab) {
+      var active = tab.getAttribute('data-mode') === mode;
+      tab.classList.toggle('is-active', active);
+      tab.setAttribute('aria-selected', active ? 'true' : 'false');
+      tab.setAttribute('tabindex', active ? '0' : '-1');
+    });
+
     app.querySelectorAll('.macd-side-group').forEach(function(group) {
-      group.classList.toggle('is-active', group.getAttribute('data-side-mode') === mode);
+      group.classList.toggle(
+        'is-active',
+        group.getAttribute('data-side-mode') === mode
+      );
     });
 
     app.querySelectorAll('.macd-side-link').forEach(function(link) {
       var active =
         link.getAttribute('data-side-mode-link') === mode &&
         link.getAttribute('data-side-panel') === panel;
+
       link.classList.toggle('is-active', active);
     });
-  
-    // HARD SYNC: top mode tab + sidebar group/sub-link must always match active content.
-    var currentMode = getActiveMode();
-    var currentPanel = getActivePanel();
-
-    app.querySelectorAll('.macd-side-group').forEach(function(group) {
-      var groupMode = group.getAttribute('data-side-mode');
-      group.classList.toggle('is-active', groupMode === currentMode);
-    });
-
-    app.querySelectorAll('.macd-side-link').forEach(function(link) {
-      var linkMode = link.getAttribute('data-side-mode-link');
-      var linkPanel = link.getAttribute('data-side-panel');
-      link.classList.toggle('is-active', linkMode === currentMode && linkPanel === currentPanel);
-    });
-
-    app.querySelectorAll('.macd-mode-tab').forEach(function(tab) {
-      var isActive = tab.getAttribute('data-mode') === currentMode;
-      tab.classList.toggle('is-active', isActive);
-      tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
-      tab.setAttribute('tabindex', isActive ? '0' : '-1');
-    });
-
   }
 
   function createBoundedStickyZone(panelSelector, toolsSelector, listSelector) {
