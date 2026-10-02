@@ -1,0 +1,4905 @@
+
+#macd-app,
+#macd-app * {
+  box-sizing: border-box;
+}
+
+#macd-app {
+  --macd-bg: #f5f1e8;
+  --macd-card: #fffdf8;
+  --macd-card-soft: #f8f4ec;
+  --macd-text: #22221f;
+  --macd-muted: #67645e;
+  --macd-border: #ded8ce;
+  --macd-border-strong: #c9c0b3;
+  --macd-accent: #b94e2a;
+  --macd-accent-dark: #8e3519;
+  --macd-accent-soft: #f5dfd5;
+  --macd-dark: #282722;
+  --macd-success-soft: #eaf1e8;
+  --macd-danger-soft: #f6e8e3;
+  --macd-warning-soft: #f7edcf;
+  --macd-radius-lg: 24px;
+  --macd-radius-md: 16px;
+  --macd-radius-sm: 11px;
+  --macd-shadow: 0 10px 26px rgba(52, 43, 31, 0.055);
+
+  width: 100%;
+  background: var(--macd-bg);
+  color: var(--macd-text);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.72;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+#macd-app button,
+#macd-app input {
+  font: inherit;
+}
+
+#macd-app button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+#macd-app .macd-shell {
+  width: min(1160px, calc(100% - 36px));
+  margin: 0 auto;
+  padding: 54px 0 72px;
+}
+
+#macd-app .macd-hero {
+  max-width: 900px;
+  margin: 0 auto 34px;
+  text-align: center;
+}
+
+#macd-app .macd-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  padding: 6px 14px;
+  border: 1px solid var(--macd-border-strong);
+  border-radius: 999px;
+  color: var(--macd-accent-dark);
+  background: rgba(255,255,255,.45);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+#macd-app h1,
+#macd-app h2,
+#macd-app h3,
+#macd-app h4,
+#macd-app p {
+  margin-top: 0;
+}
+
+#macd-app h1 {
+  margin-bottom: 12px;
+  font-size: clamp(36px, 5vw, 48px);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: var(--macd-dark);
+}
+
+#macd-app h2 {
+  margin-bottom: 16px;
+  font-size: clamp(28px, 3vw, 34px);
+  line-height: 1.17;
+  letter-spacing: -0.025em;
+  color: var(--macd-dark);
+}
+
+#macd-app h3 {
+  margin-bottom: 8px;
+  font-size: 20px;
+  line-height: 1.35;
+  color: var(--macd-dark);
+}
+
+#macd-app h4 {
+  margin-bottom: 6px;
+  font-size: 14px;
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: .055em;
+  color: var(--macd-accent-dark);
+}
+
+#macd-app p:last-child {
+  margin-bottom: 0;
+}
+
+#macd-app .macd-subtitle {
+  margin-bottom: 10px;
+  color: var(--macd-muted);
+  font-size: 18px;
+}
+
+#macd-app .macd-intro {
+  max-width: 780px;
+  margin: 0 auto;
+  color: #44423d;
+}
+
+#macd-app .macd-main-tabs {
+  position: sticky;
+  top: 12px;
+  z-index: 30;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  max-width: 670px;
+  margin: 0 auto 28px;
+  padding: 6px;
+  background: rgba(255,253,248,.90);
+  border: 1px solid var(--macd-border);
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(37,31,23,.08);
+  backdrop-filter: blur(12px);
+}
+
+#macd-app .macd-main-tab {
+  border: 0;
+  border-radius: 11px;
+  min-height: 52px;
+  padding: 12px 18px;
+  color: var(--macd-muted);
+  background: transparent;
+  cursor: pointer;
+  font-weight: 800;
+  transition: .2s ease;
+}
+
+#macd-app .macd-main-tab:hover {
+  color: var(--macd-dark);
+  background: #f2ede4;
+}
+
+#macd-app .macd-main-tab.is-active {
+  color: #fff;
+  background: var(--macd-dark);
+}
+
+#macd-app .macd-main-tab:focus-visible,
+#macd-app .macd-accordion-trigger:focus-visible,
+#macd-app .macd-filter:focus-visible,
+#macd-app .macd-search-box input:focus-visible,
+#macd-app .macd-result-meta button:focus-visible,
+#macd-app .macd-search-box button:focus-visible {
+  outline: 3px solid rgba(185,78,42,.32);
+  outline-offset: 2px;
+}
+
+#macd-app .macd-tab-panel {
+  display: none;
+}
+
+#macd-app .macd-tab-panel.is-active {
+  display: block;
+}
+
+#macd-app .macd-section-nav {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 2px 2px 14px;
+  margin-bottom: 12px;
+  scrollbar-width: thin;
+}
+
+#macd-app .macd-section-nav a {
+  flex: 0 0 auto;
+  text-decoration: none;
+  color: var(--macd-muted);
+  background: rgba(255,255,255,.5);
+  border: 1px solid var(--macd-border);
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+#macd-app .macd-section-nav a:hover {
+  color: var(--macd-accent-dark);
+  border-color: #d7b5a6;
+  background: #fff9f5;
+}
+
+#macd-app .macd-card {
+  position: relative;
+  margin-bottom: 22px;
+  padding: clamp(24px, 4vw, 42px);
+  background: var(--macd-card);
+  border: 1px solid var(--macd-border);
+  border-radius: var(--macd-radius-lg);
+  box-shadow: var(--macd-shadow);
+}
+
+#macd-app .macd-content-section {
+  scroll-margin-top: 110px;
+}
+
+#macd-app .macd-section-kicker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  min-height: 30px;
+  margin-bottom: 14px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  color: var(--macd-accent-dark);
+  background: var(--macd-accent-soft);
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+#macd-app .macd-section-kicker-text {
+  margin-bottom: 4px;
+  color: var(--macd-accent-dark);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+#macd-app .macd-callout,
+#macd-app .macd-question,
+#macd-app .macd-warning {
+  margin: 18px 0;
+  padding: 16px 18px;
+  border-radius: var(--macd-radius-sm);
+}
+
+#macd-app .macd-callout {
+  background: var(--macd-card-soft);
+  border-left: 4px solid var(--macd-accent);
+}
+
+#macd-app .macd-question {
+  background: var(--macd-dark);
+  color: #fff;
+  font-weight: 800;
+}
+
+#macd-app .macd-warning {
+  background: var(--macd-warning-soft);
+  border: 1px solid #e8d7a4;
+  font-weight: 800;
+}
+
+#macd-app .macd-example {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px dashed var(--macd-border-strong);
+  border-radius: var(--macd-radius-md);
+  background: #fbf8f1;
+}
+
+#macd-app .macd-inside-example {
+  margin: 18px 22px 22px;
+}
+
+#macd-app .macd-example-title {
+  margin-bottom: 12px;
+  color: var(--macd-accent-dark);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+
+#macd-app .macd-muted {
+  color: var(--macd-muted);
+}
+
+#macd-app .macd-compare-grid,
+#macd-app .macd-component-grid,
+#macd-app .macd-learning-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 14px;
+}
+
+#macd-app .macd-component-grid {
+  grid-template-columns: repeat(5, minmax(0,1fr));
+}
+
+#macd-app .macd-mini-card,
+#macd-app .macd-compare-box {
+  padding: 18px;
+  border: 1px solid var(--macd-border);
+  border-radius: var(--macd-radius-md);
+  background: var(--macd-card-soft);
+}
+
+#macd-app .macd-mini-card p,
+#macd-app .macd-compare-box p {
+  color: var(--macd-muted);
+  font-size: 15px;
+}
+
+#macd-app .macd-label {
+  display: inline-flex;
+  margin-bottom: 8px;
+  color: var(--macd-accent-dark);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .065em;
+  text-transform: uppercase;
+}
+
+#macd-app .macd-definition-list {
+  margin: 0;
+}
+
+#macd-app .macd-definition-list > div {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--macd-border);
+}
+
+#macd-app .macd-definition-list > div:last-child {
+  border-bottom: 0;
+}
+
+#macd-app .macd-definition-list dt {
+  font-weight: 800;
+}
+
+#macd-app .macd-definition-list dd {
+  margin: 0;
+  color: var(--macd-muted);
+}
+
+#macd-app .macd-flow,
+#macd-app .macd-master-formula {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  margin: 20px 0 26px;
+  padding: 18px;
+  border-radius: var(--macd-radius-md);
+  background: var(--macd-dark);
+  color: #fff;
+  scrollbar-width: thin;
+}
+
+#macd-app .macd-flow.compact {
+  background: #f1ece3;
+  color: var(--macd-dark);
+  border: 1px solid var(--macd-border);
+}
+
+#macd-app .macd-flow span,
+#macd-app .macd-master-formula span {
+  flex: 0 0 auto;
+  padding: 8px 11px;
+  border-radius: 9px;
+  background: rgba(255,255,255,.10);
+  font-size: 13px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+#macd-app .macd-flow.compact span {
+  background: #fffaf4;
+}
+
+#macd-app .macd-flow b,
+#macd-app .macd-master-formula b {
+  color: #d98a68;
+}
+
+#macd-app .macd-steps {
+  display: grid;
+  gap: 12px;
+}
+
+#macd-app .macd-step {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 14px;
+  align-items: start;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--macd-border);
+}
+
+#macd-app .macd-step:last-child {
+  border-bottom: 0;
+}
+
+#macd-app .macd-step > span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--macd-accent);
+  font-weight: 900;
+}
+
+#macd-app .macd-step p {
+  margin: 0;
+  color: var(--macd-muted);
+}
+
+#macd-app .macd-golden-rule {
+  margin: 18px 0;
+  padding: 22px;
+  border-radius: var(--macd-radius-md);
+  background: var(--macd-dark);
+  color: #fff;
+  font-size: clamp(22px, 3vw, 28px);
+  line-height: 1.3;
+  font-weight: 900;
+  text-align: center;
+}
+
+#macd-app .macd-golden-rule.smaller {
+  font-size: 20px;
+}
+
+#macd-app .macd-do-not {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: var(--macd-radius-md);
+  background: var(--macd-danger-soft);
+  border: 1px solid #eccfc5;
+}
+
+#macd-app .macd-do-not ul,
+#macd-app .macd-two-col-list ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+#macd-app .macd-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--macd-border);
+  border-radius: var(--macd-radius-md);
+}
+
+#macd-app .macd-table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+#macd-app .macd-table th,
+#macd-app .macd-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--macd-border);
+  text-align: left;
+  vertical-align: top;
+}
+
+#macd-app .macd-table th {
+  background: #f1ece3;
+  color: var(--macd-dark);
+  font-size: 13px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+#macd-app .macd-table td {
+  font-size: 15px;
+  color: #494640;
+}
+
+#macd-app .macd-table tr:last-child td {
+  border-bottom: 0;
+}
+
+#macd-app .macd-funnel {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0,1fr));
+  gap: 10px;
+  margin: 20px 0;
+}
+
+#macd-app .macd-funnel span {
+  position: relative;
+  padding: 14px 10px;
+  border-radius: 12px;
+  background: #f1ece3;
+  border: 1px solid var(--macd-border);
+  text-align: center;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+#macd-app .macd-learning {
+  padding: 20px;
+  border-radius: var(--macd-radius-md);
+  border: 1px solid var(--macd-border);
+}
+
+#macd-app .macd-learning.bad {
+  background: var(--macd-danger-soft);
+}
+
+#macd-app .macd-learning.good {
+  background: var(--macd-success-soft);
+}
+
+#macd-app .macd-diagnosis-head {
+  margin: 8px 0 18px;
+  padding: 26px 4px 4px;
+}
+
+#macd-app .macd-diagnosis-head > div {
+  max-width: 880px;
+}
+
+#macd-app .macd-diagnosis-rule {
+  margin-bottom: 22px;
+}
+
+#macd-app .macd-quick-grid,
+#macd-app .macd-cheat-sheet {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 10px;
+}
+
+#macd-app .macd-quick-grid > div,
+#macd-app .macd-cheat-sheet > div {
+  display: grid;
+  grid-template-columns: minmax(155px, .75fr) 1.3fr;
+  gap: 12px;
+  align-items: center;
+  padding: 14px 16px;
+  border: 1px solid var(--macd-border);
+  border-radius: 12px;
+  background: var(--macd-card-soft);
+}
+
+#macd-app .macd-quick-grid strong,
+#macd-app .macd-cheat-sheet strong {
+  color: var(--macd-dark);
+  font-size: 14px;
+}
+
+#macd-app .macd-quick-grid span,
+#macd-app .macd-cheat-sheet span {
+  color: var(--macd-muted);
+  font-size: 14px;
+}
+
+#macd-app .macd-tools {
+  position: sticky;
+  top: 83px;
+  z-index: 20;
+  margin-bottom: 16px;
+  padding: 16px;
+  border: 1px solid var(--macd-border);
+  border-radius: 18px;
+  background: rgba(255,253,248,.92);
+  box-shadow: 0 10px 30px rgba(37,31,23,.08);
+  backdrop-filter: blur(12px);
+}
+
+#macd-app .macd-search-wrap label,
+#macd-app .macd-filter-label {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--macd-muted);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+}
+
+#macd-app .macd-search-box {
+  display: grid;
+  grid-template-columns: 22px 1fr auto;
+  gap: 8px;
+  align-items: center;
+  min-height: 46px;
+  padding: 5px 7px 5px 13px;
+  border: 1px solid var(--macd-border-strong);
+  border-radius: 12px;
+  background: #fff;
+}
+
+#macd-app .macd-search-box svg {
+  width: 18px;
+  fill: none;
+  stroke: var(--macd-muted);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+#macd-app .macd-search-box input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--macd-text);
+  font-size: 15px;
+}
+
+#macd-app .macd-search-box button,
+#macd-app .macd-result-meta button {
+  border: 1px solid var(--macd-border);
+  border-radius: 9px;
+  background: var(--macd-card-soft);
+  color: var(--macd-muted);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 7px 10px;
+}
+
+#macd-app .macd-filter-wrap {
+  margin-top: 12px;
+}
+
+#macd-app .macd-filter-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+#macd-app .macd-filter {
+  border: 1px solid var(--macd-border);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--macd-muted);
+  padding: 7px 11px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+#macd-app .macd-filter:hover,
+#macd-app .macd-filter.is-active {
+  border-color: var(--macd-dark);
+  background: var(--macd-dark);
+  color: #fff;
+}
+
+#macd-app .macd-result-meta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+#macd-app #macd-result-count {
+  margin-right: auto;
+  color: var(--macd-muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+#macd-app .macd-no-results {
+  margin: 18px 0;
+  padding: 30px;
+  border: 1px dashed var(--macd-border-strong);
+  border-radius: 16px;
+  text-align: center;
+  background: var(--macd-card-soft);
+}
+
+#macd-app .macd-no-results span {
+  display: block;
+  margin-top: 4px;
+  color: var(--macd-muted);
+  font-size: 14px;
+}
+
+#macd-app .macd-diagnosis-list {
+  display: grid;
+  gap: 12px;
+}
+
+#macd-app .macd-diagnosis-card {
+  overflow: hidden;
+  background: var(--macd-card);
+  border: 1px solid var(--macd-border);
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(52,43,31,.035);
+}
+
+#macd-app .macd-diagnosis-card[hidden] {
+  display: none !important;
+}
+
+#macd-app .macd-accordion-trigger {
+  display: grid;
+  grid-template-columns: 82px 1fr minmax(160px, auto) 24px;
+  gap: 14px;
+  align-items: center;
+  width: 100%;
+  min-height: 74px;
+  padding: 16px 20px;
+  border: 0;
+  background: transparent;
+  color: var(--macd-text);
+  cursor: pointer;
+  text-align: left;
+}
+
+#macd-app .macd-accordion-trigger:hover {
+  background: #faf7f0;
+}
+
+#macd-app .macd-case-no {
+  color: var(--macd-accent-dark);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+#macd-app .macd-case-title {
+  font-size: 18px;
+  line-height: 1.35;
+  font-weight: 800;
+}
+
+#macd-app .macd-case-hint {
+  color: var(--macd-muted);
+  font-size: 13px;
+  text-align: right;
+}
+
+#macd-app .macd-chevron {
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
+#macd-app .macd-chevron::before,
+#macd-app .macd-chevron::after {
+  content: "";
+  position: absolute;
+  top: 9px;
+  left: 4px;
+  width: 12px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--macd-dark);
+  transition: transform .2s ease;
+}
+
+#macd-app .macd-chevron::after {
+  transform: rotate(90deg);
+}
+
+#macd-app .macd-accordion-trigger[aria-expanded="true"] .macd-chevron::after {
+  transform: rotate(0deg);
+}
+
+#macd-app .macd-accordion-panel {
+  border-top: 1px solid var(--macd-border);
+  background: #fffefb;
+}
+
+#macd-app .macd-diagnosis-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 0;
+  padding: 6px 22px 20px;
+}
+
+#macd-app .macd-diagnosis-grid > div {
+  padding: 18px;
+  border-bottom: 1px solid var(--macd-border);
+}
+
+#macd-app .macd-diagnosis-grid > div:nth-child(odd) {
+  border-right: 1px solid var(--macd-border);
+}
+
+#macd-app .macd-diagnosis-grid p {
+  margin: 0;
+  color: #514d46;
+  font-size: 15px;
+}
+
+#macd-app .macd-diagnosis-grid .macd-not-change {
+  grid-column: 1 / -1;
+  border-right: 0 !important;
+  background: #fbf2ee;
+  border-radius: 12px;
+  margin-top: 8px;
+  border-bottom: 0;
+}
+
+#macd-app .macd-special-section {
+  margin-top: 48px;
+}
+
+#macd-app .macd-special-heading {
+  margin-bottom: 18px;
+}
+
+#macd-app .macd-special-card {
+  scroll-margin-top: 110px;
+}
+
+#macd-app .macd-split-signal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 20px 0;
+}
+
+#macd-app .macd-split-signal > div {
+  display: grid;
+  place-items: center;
+  min-height: 118px;
+  padding: 20px;
+  border-radius: 16px;
+  text-align: center;
+  border: 1px solid var(--macd-border);
+  background: var(--macd-card-soft);
+}
+
+#macd-app .macd-split-signal strong {
+  display: block;
+  font-size: 22px;
+}
+
+#macd-app .macd-split-signal span {
+  color: var(--macd-muted);
+  font-size: 14px;
+}
+
+#macd-app .macd-two-col-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+#macd-app .macd-two-col-list > div {
+  padding: 20px;
+  border: 1px solid var(--macd-border);
+  border-radius: 14px;
+  background: var(--macd-card-soft);
+}
+
+#macd-app .macd-timeline {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0,1fr));
+  gap: 10px;
+  margin-top: 20px;
+}
+
+#macd-app .macd-timeline > div {
+  position: relative;
+  min-height: 160px;
+  padding: 18px;
+  border: 1px solid var(--macd-border);
+  border-radius: 14px;
+  background: var(--macd-card-soft);
+}
+
+#macd-app .macd-timeline span {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--macd-accent-dark);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+#macd-app .macd-timeline strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+#macd-app .macd-timeline p {
+  color: var(--macd-muted);
+  font-size: 14px;
+}
+
+#macd-app .macd-benchmark-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 18px 0;
+}
+
+#macd-app .macd-benchmark-grid span {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--macd-card-soft);
+  border: 1px solid var(--macd-border);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+#macd-app .macd-output-flow {
+  display: grid;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+#macd-app .macd-output-flow > div {
+  display: grid;
+  grid-template-columns: 34px minmax(170px,.8fr) 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 14px;
+  border: 1px solid var(--macd-border);
+  border-radius: 12px;
+  background: var(--macd-card-soft);
+}
+
+#macd-app .macd-output-flow > div > span {
+  display: inline-flex;
+  width: 30px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--macd-dark);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+#macd-app .macd-output-flow strong {
+  font-size: 13px;
+}
+
+#macd-app .macd-output-flow p {
+  margin: 0;
+  color: var(--macd-muted);
+  font-size: 14px;
+}
+
+#macd-app .macd-end-example {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 10px;
+  margin-top: 18px;
+}
+
+#macd-app .macd-end-example > div {
+  padding: 16px;
+  border: 1px solid var(--macd-border);
+  border-radius: 12px;
+  background: var(--macd-card-soft);
+}
+
+#macd-app .macd-end-example span {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--macd-accent-dark);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+#macd-app .macd-end-example p {
+  color: #4d4943;
+  font-size: 15px;
+}
+
+#macd-app .macd-final-formula {
+  margin-bottom: 0;
+}
+
+@media (max-width: 1024px) {
+  #macd-app .macd-component-grid {
+    grid-template-columns: repeat(3, minmax(0,1fr));
+  }
+
+  #macd-app .macd-timeline {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+
+  #macd-app .macd-funnel {
+    grid-template-columns: repeat(3, minmax(0,1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  #macd-app {
+    border-radius: 20px;
+    font-size: 16px;
+    line-height: 1.68;
+  }
+
+  #macd-app .macd-shell {
+    width: min(100% - 20px, 1160px);
+    padding: 30px 0 44px;
+  }
+
+  #macd-app .macd-hero {
+    margin-bottom: 22px;
+  }
+
+  #macd-app h1 {
+    font-size: 36px;
+  }
+
+  #macd-app h2 {
+    font-size: 27px;
+  }
+
+  #macd-app .macd-subtitle {
+    font-size: 16px;
+  }
+
+  #macd-app .macd-main-tabs {
+    top: 8px;
+    margin-bottom: 18px;
+  }
+
+  #macd-app .macd-main-tab {
+    padding: 10px 8px;
+    font-size: 13px;
+  }
+
+  #macd-app .macd-card {
+    padding: 22px 18px;
+    border-radius: 18px;
+  }
+
+  #macd-app .macd-component-grid,
+  #macd-app .macd-compare-grid,
+  #macd-app .macd-learning-grid,
+  #macd-app .macd-split-signal,
+  #macd-app .macd-two-col-list,
+  #macd-app .macd-end-example,
+  #macd-app .macd-quick-grid,
+  #macd-app .macd-cheat-sheet,
+  #macd-app .macd-diagnosis-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #macd-app .macd-quick-grid > div,
+  #macd-app .macd-cheat-sheet > div {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  #macd-app .macd-definition-list > div {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  #macd-app .macd-funnel {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+
+  #macd-app .macd-tools {
+    top: 74px;
+    padding: 12px;
+  }
+
+  #macd-app .macd-filter-list {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  #macd-app .macd-filter {
+    flex: 0 0 auto;
+  }
+
+  #macd-app .macd-result-meta {
+    align-items: stretch;
+  }
+
+  #macd-app #macd-result-count {
+    width: 100%;
+  }
+
+  #macd-app .macd-accordion-trigger {
+    grid-template-columns: 68px 1fr 24px;
+    gap: 10px;
+    padding: 15px 14px;
+  }
+
+  #macd-app .macd-case-title {
+    font-size: 16px;
+  }
+
+  #macd-app .macd-case-hint {
+    grid-column: 2 / 3;
+    grid-row: 2;
+    text-align: left;
+    font-size: 12px;
+  }
+
+  #macd-app .macd-chevron {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+  }
+
+  #macd-app .macd-diagnosis-grid {
+    padding: 6px 12px 16px;
+  }
+
+  #macd-app .macd-diagnosis-grid > div {
+    border-right: 0 !important;
+  }
+
+  #macd-app .macd-inside-example {
+    margin: 14px 12px 16px;
+  }
+
+  #macd-app .macd-timeline {
+    grid-template-columns: 1fr;
+  }
+
+  #macd-app .macd-timeline > div {
+    min-height: 0;
+  }
+
+  #macd-app .macd-output-flow > div {
+    grid-template-columns: 34px 1fr;
+  }
+
+  #macd-app .macd-output-flow p {
+    grid-column: 2;
+  }
+
+  #macd-app .macd-table {
+    min-width: 680px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #macd-app *,
+  #macd-app *::before,
+  #macd-app *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+
+/* ===== Parent navigation: Lead Generation / E-commerce ===== */
+#macd-app .macd-mode-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  max-width: 760px;
+  margin: 0 auto 18px;
+  padding: 7px;
+  border: 1px solid var(--macd-border-strong);
+  border-radius: 18px;
+  background: rgba(255,253,248,.68);
+}
+
+#macd-app .macd-mode-tab {
+  min-height: 56px;
+  padding: 12px 20px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--macd-muted);
+  cursor: pointer;
+  font-weight: 900;
+  letter-spacing: .01em;
+  transition: .2s ease;
+}
+
+#macd-app .macd-mode-tab:hover {
+  color: var(--macd-dark);
+  background: #f2ede4;
+}
+
+#macd-app .macd-mode-tab.is-active {
+  color: #fff;
+  background: var(--macd-accent);
+  border-color: var(--macd-accent);
+  box-shadow: 0 7px 18px rgba(142,53,25,.16);
+}
+
+#macd-app .macd-mode-tab:focus-visible,
+#macd-app .macd-ecom-main-tab:focus-visible {
+  outline: 3px solid rgba(185,78,42,.32);
+  outline-offset: 2px;
+}
+
+#macd-app .macd-mode-panel[hidden],
+#macd-app .macd-ecom-tab-panel[hidden] {
+  display: none !important;
+}
+
+#macd-app .macd-ecom-main-tab {
+  border: 0;
+  border-radius: 11px;
+  min-height: 52px;
+  padding: 12px 18px;
+  color: var(--macd-muted);
+  background: transparent;
+  cursor: pointer;
+  font-weight: 800;
+  transition: .2s ease;
+}
+
+#macd-app .macd-ecom-main-tab:hover {
+  color: var(--macd-dark);
+  background: #f2ede4;
+}
+
+#macd-app .macd-ecom-main-tab.is-active {
+  color: #fff;
+  background: var(--macd-dark);
+}
+
+#macd-app .macd-ecom-tab-panel {
+  display: none;
+}
+
+#macd-app .macd-ecom-tab-panel.is-active {
+  display: block;
+}
+
+#macd-app .macd-ecom-component-grid {
+  grid-template-columns: repeat(4, minmax(0,1fr));
+}
+
+#macd-app .macd-ecom-inline-callout {
+  margin: 18px 22px 4px;
+}
+
+@media (max-width: 1024px) {
+  #macd-app .macd-ecom-component-grid {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  #macd-app .macd-mode-tabs {
+    margin-bottom: 14px;
+    padding: 5px;
+  }
+
+  #macd-app .macd-mode-tab {
+    min-height: 48px;
+    padding: 9px 8px;
+    font-size: 13px;
+  }
+
+  #macd-app .macd-ecom-main-tab {
+    padding: 10px 8px;
+    font-size: 13px;
+  }
+
+  #macd-app .macd-ecom-component-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #macd-app .macd-ecom-inline-callout {
+    margin: 14px 12px 4px;
+  }
+}
+
+
+/* ===== Sticky two-level navigation update =====
+   Parent row: Lead Generation / E-commerce
+   Child row: Testing Framework / Diagnosis
+   Both rows become sticky only when the page is scrolled to them.
+*/
+#macd-app .macd-mode-tabs {
+  position: sticky;
+  top: 10px;
+  z-index: 60;
+  background: rgba(255,253,248,.96);
+  box-shadow: 0 8px 24px rgba(37,31,23,.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+#macd-app .macd-main-tabs {
+  top: 88px;
+  z-index: 55;
+  background: rgba(255,253,248,.96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Existing diagnosis controls remain sticky below both navigation rows. */
+#macd-app .macd-tools {
+  top: 160px;
+  z-index: 45;
+}
+
+@media (max-width: 767px) {
+  #macd-app .macd-mode-tabs {
+    top: 6px;
+  }
+
+  #macd-app .macd-main-tabs {
+    top: 68px;
+  }
+
+  #macd-app .macd-tools {
+    top: 132px;
+  }
+}
+
+
+/* ===== FINAL STICKY FIX =====
+   Sticky was being blocked by the outer app's overflow:hidden.
+*/
+#macd-app {
+  overflow: visible !important;
+}
+
+/* Keep the visual rounded treatment without using overflow:hidden */
+#macd-app .macd-shell {
+  position: relative;
+}
+
+/* Top parent tabs */
+#macd-app .macd-mode-tabs {
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  top: 8px !important;
+  z-index: 100 !important;
+  isolation: isolate;
+}
+
+/* Inner tabs — both Lead Generation and E-commerce use .macd-main-tabs */
+#macd-app .macd-main-tabs {
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  top: 82px !important;
+  z-index: 99 !important;
+  isolation: isolate;
+}
+
+/* Prevent section pills from visually covering the sticky tab rows */
+#macd-app .macd-section-nav {
+  position: relative;
+  z-index: 1;
+}
+
+/* Diagnosis controls sit below both sticky rows */
+#macd-app .macd-tools {
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  top: 154px !important;
+  z-index: 90 !important;
+}
+
+@media (max-width: 767px) {
+  #macd-app .macd-mode-tabs {
+    top: 6px !important;
+  }
+
+  #macd-app .macd-main-tabs {
+    top: 66px !important;
+  }
+
+  #macd-app .macd-tools {
+    top: 126px !important;
+  }
+}
+
+
+/* ===== Search/filter should NOT be sticky ===== */
+#macd-app .macd-tools {
+  position: relative !important;
+  top: auto !important;
+  z-index: 1 !important;
+}
+
+
+/* ===== E-commerce diagnosis search/filter ===== */
+#macd-app .macd-ecom-filter {
+  border: 1px solid var(--macd-border);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--macd-muted);
+  padding: 7px 11px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 800;
+  flex: 0 0 auto;
+}
+
+#macd-app .macd-ecom-filter:hover,
+#macd-app .macd-ecom-filter.is-active {
+  border-color: var(--macd-dark);
+  background: var(--macd-dark);
+  color: #fff;
+}
+
+#macd-app .macd-ecom-filter:focus-visible {
+  outline: 3px solid rgba(185,78,42,.32);
+  outline-offset: 2px;
+}
+
+/* Search/filter blocks should scroll normally, not stick. */
+#macd-app .macd-ecom-tools {
+  position: relative !important;
+  top: auto !important;
+  z-index: 1 !important;
+}
+
+
+/* =========================================================
+   APP INTERFACE — final visual layer
+   ========================================================= */
+
+#macd-app {
+  --app-bg: #f4f7fb;
+  --app-surface: #ffffff;
+  --app-surface-soft: #f7faff;
+  --app-border: #d6e1ef;
+  --app-text: #0f2040;
+  --app-muted: #6b7d99;
+  --app-blue: #0d86dc;
+  --app-blue-dark: #0875c5;
+  --app-blue-soft: #e8f4ff;
+  --app-sidebar: #0d1b2e;
+  --app-sidebar-2: #142944;
+  --app-sidebar-text: #e9f1fb;
+  --app-sidebar-muted: #7f9cc2;
+  --app-ecom-accent: #785445;
+  --app-shadow: 0 8px 24px rgba(31, 58, 94, .06);
+
+  display: grid !important;
+  grid-template-columns: 274px minmax(0, 1fr) !important;
+  align-items: stretch;
+  min-height: 100vh;
+  overflow: visible !important;
+  border-radius: 0 !important;
+  background: var(--app-bg) !important;
+  color: var(--app-text) !important;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif !important;
+}
+
+#macd-app .macd-app-sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  z-index: 120;
+  display: flex;
+  flex-direction: column;
+  padding: 26px 16px 20px;
+  background: var(--app-sidebar);
+  color: var(--app-sidebar-text);
+  overflow-y: auto;
+}
+
+#macd-app .macd-side-brand {
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  gap: 10px;
+  align-items: center;
+  padding: 0 10px 26px;
+}
+
+#macd-app .macd-side-logo {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  background: #12a3dc;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 900;
+  box-shadow: 0 8px 22px rgba(18,163,220,.25);
+}
+
+#macd-app .macd-side-brand small {
+  display: block;
+  color: #80a6d9;
+  font-size: 11px;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+#macd-app .macd-side-brand strong {
+  display: block;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+#macd-app .macd-side-label {
+  padding: 8px 10px 10px;
+  color: #7394c2;
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+#macd-app .macd-side-group {
+  margin-bottom: 10px;
+}
+
+#macd-app .macd-side-group-head {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 43px;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  text-align: left;
+  font-weight: 800;
+}
+
+#macd-app .macd-side-group-head::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 6px;
+  border-radius: 2px;
+  background: transparent;
+}
+
+#macd-app .macd-side-group[data-side-mode="lead"].is-active .macd-side-group-head {
+  background: #213b5e;
+}
+
+#macd-app .macd-side-group[data-side-mode="lead"].is-active .macd-side-group-head::before {
+  background: #2f73b7;
+}
+
+#macd-app .macd-side-group[data-side-mode="ecommerce"] .macd-side-group-head::before {
+  background: #5b4137;
+}
+
+#macd-app .macd-side-chevron {
+  margin-left: auto;
+  color: #c7d8ef;
+  font-size: 14px;
+}
+
+#macd-app .macd-side-subnav {
+  margin: 4px 0 10px 20px;
+  padding-left: 14px;
+  border-left: 1px solid #304866;
+}
+
+#macd-app .macd-side-link {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  min-height: 41px;
+  margin: 2px 0;
+  padding: 9px 12px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: #9db3cf;
+  cursor: pointer;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+#macd-app .macd-side-link:hover {
+  background: rgba(255,255,255,.05);
+  color: #fff;
+}
+
+#macd-app .macd-side-link.is-active {
+  background: var(--app-blue);
+  color: #fff;
+  box-shadow: 0 7px 16px rgba(13,134,220,.18);
+}
+
+#macd-app .macd-side-icon {
+  width: 15px;
+  height: 15px;
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+}
+
+#macd-app .macd-side-footer {
+  margin-top: auto;
+  padding: 24px 10px 0;
+  color: #7fa0c8;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+#macd-app .macd-side-footer strong {
+  display: block;
+  color: #fff;
+  font-size: 13px;
+  margin-bottom: 3px;
+}
+
+#macd-app .macd-shell {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 44px 70px !important;
+  min-width: 0;
+  background: var(--app-bg) !important;
+}
+
+#macd-app .macd-app-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 110;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(330px, 480px);
+  gap: 28px;
+  align-items: center;
+  min-height: 82px;
+  margin: 0 -44px 34px;
+  padding: 14px 44px;
+  border-bottom: 1px solid #dce5f0;
+  background: rgba(248, 251, 255, .96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+#macd-app .macd-top-breadcrumb {
+  color: var(--app-blue);
+  font-size: 11px;
+  line-height: 1.25;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+#macd-app .macd-top-title {
+  color: var(--app-text);
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+#macd-app .macd-global-search {
+  position: relative;
+}
+
+#macd-app .macd-global-search input {
+  width: 100%;
+  height: 46px;
+  padding: 0 48px 0 40px;
+  border: 1px solid #cbd9ea;
+  border-radius: 12px;
+  outline: none;
+  background: #fff;
+  color: var(--app-text);
+  box-shadow: 0 5px 16px rgba(31,58,94,.06);
+}
+
+#macd-app .macd-global-search input:focus {
+  border-color: #8fc5ef;
+  box-shadow: 0 0 0 3px rgba(13,134,220,.10);
+}
+
+#macd-app .macd-global-search .search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6f86a6;
+  pointer-events: none;
+}
+
+#macd-app .macd-global-search .search-shortcut {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  min-width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #d9e2ee;
+  border-radius: 7px;
+  color: #8fa2bd;
+  background: #fbfdff;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+/* Hero like app screenshot */
+#macd-app .macd-hero {
+  position: relative;
+  overflow: hidden;
+  max-width: none !important;
+  margin: 0 0 30px !important;
+  padding: 44px 48px !important;
+  text-align: left !important;
+  border: 1px solid #c8dced;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 95% 96%, transparent 0 68px, rgba(150,214,205,.28) 69px 101px, transparent 102px),
+    linear-gradient(115deg, #e8f5ff 0%, #f8fbff 55%, #fff3e2 100%) !important;
+  box-shadow: none !important;
+}
+
+#macd-app .macd-hero .macd-eyebrow {
+  margin: 0 0 18px !important;
+  border-color: #91c8f2 !important;
+  color: #0879c9 !important;
+  background: #f7fbff !important;
+}
+
+#macd-app .macd-hero h1 {
+  max-width: 900px;
+  color: #111f3d !important;
+  font-size: clamp(44px, 5vw, 58px) !important;
+  letter-spacing: -.045em !important;
+}
+
+#macd-app .macd-subtitle,
+#macd-app .macd-intro {
+  max-width: 900px !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  color: #395986 !important;
+}
+
+/* Existing horizontal tabs restyled to app screenshot */
+#macd-app .macd-mode-tabs,
+#macd-app .macd-main-tabs {
+  position: relative !important;
+  top: auto !important;
+  z-index: 4 !important;
+  max-width: none !important;
+  margin: 0 0 20px !important;
+  padding: 6px !important;
+  background: #fff !important;
+  border: 1px solid #d7e2ee !important;
+  border-radius: 12px !important;
+  box-shadow: var(--app-shadow) !important;
+  backdrop-filter: none !important;
+}
+
+#macd-app .macd-mode-tabs {
+  display: flex !important;
+  gap: 6px !important;
+}
+
+#macd-app .macd-mode-tab {
+  width: auto !important;
+  min-width: 180px;
+  min-height: 46px !important;
+  padding: 10px 18px !important;
+  border-radius: 9px !important;
+  color: #61728d !important;
+  background: transparent !important;
+  font-weight: 800 !important;
+}
+
+#macd-app .macd-mode-tab.is-active {
+  color: #fff !important;
+  background: var(--app-blue) !important;
+  box-shadow: 0 6px 14px rgba(13,134,220,.18);
+}
+
+#macd-app .macd-main-tabs {
+  display: inline-grid !important;
+  grid-template-columns: auto auto !important;
+  gap: 2px !important;
+  width: auto !important;
+  min-width: 275px;
+  background: #eaf1f8 !important;
+  box-shadow: none !important;
+}
+
+#macd-app .macd-main-tab {
+  min-height: 40px !important;
+  padding: 8px 18px !important;
+  border-radius: 8px !important;
+  color: #667995 !important;
+  background: transparent !important;
+  font-size: 13px !important;
+}
+
+#macd-app .macd-main-tab.is-active {
+  color: #111d32 !important;
+  background: #fff !important;
+  box-shadow: 0 2px 7px rgba(31,58,94,.08) !important;
+}
+
+/* Pills */
+#macd-app .macd-section-nav {
+  margin: 0 0 22px !important;
+  padding: 0 2px 10px !important;
+}
+
+#macd-app .macd-section-nav a {
+  border-color: #cfdeed !important;
+  color: #526b8e !important;
+  background: #fff !important;
+  font-size: 12px !important;
+  box-shadow: none !important;
+}
+
+/* Cards */
+#macd-app .macd-card,
+#macd-app .macd-diagnosis-card {
+  border: 1px solid #d5e0ec !important;
+  background: #fff !important;
+  box-shadow: 0 6px 18px rgba(31,58,94,.035) !important;
+}
+
+#macd-app .macd-card {
+  border-radius: 18px !important;
+}
+
+#macd-app .macd-section-kicker {
+  color: #0878c7 !important;
+  background: #e7f3ff !important;
+}
+
+#macd-app h1,
+#macd-app h2,
+#macd-app h3 {
+  color: #10203d !important;
+}
+
+#macd-app h4 {
+  color: #087bcf !important;
+}
+
+#macd-app .macd-callout {
+  border-left-color: var(--app-blue) !important;
+  background: #f6f9fd !important;
+}
+
+#macd-app .macd-question,
+#macd-app .macd-golden-rule,
+#macd-app .macd-flow,
+#macd-app .macd-master-formula {
+  background: #10203d !important;
+}
+
+#macd-app .macd-example {
+  background: #fbfdff !important;
+  border-color: #cbdced !important;
+}
+
+/* Diagnosis case list */
+#macd-app .macd-diagnosis-card {
+  border-radius: 14px !important;
+}
+
+#macd-app .macd-accordion-trigger {
+  min-height: 74px !important;
+  padding: 15px 18px !important;
+}
+
+#macd-app .macd-case-no {
+  color: #087fd3 !important;
+}
+
+#macd-app .macd-case-title {
+  color: #101e37 !important;
+  font-size: 17px !important;
+}
+
+#macd-app .macd-case-hint {
+  color: #6b7d99 !important;
+}
+
+#macd-app .macd-chevron::before,
+#macd-app .macd-chevron::after {
+  background: #087fd3 !important;
+}
+
+/* =========================================================
+   DIAGNOSIS STICKY ZONE
+   Search/filter sticks ONLY while the case-list parent exists.
+   When last case ends, Special Diagnosis pushes it away.
+   ========================================================= */
+#macd-app .macd-diagnosis-case-zone {
+  position: relative;
+  display: flow-root;
+  margin-bottom: 36px;
+}
+
+#macd-app .macd-diagnosis-case-zone .macd-tools {
+  position: sticky !important;
+  top: 94px !important;
+  z-index: 75 !important;
+  margin: 0 0 18px !important;
+  padding: 14px !important;
+  border: 1px solid #d0ddec !important;
+  border-radius: 14px !important;
+  background: rgba(247,250,255,.97) !important;
+  box-shadow: 0 9px 26px rgba(31,58,94,.08) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+#macd-app .macd-tools .macd-search-wrap {
+  position: relative;
+}
+
+#macd-app .macd-tools .macd-search-wrap label {
+  color: #71829c !important;
+}
+
+#macd-app .macd-tools .macd-search-box {
+  min-height: 45px !important;
+  border-color: #c8d7e8 !important;
+  background: #fff !important;
+}
+
+#macd-app .macd-filter-toggle {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 30px;
+  padding: 5px 10px;
+  border: 1px solid #cddbe9;
+  border-radius: 8px;
+  background: #f8fbff;
+  color: #6e7f97;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+#macd-app .macd-filter-toggle::after {
+  content: "⌄";
+  font-size: 14px;
+  transform: translateY(-1px);
+}
+
+#macd-app .macd-tools.filters-open .macd-filter-toggle::after {
+  content: "⌃";
+}
+
+#macd-app .macd-tools .macd-filter-wrap,
+#macd-app .macd-tools .macd-result-meta {
+  display: none;
+}
+
+#macd-app .macd-tools.filters-open .macd-filter-wrap,
+#macd-app .macd-tools.filters-open .macd-result-meta {
+  display: flex;
+}
+
+#macd-app .macd-tools.filters-open .macd-filter-wrap {
+  flex-direction: column;
+}
+
+#macd-app .macd-filter-list {
+  gap: 7px !important;
+}
+
+#macd-app .macd-filter,
+#macd-app .macd-ecom-filter {
+  border-color: #cfdeed !important;
+  color: #667a97 !important;
+  background: #fff !important;
+}
+
+#macd-app .macd-filter.is-active,
+#macd-app .macd-ecom-filter.is-active,
+#macd-app .macd-filter:hover,
+#macd-app .macd-ecom-filter:hover {
+  border-color: var(--app-blue) !important;
+  background: var(--app-blue) !important;
+  color: #fff !important;
+}
+
+/* Special diagnosis heading */
+#macd-app .macd-special-section {
+  margin-top: 50px !important;
+}
+
+#macd-app .macd-special-heading .macd-section-kicker-text {
+  color: #087fd3 !important;
+}
+
+/* hide app hero while Diagnosis is active for screenshot-like workflow */
+#macd-app.is-diagnosis-view .macd-hero {
+  display: none !important;
+}
+
+#macd-app.is-diagnosis-view .macd-mode-tabs {
+  margin-top: 10px !important;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  #macd-app {
+    grid-template-columns: 1fr !important;
+  }
+
+  #macd-app .macd-app-sidebar {
+    display: none !important;
+  }
+
+  #macd-app .macd-shell {
+    padding: 0 18px 50px !important;
+  }
+
+  #macd-app .macd-app-topbar {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin: 0 -18px 24px;
+    padding: 12px 18px;
+  }
+
+  #macd-app .macd-global-search {
+    display: none;
+  }
+
+  #macd-app .macd-hero {
+    padding: 28px 24px !important;
+  }
+
+  #macd-app .macd-hero h1 {
+    font-size: 38px !important;
+  }
+
+  #macd-app .macd-diagnosis-case-zone .macd-tools {
+    top: 74px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  #macd-app .macd-mode-tabs {
+    overflow-x: auto;
+  }
+
+  #macd-app .macd-mode-tab {
+    min-width: 150px;
+  }
+
+  #macd-app .macd-main-tabs {
+    width: 100% !important;
+  }
+
+  #macd-app .macd-diagnosis-case-zone .macd-tools {
+    top: 67px !important;
+  }
+
+  #macd-app .macd-filter-toggle {
+    position: static;
+    margin: 0 0 10px auto;
+  }
+}
+
+
+/* =========================================================
+   REFINED APP UI — closer to supplied reference
+   ========================================================= */
+
+/* Overall proportions */
+#macd-app {
+  grid-template-columns: 273px minmax(0, 1fr) !important;
+  background: #f4f7fb !important;
+}
+
+#macd-app .macd-app-sidebar {
+  width: 273px;
+  padding: 26px 16px 18px !important;
+  background: #0d1b2e !important;
+}
+
+#macd-app .macd-shell {
+  padding: 0 44px 64px !important;
+  background: #f4f7fb !important;
+}
+
+/* Top bar */
+#macd-app .macd-app-topbar {
+  min-height: 82px !important;
+  margin: 0 -44px 42px !important;
+  padding: 14px 52px !important;
+  background: rgba(247,250,254,.97) !important;
+  border-bottom: 1px solid #dbe4ef !important;
+}
+
+#macd-app .macd-top-breadcrumb {
+  color: #087fd3 !important;
+  font-size: 11px !important;
+  letter-spacing: .075em !important;
+}
+
+#macd-app .macd-top-title {
+  color: #15223a !important;
+  font-size: 16px !important;
+  font-weight: 800 !important;
+}
+
+#macd-app .macd-global-search input {
+  height: 46px !important;
+  border-color: #cbd8e8 !important;
+  border-radius: 12px !important;
+  background: #fff !important;
+}
+
+/* Sidebar exact-ish visual */
+#macd-app .macd-side-brand {
+  padding: 0 10px 31px !important;
+}
+
+#macd-app .macd-side-logo {
+  width: 37px !important;
+  height: 37px !important;
+  border-radius: 10px !important;
+  background: #15a4dc !important;
+}
+
+#macd-app .macd-side-label {
+  padding: 8px 10px 10px !important;
+  color: #7998c1 !important;
+}
+
+#macd-app .macd-side-group-head {
+  min-height: 43px !important;
+  padding: 9px 12px 9px 18px !important;
+  border-radius: 10px !important;
+}
+
+#macd-app .macd-side-group[data-side-mode="lead"].is-active .macd-side-group-head {
+  background: #203b5e !important;
+}
+
+#macd-app .macd-side-subnav {
+  margin: 4px 0 13px 19px !important;
+  padding-left: 15px !important;
+  border-left-color: #2e4665 !important;
+}
+
+#macd-app .macd-side-link {
+  min-height: 41px !important;
+  padding: 9px 11px !important;
+  border-radius: 9px !important;
+  font-size: 14px !important;
+}
+
+#macd-app .macd-side-link.is-active {
+  background: #0f8adf !important;
+}
+
+/* Hero */
+#macd-app .macd-hero {
+  min-height: 306px !important;
+  margin: 0 0 30px !important;
+  padding: 44px 48px !important;
+  border-radius: 24px !important;
+  border-color: #c5dcef !important;
+  background:
+    radial-gradient(circle at 95.5% 99%, transparent 0 68px, rgba(154,214,205,.30) 69px 101px, transparent 102px),
+    linear-gradient(113deg, #e8f5ff 0%, #f8fbff 56%, #fff2e2 100%) !important;
+}
+
+#macd-app .macd-hero h1 {
+  margin-bottom: 10px !important;
+  font-size: clamp(46px, 4.6vw, 58px) !important;
+  line-height: 1.03 !important;
+}
+
+#macd-app .macd-subtitle {
+  margin-bottom: 18px !important;
+  font-size: 18px !important;
+  color: #41618c !important;
+}
+
+#macd-app .macd-intro {
+  max-width: 875px !important;
+  font-size: 17px !important;
+  line-height: 1.75 !important;
+  color: #2f507d !important;
+}
+
+/* Parent workspace tabs */
+#macd-app .macd-mode-tabs {
+  min-height: 58px !important;
+  margin-bottom: 20px !important;
+  padding: 6px !important;
+  border-radius: 12px !important;
+}
+
+#macd-app .macd-mode-tab {
+  min-width: 182px !important;
+  min-height: 46px !important;
+}
+
+#macd-app .macd-mode-tab.is-active {
+  background: #0e88dc !important;
+}
+
+/* Testing/Diagnosis switch */
+#macd-app .macd-main-tabs {
+  min-width: 276px !important;
+  margin-bottom: 26px !important;
+  padding: 5px !important;
+  border-radius: 11px !important;
+  background: #e8f0f8 !important;
+}
+
+#macd-app .macd-main-tab {
+  min-height: 40px !important;
+  padding: 8px 18px !important;
+}
+
+#macd-app .macd-main-tab.is-active {
+  color: #10203d !important;
+  background: #fff !important;
+}
+
+/* Horizontal section pills */
+#macd-app .macd-section-nav {
+  margin-bottom: 24px !important;
+  padding-bottom: 10px !important;
+}
+
+#macd-app .macd-section-nav a {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 13px !important;
+  border-radius: 9px !important;
+  border-color: #cddbea !important;
+  color: #526b8e !important;
+  background: #fff !important;
+}
+
+/* Content cards */
+#macd-app .macd-card {
+  border-radius: 18px !important;
+  border-color: #d4dfeb !important;
+}
+
+#macd-app .macd-content-section {
+  padding: 40px 42px !important;
+}
+
+#macd-app .macd-diagnosis-card {
+  border-radius: 14px !important;
+  border-color: #d5e0ec !important;
+}
+
+#macd-app .macd-accordion-trigger {
+  min-height: 75px !important;
+  padding: 15px 18px !important;
+  background: #fff !important;
+}
+
+#macd-app .macd-accordion-trigger:hover {
+  background: #f9fbfe !important;
+}
+
+/* ---------------------------------------------------------
+   FIX: Filter button no longer overlaps search
+   Layout exactly like screenshot:
+   SEARCH DIAGNOSIS ............ FILTER
+   [ full-width search input              ]
+   filters/results (when expanded)
+   --------------------------------------------------------- */
+#macd-app .macd-diagnosis-case-zone .macd-tools {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  grid-template-rows: auto auto auto auto !important;
+  column-gap: 12px !important;
+  row-gap: 9px !important;
+  align-items: end !important;
+  padding: 14px !important;
+  overflow: visible !important;
+}
+
+#macd-app .macd-tools .macd-filter-toggle {
+  position: static !important;
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  align-self: center !important;
+  justify-self: end !important;
+  margin: 0 !important;
+  min-height: 30px !important;
+  padding: 5px 10px !important;
+  z-index: auto !important;
+}
+
+#macd-app .macd-tools .macd-search-wrap {
+  display: contents !important;
+}
+
+#macd-app .macd-tools .macd-search-wrap > label {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  align-self: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#macd-app .macd-tools .macd-search-box {
+  grid-column: 1 / -1 !important;
+  grid-row: 2 !important;
+  width: 100% !important;
+  min-height: 46px !important;
+  margin: 0 !important;
+}
+
+#macd-app .macd-tools .macd-filter-wrap {
+  grid-column: 1 / -1 !important;
+  grid-row: 3 !important;
+  margin: 0 !important;
+}
+
+#macd-app .macd-tools .macd-result-meta {
+  grid-column: 1 / -1 !important;
+  grid-row: 4 !important;
+  margin-top: 2px !important;
+}
+
+#macd-app .macd-tools:not(.filters-open) .macd-filter-wrap,
+#macd-app .macd-tools:not(.filters-open) .macd-result-meta {
+  display: none !important;
+}
+
+#macd-app .macd-tools.filters-open .macd-filter-wrap {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+#macd-app .macd-tools.filters-open .macd-result-meta {
+  display: flex !important;
+}
+
+/* Bounded sticky behavior */
+#macd-app .macd-diagnosis-case-zone {
+  position: relative !important;
+  display: flow-root !important;
+  margin-bottom: 42px !important;
+}
+
+#macd-app .macd-diagnosis-case-zone .macd-tools {
+  position: sticky !important;
+  top: 94px !important;
+  z-index: 80 !important;
+}
+
+/* Special diagnosis separation */
+#macd-app .macd-special-section {
+  position: relative;
+  z-index: 2;
+  margin-top: 54px !important;
+  padding-top: 4px;
+}
+
+/* Diagnosis view should resemble screenshot: no hero, top header remains */
+#macd-app.is-diagnosis-view .macd-hero {
+  display: none !important;
+}
+
+#macd-app.is-diagnosis-view .macd-mode-tabs,
+#macd-app.is-diagnosis-view .macd-main-tabs,
+#macd-app.is-diagnosis-view .macd-section-nav {
+  display: none !important;
+}
+
+/* Keep sidebar active state as the main navigation in Diagnosis */
+#macd-app.is-diagnosis-view .macd-diagnosis-head {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* On Diagnosis, quick diagnosis stays above sticky case zone */
+#macd-app.is-diagnosis-view .macd-quick-diagnosis {
+  margin-top: 0 !important;
+}
+
+/* Mobile */
+@media (max-width: 980px) {
+  #macd-app .macd-app-topbar {
+    margin-bottom: 24px !important;
+  }
+
+  #macd-app .macd-content-section {
+    padding: 28px 22px !important;
+  }
+
+  #macd-app .macd-diagnosis-case-zone .macd-tools {
+    top: 74px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  #macd-app .macd-diagnosis-case-zone .macd-tools {
+    grid-template-columns: 1fr auto !important;
+    top: 66px !important;
+  }
+
+  #macd-app .macd-tools .macd-filter-toggle {
+    position: static !important;
+  }
+}
+
+
+/* =========================================================
+   LIVE REFERENCE MATCH — FINAL OVERRIDES
+   ========================================================= */
+#macd-app {
+  width: 100vw !important;
+  max-width: none !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+  grid-template-columns: 273px minmax(0, 1fr) !important;
+  min-height: 100vh !important;
+  background: #f4f7fb !important;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif !important;
+  font-size: 15px !important;
+  line-height: 1.55 !important;
+}
+
+#macd-app .macd-app-sidebar {
+  width: 273px !important;
+  min-width: 273px !important;
+  padding: 27px 16px 20px !important;
+  background: #0e1b2e !important;
+  border-right: 1px solid rgba(255,255,255,.025) !important;
+}
+
+#macd-app .macd-side-brand {
+  padding: 0 10px 30px !important;
+  grid-template-columns: 37px minmax(0,1fr) !important;
+  gap: 10px !important;
+}
+#macd-app .macd-side-logo {
+  width: 37px !important;
+  height: 37px !important;
+  border-radius: 10px !important;
+  font-size: 17px !important;
+  background: #18a4dc !important;
+}
+#macd-app .macd-side-brand small { font-size: 11px !important; color:#7fa2d1 !important; }
+#macd-app .macd-side-brand strong { font-size: 16px !important; }
+#macd-app .macd-side-label { font-size: 10px !important; color:#7494bf !important; padding: 8px 10px 10px !important; }
+
+#macd-app .macd-side-group { margin-bottom: 8px !important; }
+#macd-app .macd-side-group-head {
+  min-height: 43px !important;
+  padding: 9px 13px 9px 18px !important;
+  border-radius: 10px !important;
+  font-size: 15px !important;
+}
+#macd-app .macd-side-group.is-active .macd-side-group-head { background:#223c5e !important; }
+#macd-app .macd-side-group.is-active .macd-side-group-head::before { background:#2c6eaf !important; }
+#macd-app .macd-side-group[data-side-mode="ecommerce"] .macd-side-group-head::before { background:#62483e !important; }
+#macd-app .macd-side-group:not(.is-active) .macd-side-subnav { display:none !important; }
+#macd-app .macd-side-group.is-active .macd-side-subnav { display:block !important; }
+#macd-app .macd-side-subnav { margin:4px 0 12px 20px !important; padding-left:14px !important; }
+#macd-app .macd-side-link {
+  min-height:41px !important;
+  padding:9px 11px !important;
+  border-radius:9px !important;
+  font-size:14px !important;
+}
+#macd-app .macd-side-link.is-active { background:#0d89dd !important; color:#fff !important; }
+#macd-app .macd-side-footer { font-size:12px !important; color:#7797c0 !important; }
+
+#macd-app .macd-shell {
+  width:100% !important;
+  padding:0 44px 68px !important;
+  background:#f4f7fb !important;
+}
+#macd-app .macd-app-topbar {
+  min-height:82px !important;
+  margin:0 -44px 42px !important;
+  padding:14px 52px !important;
+  grid-template-columns:minmax(0,1fr) minmax(360px,480px) !important;
+  background:rgba(248,251,255,.98) !important;
+  border-bottom:1px solid #dbe4ef !important;
+  box-shadow:none !important;
+}
+#macd-app .macd-top-breadcrumb { font-size:11px !important; margin-bottom:5px !important; }
+#macd-app .macd-top-title { font-size:16px !important; }
+#macd-app .macd-global-search input {
+  height:46px !important;
+  font-size:14px !important;
+  border-radius:12px !important;
+  border:1px solid #cad8e8 !important;
+  box-shadow:0 4px 14px rgba(28,57,91,.05) !important;
+}
+
+#macd-app .macd-hero {
+  min-height:306px !important;
+  margin:0 0 30px !important;
+  padding:44px 48px !important;
+  border-radius:24px !important;
+  border:1px solid #c6dcef !important;
+  background:
+    radial-gradient(circle at 95.5% 99%, transparent 0 68px, rgba(154,214,205,.30) 69px 101px, transparent 102px),
+    linear-gradient(113deg,#e8f5ff 0%,#f8fbff 56%,#fff2e2 100%) !important;
+}
+#macd-app .macd-hero .macd-eyebrow { min-height:31px !important; padding:5px 11px !important; margin-bottom:18px !important; font-size:11px !important; }
+#macd-app .macd-hero h1 { font-size:55px !important; line-height:1.04 !important; margin-bottom:10px !important; }
+#macd-app .macd-subtitle { font-size:18px !important; line-height:1.45 !important; margin-bottom:18px !important; }
+#macd-app .macd-intro { font-size:17px !important; line-height:1.75 !important; }
+
+#macd-app .macd-mode-tabs {
+  min-height:58px !important;
+  margin:0 0 20px !important;
+  padding:6px !important;
+  border:1px solid #d7e2ee !important;
+  border-radius:12px !important;
+  background:#fff !important;
+  box-shadow:0 5px 16px rgba(31,58,94,.04) !important;
+}
+#macd-app .macd-mode-tab { min-width:184px !important; min-height:46px !important; padding:10px 18px !important; font-size:15px !important; }
+#macd-app .macd-mode-tab.is-active { background:#0e88dc !important; color:#fff !important; }
+
+#macd-app .macd-main-tabs {
+  width:276px !important;
+  min-width:276px !important;
+  min-height:50px !important;
+  margin:0 0 26px !important;
+  padding:5px !important;
+  border:1px solid #d7e2ee !important;
+  border-radius:11px !important;
+  background:#e8f0f8 !important;
+}
+#macd-app .macd-main-tab { min-height:40px !important; padding:8px 17px !important; font-size:13px !important; }
+#macd-app .macd-main-tab.is-active { background:#fff !important; color:#111f37 !important; }
+
+#macd-app .macd-section-nav { margin:0 0 24px !important; padding:0 2px 10px !important; gap:8px !important; }
+#macd-app .macd-section-nav a {
+  min-height:38px !important;
+  padding:9px 13px !important;
+  border:1px solid #ccdaea !important;
+  border-radius:9px !important;
+  background:#fff !important;
+  color:#536c8f !important;
+  font-size:12px !important;
+  font-weight:700 !important;
+}
+
+#macd-app .macd-card { border:1px solid #d5e0ec !important; border-radius:18px !important; box-shadow:0 5px 16px rgba(31,58,94,.035) !important; }
+#macd-app .macd-content-section { padding:40px 42px !important; }
+#macd-app h2 { font-size:31px !important; }
+#macd-app h3 { font-size:18px !important; }
+#macd-app p, #macd-app li, #macd-app td { font-size:15px !important; }
+
+/* Diagnosis view mirrors live app: sidebar + topbar only */
+#macd-app.is-diagnosis-view .macd-hero,
+#macd-app.is-diagnosis-view .macd-mode-tabs,
+#macd-app.is-diagnosis-view .macd-main-tabs,
+#macd-app.is-diagnosis-view .macd-section-nav { display:none !important; }
+#macd-app.is-diagnosis-view .macd-diagnosis-head { margin:0 0 16px !important; padding:0 !important; }
+#macd-app.is-diagnosis-view .macd-diagnosis-head h2 { display:none !important; }
+#macd-app.is-diagnosis-view .macd-diagnosis-head p:not(.macd-section-kicker-text) { display:none !important; }
+#macd-app.is-diagnosis-view .macd-diagnosis-rule { display:none !important; }
+#macd-app.is-diagnosis-view .macd-quick-diagnosis { margin-bottom:20px !important; }
+
+#macd-app .macd-diagnosis-list { gap:10px !important; }
+#macd-app .macd-diagnosis-card { border:1px solid #d5e0ec !important; border-radius:14px !important; box-shadow:none !important; }
+#macd-app .macd-accordion-trigger {
+  grid-template-columns:78px minmax(0,1fr) minmax(190px,auto) 24px !important;
+  min-height:76px !important;
+  padding:14px 18px !important;
+  background:#fff !important;
+}
+#macd-app .macd-case-no { font-size:11px !important; color:#087fd3 !important; }
+#macd-app .macd-case-title { font-size:17px !important; color:#0d1d36 !important; }
+#macd-app .macd-case-hint { font-size:13px !important; color:#71819b !important; }
+
+/* Search/filter — exact non-overlapping two-row layout */
+#macd-app .macd-diagnosis-case-zone { position:relative !important; display:flow-root !important; margin-bottom:38px !important; }
+#macd-app .macd-diagnosis-case-zone .macd-tools {
+  position:sticky !important;
+  top:94px !important;
+  z-index:80 !important;
+  display:grid !important;
+  grid-template-columns:minmax(0,1fr) auto !important;
+  grid-template-rows:auto auto auto auto !important;
+  column-gap:12px !important;
+  row-gap:8px !important;
+  align-items:center !important;
+  margin:0 0 18px !important;
+  padding:14px !important;
+  border:1px solid #cfdeec !important;
+  border-radius:14px !important;
+  background:rgba(247,250,255,.985) !important;
+  box-shadow:0 7px 20px rgba(31,58,94,.055) !important;
+  overflow:visible !important;
+}
+#macd-app .macd-tools .macd-search-wrap { display:contents !important; }
+#macd-app .macd-tools .macd-search-wrap > label {
+  grid-column:1 !important;
+  grid-row:1 !important;
+  margin:0 !important;
+  color:#72839d !important;
+  font-size:10px !important;
+  letter-spacing:.055em !important;
+}
+#macd-app .macd-filter-toggle {
+  position:static !important;
+  grid-column:2 !important;
+  grid-row:1 !important;
+  justify-self:end !important;
+  align-self:center !important;
+  min-height:30px !important;
+  margin:0 !important;
+  padding:5px 10px !important;
+  border:1px solid #cad8e7 !important;
+  border-radius:8px !important;
+  background:#f9fbfe !important;
+  color:#6f8099 !important;
+  font-size:11px !important;
+  z-index:auto !important;
+}
+#macd-app .macd-tools .macd-search-box {
+  grid-column:1 / -1 !important;
+  grid-row:2 !important;
+  width:100% !important;
+  min-height:46px !important;
+  margin:0 !important;
+  border:1px solid #c8d7e8 !important;
+  border-radius:10px !important;
+  background:#fff !important;
+}
+#macd-app .macd-tools .macd-filter-wrap { grid-column:1/-1 !important; grid-row:3 !important; margin:0 !important; }
+#macd-app .macd-tools .macd-result-meta { grid-column:1/-1 !important; grid-row:4 !important; margin-top:2px !important; }
+#macd-app .macd-tools:not(.filters-open) .macd-filter-wrap,
+#macd-app .macd-tools:not(.filters-open) .macd-result-meta { display:none !important; }
+#macd-app .macd-tools.filters-open .macd-filter-wrap { display:flex !important; flex-direction:column !important; }
+#macd-app .macd-tools.filters-open .macd-result-meta { display:flex !important; }
+#macd-app .macd-filter, #macd-app .macd-ecom-filter { padding:7px 11px !important; font-size:12px !important; }
+#macd-app .macd-filter.is-active, #macd-app .macd-ecom-filter.is-active { background:#0d87dc !important; border-color:#0d87dc !important; color:#fff !important; }
+
+#macd-app .macd-special-section { margin-top:48px !important; }
+#macd-app .macd-special-heading h2 { font-size:34px !important; }
+
+@media (max-width:980px){
+  #macd-app { width:100% !important; margin:0 !important; grid-template-columns:1fr !important; }
+  #macd-app .macd-app-sidebar { display:none !important; }
+  #macd-app .macd-shell { padding:0 18px 50px !important; }
+  #macd-app .macd-app-topbar { margin:0 -18px 24px !important; padding:12px 18px !important; }
+  #macd-app .macd-hero h1 { font-size:40px !important; }
+  #macd-app .macd-diagnosis-case-zone .macd-tools { top:74px !important; }
+}
+@media (max-width:767px){
+  #macd-app .macd-accordion-trigger { grid-template-columns:64px minmax(0,1fr) 22px !important; }
+  #macd-app .macd-case-hint { grid-column:2 !important; grid-row:2 !important; text-align:left !important; }
+  #macd-app .macd-chevron { grid-column:3 !important; grid-row:1 / span 2 !important; }
+  #macd-app .macd-diagnosis-case-zone .macd-tools { top:66px !important; }
+}
+
+
+/* =========================================================
+   LIVE UI DETAIL MATCH — ICONS / FILTER / CLEAR / SIDEBAR
+   ========================================================= */
+
+/* Sidebar parent rows */
+#macd-app .macd-side-group-head {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 9px !important;
+  min-height: 43px !important;
+  padding: 9px 12px 9px 18px !important;
+  color: #ffffff !important;
+  background: transparent !important;
+}
+
+#macd-app .macd-side-group.is-active .macd-side-group-head {
+  background: #223c5e !important;
+}
+
+#macd-app .macd-side-group-head::before {
+  width: 6px !important;
+  left: 0 !important;
+  top: 7px !important;
+  bottom: 7px !important;
+  border-radius: 2px !important;
+}
+
+#macd-app .macd-side-group[data-side-mode="lead"].is-active .macd-side-group-head::before {
+  background: #2f6fae !important;
+}
+
+#macd-app .macd-side-group[data-side-mode="ecommerce"] .macd-side-group-head::before {
+  background: #684b3f !important;
+}
+
+/* Proper parent chevron */
+#macd-app .macd-side-chevron {
+  margin-left: auto !important;
+  width: 16px !important;
+  height: 16px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #d7e4f4 !important;
+  transform: rotate(0deg);
+  transition: transform .18s ease;
+}
+
+#macd-app .macd-side-group:not(.is-active) .macd-side-chevron {
+  transform: rotate(-90deg);
+}
+
+#macd-app .macd-side-chevron svg {
+  width: 14px !important;
+  height: 14px !important;
+  display: block !important;
+  stroke: currentColor !important;
+  fill: none !important;
+  stroke-width: 2 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+}
+
+/* Sidebar child links */
+#macd-app .macd-side-link {
+  display: flex !important;
+  align-items: center !important;
+  gap: 9px !important;
+  min-height: 41px !important;
+  padding: 9px 11px !important;
+  color: #8fa7c6 !important;
+  background: transparent !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+}
+
+#macd-app .macd-side-link:hover {
+  background: rgba(255,255,255,.045) !important;
+  color: #dce8f7 !important;
+}
+
+#macd-app .macd-side-link.is-active {
+  background: #0d89dd !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+}
+
+#macd-app .macd-side-icon {
+  width: 16px !important;
+  height: 16px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex: 0 0 16px !important;
+  color: currentColor !important;
+}
+
+#macd-app .macd-side-icon svg {
+  width: 16px !important;
+  height: 16px !important;
+  display: block !important;
+  stroke: currentColor !important;
+  fill: none !important;
+  stroke-width: 1.8 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+}
+
+/* FILTER button exactly as live reference */
+#macd-app .macd-filter-toggle {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  min-width: 74px !important;
+  min-height: 30px !important;
+  padding: 5px 9px !important;
+  border: 1px solid #cbd9e8 !important;
+  border-radius: 8px !important;
+  background: #f8fbff !important;
+  color: #6f8099 !important;
+  font-size: 11px !important;
+  line-height: 1 !important;
+  font-weight: 800 !important;
+  letter-spacing: .02em !important;
+  text-transform: uppercase !important;
+  box-shadow: none !important;
+}
+
+#macd-app .macd-filter-toggle::after {
+  display: none !important;
+}
+
+#macd-app .macd-filter-toggle .macd-filter-chevron {
+  width: 14px !important;
+  height: 14px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #71839d !important;
+  transition: transform .18s ease;
+}
+
+#macd-app .macd-filter-toggle .macd-filter-chevron svg {
+  width: 14px !important;
+  height: 14px !important;
+  display: block !important;
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-width: 2 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+}
+
+#macd-app .macd-tools.filters-open .macd-filter-toggle .macd-filter-chevron {
+  transform: rotate(180deg);
+}
+
+/* Clear button match */
+#macd-app .macd-search-box button,
+#macd-app #macd-clear-search,
+#macd-app #macd-ecom-clear-search {
+  min-width: 56px !important;
+  min-height: 36px !important;
+  padding: 0 12px !important;
+  border: 1px solid #d4e0ec !important;
+  border-radius: 8px !important;
+  background: #f4f8fc !important;
+  color: #627792 !important;
+  font-size: 12px !important;
+  line-height: 1 !important;
+  font-weight: 700 !important;
+  box-shadow: none !important;
+}
+
+#macd-app .macd-search-box button:hover,
+#macd-app #macd-clear-search:hover,
+#macd-app #macd-ecom-clear-search:hover {
+  background: #edf4fa !important;
+  border-color: #c7d7e7 !important;
+  color: #4f6684 !important;
+}
+
+/* Search input/icon match */
+#macd-app .macd-search-box {
+  min-height: 46px !important;
+  padding: 4px 6px 4px 12px !important;
+  border: 1px solid #cbd9e8 !important;
+  border-radius: 10px !important;
+  background: #ffffff !important;
+}
+
+#macd-app .macd-search-box svg {
+  width: 17px !important;
+  height: 17px !important;
+  stroke: #7286a2 !important;
+  stroke-width: 1.8 !important;
+}
+
+#macd-app .macd-search-box input {
+  color: #233652 !important;
+  font-size: 14px !important;
+}
+
+#macd-app .macd-search-box input::placeholder {
+  color: #8b99ad !important;
+  opacity: 1 !important;
+}
+
+/* Filter panel button/chips */
+#macd-app .macd-filter,
+#macd-app .macd-ecom-filter {
+  min-height: 35px !important;
+  padding: 7px 12px !important;
+  border: 1px solid #ccdbea !important;
+  border-radius: 999px !important;
+  background: #ffffff !important;
+  color: #667b98 !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+}
+
+#macd-app .macd-filter.is-active,
+#macd-app .macd-ecom-filter.is-active {
+  background: #0d87dc !important;
+  border-color: #0d87dc !important;
+  color: #ffffff !important;
+}
+
+/* Compact top label/filter row */
+#macd-app .macd-tools .macd-search-wrap > label {
+  color: #74849c !important;
+  font-size: 10px !important;
+  font-weight: 900 !important;
+  letter-spacing: .045em !important;
+}
+
+/* Sidebar typography */
+#macd-app .macd-side-group-head > span:first-child {
+  font-size: 15px !important;
+  line-height: 1.2 !important;
+  font-weight: 800 !important;
+}
+
+#macd-app .macd-side-link > span:last-child {
+  line-height: 1.2 !important;
+}
+
+
+/* =========================================================
+   FINAL STABILITY FIX
+   - remove sidebar accent strips
+   - remove brown/orange button borders
+   - restore Diagnosis upper content
+   - normalize E-commerce sub-tabs
+   - normalize typography
+   ========================================================= */
+
+/* 1) NO BLUE/BROWN VERTICAL ACCENT STRIPS IN SIDEBAR */
+#macd-app .macd-side-group-head::before,
+#macd-app .macd-side-group.is-active .macd-side-group-head::before,
+#macd-app .macd-side-group[data-side-mode="lead"] .macd-side-group-head::before,
+#macd-app .macd-side-group[data-side-mode="ecommerce"] .macd-side-group-head::before {
+  display: none !important;
+  content: none !important;
+  background: transparent !important;
+}
+
+#macd-app .macd-side-group-head {
+  padding-left: 12px !important;
+}
+
+/* Keep active/inactive sidebar states clean */
+#macd-app .macd-side-group.is-active .macd-side-group-head {
+  background: #223c5e !important;
+  color: #ffffff !important;
+}
+
+#macd-app .macd-side-group:not(.is-active) .macd-side-group-head {
+  background: transparent !important;
+  color: #ffffff !important;
+}
+
+#macd-app .macd-side-link {
+  color: #8fa7c6 !important;
+  background: transparent !important;
+}
+
+#macd-app .macd-side-link.is-active {
+  color: #ffffff !important;
+  background: #0d89dd !important;
+}
+
+/* 2) REMOVE BROWN/ORANGE BORDER FROM PAGE WORKSPACE TABS */
+#macd-app .macd-mode-tab,
+#macd-app .macd-mode-tab:hover,
+#macd-app .macd-mode-tab:focus,
+#macd-app .macd-mode-tab.is-active {
+  border: 0 !important;
+  outline-color: transparent !important;
+}
+
+#macd-app .macd-mode-tab.is-active {
+  color: #ffffff !important;
+  background: #0d89dd !important;
+  box-shadow: none !important;
+}
+
+#macd-app .macd-mode-tab:not(.is-active) {
+  color: #60728d !important;
+  background: transparent !important;
+}
+
+/* 3) DIAGNOSIS: RESTORE UPPER CONTENT — hero + workspace tabs + Testing/Diagnosis tabs */
+#macd-app.is-diagnosis-view .macd-hero {
+  display: block !important;
+}
+
+#macd-app.is-diagnosis-view .macd-mode-tabs {
+  display: flex !important;
+  margin-top: 0 !important;
+}
+
+#macd-app.is-diagnosis-view #macd-mode-lead .macd-main-tabs {
+  display: inline-grid !important;
+}
+
+#macd-app.is-diagnosis-view #macd-mode-ecommerce .macd-main-tabs {
+  display: inline-grid !important;
+}
+
+/* Diagnosis panels do not need testing section pills; keep any diagnosis-specific content natural */
+#macd-app.is-diagnosis-view .macd-tab-panel .macd-section-nav,
+#macd-app.is-diagnosis-view .macd-ecom-tab-panel .macd-section-nav {
+  display: flex !important;
+}
+
+/* 4) E-COMMERCE INNER TABS — SAME AS LEAD GENERATION */
+#macd-app .macd-ecom-inner-tabs {
+  display: inline-grid !important;
+  grid-template-columns: auto auto !important;
+  gap: 2px !important;
+  width: auto !important;
+  min-width: 276px !important;
+  min-height: 50px !important;
+  margin: 0 0 26px !important;
+  padding: 5px !important;
+  border: 1px solid #d7e2ee !important;
+  border-radius: 11px !important;
+  background: #e8f0f8 !important;
+  box-shadow: none !important;
+}
+
+#macd-app .macd-ecom-main-tab {
+  min-height: 40px !important;
+  padding: 8px 18px !important;
+  border: 0 !important;
+  border-radius: 8px !important;
+  background: transparent !important;
+  color: #667995 !important;
+  font-size: 13px !important;
+  line-height: 1.2 !important;
+  font-weight: 700 !important;
+  box-shadow: none !important;
+}
+
+#macd-app .macd-ecom-main-tab:hover {
+  color: #10203d !important;
+  background: rgba(255,255,255,.60) !important;
+}
+
+#macd-app .macd-ecom-main-tab.is-active {
+  color: #10203d !important;
+  background: #ffffff !important;
+  box-shadow: 0 2px 7px rgba(31,58,94,.08) !important;
+}
+
+/* Lead Generation sub-tabs: exact same sizing */
+#macd-app .macd-main-tabs {
+  min-width: 276px !important;
+  min-height: 50px !important;
+}
+
+#macd-app .macd-main-tab {
+  font-size: 13px !important;
+  line-height: 1.2 !important;
+  font-weight: 700 !important;
+}
+
+/* 5) CONSISTENT FONT SCALE THROUGHOUT THE TOOL */
+#macd-app {
+  font-size: 15px !important;
+  line-height: 1.62 !important;
+}
+
+#macd-app p,
+#macd-app li,
+#macd-app dd,
+#macd-app td {
+  font-size: 15px !important;
+  line-height: 1.62 !important;
+}
+
+#macd-app h1 {
+  font-size: clamp(42px, 4vw, 54px) !important;
+  line-height: 1.06 !important;
+}
+
+#macd-app h2 {
+  font-size: 28px !important;
+  line-height: 1.2 !important;
+}
+
+#macd-app h3 {
+  font-size: 19px !important;
+  line-height: 1.3 !important;
+}
+
+#macd-app h4 {
+  font-size: 12px !important;
+  line-height: 1.25 !important;
+}
+
+#macd-app .macd-subtitle {
+  font-size: 17px !important;
+}
+
+#macd-app .macd-intro {
+  font-size: 16px !important;
+}
+
+#macd-app .macd-case-title {
+  font-size: 17px !important;
+  line-height: 1.28 !important;
+}
+
+#macd-app .macd-case-hint {
+  font-size: 13px !important;
+}
+
+#macd-app .macd-case-no,
+#macd-app .macd-section-kicker,
+#macd-app .macd-section-kicker-text,
+#macd-app .macd-filter-label,
+#macd-app .macd-search-wrap label {
+  font-size: 11px !important;
+}
+
+#macd-app .macd-side-group-head > span:first-child {
+  font-size: 15px !important;
+}
+
+#macd-app .macd-side-link > span:last-child {
+  font-size: 14px !important;
+}
+
+/* Keep special diagnosis headings proportional */
+#macd-app .macd-special-heading h2 {
+  font-size: 30px !important;
+}
+
+#macd-app .macd-special-card h2 {
+  font-size: 28px !important;
+}
+
+/* Testing cards should not jump to oversized headings */
+#macd-app .macd-content-section h2 {
+  font-size: 28px !important;
+}
+
+/* 6) WORKSPACE TABS / SECTION PILLS — NO WARM/BROWN BORDER ANYWHERE */
+#macd-app .macd-mode-tabs,
+#macd-app .macd-main-tabs,
+#macd-app .macd-ecom-inner-tabs {
+  border-color: #d7e2ee !important;
+}
+
+#macd-app .macd-section-nav a {
+  border-color: #cddbea !important;
+  color: #526b8e !important;
+  background: #ffffff !important;
+}
+
+/* 7) DIAGNOSIS UPPER CONTENT SPACING */
+#macd-app.is-diagnosis-view .macd-hero {
+  margin-bottom: 30px !important;
+}
+
+#macd-app.is-diagnosis-view .macd-mode-tabs {
+  margin-bottom: 20px !important;
+}
+
+#macd-app.is-diagnosis-view #macd-mode-lead > .macd-main-tabs,
+#macd-app.is-diagnosis-view #macd-mode-ecommerce > .macd-main-tabs {
+  margin-bottom: 24px !important;
+}
+
+/* 8) MOBILE FONT CONSISTENCY */
+@media (max-width: 767px) {
+  #macd-app {
+    font-size: 14px !important;
+  }
+
+  #macd-app p,
+  #macd-app li,
+  #macd-app dd,
+  #macd-app td {
+    font-size: 14px !important;
+  }
+
+  #macd-app h1 {
+    font-size: 34px !important;
+  }
+
+  #macd-app h2,
+  #macd-app .macd-content-section h2,
+  #macd-app .macd-special-card h2 {
+    font-size: 24px !important;
+  }
+
+  #macd-app h3 {
+    font-size: 18px !important;
+  }
+
+  #macd-app .macd-case-title {
+    font-size: 16px !important;
+  }
+
+  #macd-app .macd-ecom-inner-tabs,
+  #macd-app .macd-main-tabs {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+}
+
+
+/* =========================================================
+   TYPOGRAPHY MATCH — based on supplied live-app screenshots
+   Keeps UI/functionality unchanged; fixes size/weight hierarchy.
+   ========================================================= */
+
+/* Base text */
+#macd-app {
+  font-size: 16px !important;
+  line-height: 1.62 !important;
+  font-weight: 400 !important;
+  color: #12213d !important;
+}
+
+#macd-app p,
+#macd-app li,
+#macd-app dd {
+  font-size: 15.5px !important;
+  line-height: 1.64 !important;
+  font-weight: 400 !important;
+  color: #314866 !important;
+}
+
+/* Main hero */
+#macd-app .macd-hero h1 {
+  font-size: clamp(48px, 4.5vw, 56px) !important;
+  line-height: 1.03 !important;
+  font-weight: 750 !important;
+  letter-spacing: -0.04em !important;
+  color: #11203d !important;
+}
+
+#macd-app .macd-subtitle {
+  font-size: 18px !important;
+  line-height: 1.5 !important;
+  font-weight: 400 !important;
+  color: #41618c !important;
+}
+
+#macd-app .macd-intro {
+  font-size: 16.5px !important;
+  line-height: 1.72 !important;
+  font-weight: 400 !important;
+  color: #2f507d !important;
+}
+
+#macd-app .macd-intro strong {
+  font-weight: 750 !important;
+  color: #17335d !important;
+}
+
+/* Primary section/card headings */
+#macd-app h2,
+#macd-app .macd-content-section h2,
+#macd-app .macd-special-card h2 {
+  font-size: 30px !important;
+  line-height: 1.18 !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.025em !important;
+  color: #10203d !important;
+}
+
+#macd-app .macd-diagnosis-head h2,
+#macd-app .macd-special-heading h2 {
+  font-size: 32px !important;
+  line-height: 1.16 !important;
+  font-weight: 700 !important;
+}
+
+#macd-app h3 {
+  font-size: 20px !important;
+  line-height: 1.3 !important;
+  font-weight: 700 !important;
+  color: #142542 !important;
+}
+
+#macd-app h4 {
+  font-size: 12px !important;
+  line-height: 1.25 !important;
+  font-weight: 800 !important;
+  letter-spacing: .045em !important;
+  text-transform: uppercase !important;
+}
+
+/* Small labels only */
+#macd-app .macd-section-kicker,
+#macd-app .macd-section-kicker-text,
+#macd-app .macd-case-no,
+#macd-app .macd-filter-label,
+#macd-app .macd-search-wrap label,
+#macd-app .macd-top-breadcrumb,
+#macd-app .macd-side-label {
+  font-size: 11px !important;
+  line-height: 1.2 !important;
+  font-weight: 800 !important;
+  letter-spacing: .07em !important;
+}
+
+/* Sidebar */
+#macd-app .macd-side-brand small {
+  font-size: 11px !important;
+  font-weight: 800 !important;
+}
+
+#macd-app .macd-side-brand strong {
+  font-size: 16px !important;
+  line-height: 1.2 !important;
+  font-weight: 700 !important;
+}
+
+#macd-app .macd-side-group-head > span:first-child {
+  font-size: 15px !important;
+  line-height: 1.2 !important;
+  font-weight: 700 !important;
+}
+
+#macd-app .macd-side-link > span:last-child {
+  font-size: 14px !important;
+  line-height: 1.2 !important;
+  font-weight: 600 !important;
+}
+
+#macd-app .macd-side-link.is-active > span:last-child {
+  font-weight: 700 !important;
+}
+
+#macd-app .macd-side-footer {
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+}
+
+#macd-app .macd-side-footer strong {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+}
+
+/* Topbar */
+#macd-app .macd-top-title {
+  font-size: 16px !important;
+  line-height: 1.2 !important;
+  font-weight: 700 !important;
+}
+
+#macd-app .macd-global-search input {
+  font-size: 14px !important;
+  font-weight: 400 !important;
+}
+
+/* Top-level and inner navigation */
+#macd-app .macd-mode-tab {
+  font-size: 14px !important;
+  line-height: 1.2 !important;
+  font-weight: 700 !important;
+}
+
+#macd-app .macd-main-tab,
+#macd-app .macd-ecom-main-tab {
+  font-size: 13px !important;
+  line-height: 1.2 !important;
+  font-weight: 700 !important;
+}
+
+#macd-app .macd-section-nav a {
+  font-size: 12.5px !important;
+  line-height: 1.2 !important;
+  font-weight: 650 !important;
+}
+
+/* Diagnosis rows */
+#macd-app .macd-case-title {
+  font-size: 18px !important;
+  line-height: 1.25 !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em !important;
+  color: #11213d !important;
+}
+
+#macd-app .macd-case-hint {
+  font-size: 13.5px !important;
+  line-height: 1.3 !important;
+  font-weight: 400 !important;
+  color: #6b7d99 !important;
+}
+
+#macd-app .macd-diagnosis-grid p {
+  font-size: 15px !important;
+  line-height: 1.62 !important;
+}
+
+#macd-app .macd-diagnosis-grid h4 {
+  font-size: 12px !important;
+  font-weight: 800 !important;
+}
+
+/* Search/filter area */
+#macd-app .macd-search-box input {
+  font-size: 15px !important;
+  line-height: 1.2 !important;
+}
+
+#macd-app .macd-filter-toggle {
+  font-size: 11px !important;
+  font-weight: 800 !important;
+}
+
+#macd-app .macd-search-box button,
+#macd-app #macd-clear-search,
+#macd-app #macd-ecom-clear-search {
+  font-size: 12px !important;
+  font-weight: 700 !important;
+}
+
+#macd-app .macd-filter,
+#macd-app .macd-ecom-filter {
+  font-size: 12px !important;
+  line-height: 1.2 !important;
+  font-weight: 700 !important;
+}
+
+/* Quick diagnosis */
+#macd-app .macd-quick-grid strong,
+#macd-app .macd-cheat-sheet strong {
+  font-size: 14px !important;
+  line-height: 1.35 !important;
+  font-weight: 700 !important;
+}
+
+#macd-app .macd-quick-grid span,
+#macd-app .macd-cheat-sheet span {
+  font-size: 13.5px !important;
+  line-height: 1.45 !important;
+  font-weight: 400 !important;
+}
+
+/* Steps / mini cards */
+#macd-app .macd-step h3,
+#macd-app .macd-mini-card h3,
+#macd-app .macd-compare-box h3 {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+}
+
+#macd-app .macd-step p,
+#macd-app .macd-mini-card p,
+#macd-app .macd-compare-box p {
+  font-size: 14.5px !important;
+  line-height: 1.55 !important;
+}
+
+/* Callouts */
+#macd-app .macd-callout,
+#macd-app .macd-question,
+#macd-app .macd-warning,
+#macd-app .macd-do-not,
+#macd-app .macd-example {
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+}
+
+#macd-app .macd-golden-rule {
+  font-size: 23px !important;
+  line-height: 1.35 !important;
+  font-weight: 700 !important;
+}
+
+/* Tables */
+#macd-app .macd-table th {
+  font-size: 11px !important;
+  line-height: 1.25 !important;
+  font-weight: 800 !important;
+}
+
+#macd-app .macd-table td {
+  font-size: 14px !important;
+  line-height: 1.55 !important;
+}
+
+/* Timeline / output / formulas */
+#macd-app .macd-timeline strong,
+#macd-app .macd-output-flow strong,
+#macd-app .macd-end-example strong {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+}
+
+#macd-app .macd-timeline p,
+#macd-app .macd-output-flow p,
+#macd-app .macd-end-example p {
+  font-size: 13.5px !important;
+  line-height: 1.5 !important;
+}
+
+#macd-app .macd-flow span,
+#macd-app .macd-master-formula span {
+  font-size: 12px !important;
+  line-height: 1.2 !important;
+  font-weight: 700 !important;
+}
+
+/* Tablet */
+@media (max-width: 980px) {
+  #macd-app .macd-hero h1 {
+    font-size: 44px !important;
+  }
+
+  #macd-app h2,
+  #macd-app .macd-content-section h2,
+  #macd-app .macd-special-card h2 {
+    font-size: 28px !important;
+  }
+
+  #macd-app .macd-diagnosis-head h2,
+  #macd-app .macd-special-heading h2 {
+    font-size: 30px !important;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  #macd-app {
+    font-size: 15px !important;
+  }
+
+  #macd-app p,
+  #macd-app li,
+  #macd-app dd {
+    font-size: 14.5px !important;
+  }
+
+  #macd-app .macd-hero h1 {
+    font-size: 36px !important;
+  }
+
+  #macd-app .macd-subtitle {
+    font-size: 16px !important;
+  }
+
+  #macd-app .macd-intro {
+    font-size: 15px !important;
+  }
+
+  #macd-app h2,
+  #macd-app .macd-content-section h2,
+  #macd-app .macd-special-card h2 {
+    font-size: 25px !important;
+  }
+
+  #macd-app .macd-diagnosis-head h2,
+  #macd-app .macd-special-heading h2 {
+    font-size: 27px !important;
+  }
+
+  #macd-app .macd-case-title {
+    font-size: 16.5px !important;
+  }
+
+  #macd-app .macd-case-hint {
+    font-size: 12px !important;
+  }
+}
+
+
+/* ===== Audience Strategy +  ===== */
+#macd-app .macd-mode-tabs { overflow-x:auto; scrollbar-width:thin; }
+#macd-app .macd-mode-tab { flex:0 0 auto; }
+
+#macd-app .macd-extra-inner-tabs {
+  display:inline-grid !important;
+  grid-template-columns:auto auto !important;
+  gap:2px !important;
+  width:auto !important;
+  min-width:290px !important;
+}
+#macd-app .macd-extra-main-tab {
+  min-height:40px; padding:8px 18px; border:0; border-radius:8px;
+  background:transparent; color:#667995; cursor:pointer;
+  font-size:13px; line-height:1.2; font-weight:700;
+}
+#macd-app .macd-extra-main-tab:hover { color:#10203d; background:rgba(255,255,255,.60); }
+#macd-app .macd-extra-main-tab.is-active {
+  color:#10203d; background:#fff; box-shadow:0 2px 7px rgba(31,58,94,.08);
+}
+#macd-app .macd-extra-tab-panel { display:none; }
+#macd-app .macd-extra-tab-panel.is-active { display:block; }
+
+#macd-app .macd-source-subtitle { color:#526b8e; font-size:16px; }
+#macd-app .macd-source-card { scroll-margin-top:100px; }
+#macd-app .macd-source-subheading {
+  margin:22px 0 9px; padding-top:2px; color:#142542;
+  font-size:19px; line-height:1.3; font-weight:700;
+}
+#macd-app .macd-source-minor-heading { margin:18px 0 8px; }
+#macd-app .macd-source-list { margin:12px 0 18px; padding-left:22px; }
+#macd-app .macd-source-list li { margin:7px 0; }
+#macd-app .macd-source-list-number { padding-left:26px; }
+#macd-app .macd-source-flow { margin-top:20px; }
+
+#macd-app .macd-source-map-grid {
+  display:grid; grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px; margin-top:18px;
+}
+#macd-app .macd-source-map-grid > div {
+  display:grid; grid-template-columns:minmax(150px,.85fr) 28px 1.15fr;
+  gap:8px; align-items:center; min-height:58px; padding:13px 15px;
+  border:1px solid #d6e1ed; border-radius:11px; background:#f8fbff;
+}
+#macd-app .macd-source-map-grid span { text-align:center; color:#0d86dc; font-weight:900; }
+#macd-app .macd-source-map-grid b { color:#526b8e; font-weight:700; }
+#macd-app .macd-source-map-grid-wide { grid-template-columns:1fr; }
+
+#macd-app .macd-source-stage-grid {
+  display:grid; grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px; margin:18px 0;
+}
+#macd-app .macd-source-stage-grid > div {
+  padding:18px; border:1px solid #d6e1ed; border-radius:12px; background:#f8fbff;
+}
+#macd-app .macd-source-stage-grid strong {
+  display:block; margin-bottom:8px; color:#0d86dc; font-size:13px; letter-spacing:.06em;
+}
+
+@media (max-width:980px) {
+  #macd-app .macd-source-map-grid,
+  #macd-app .macd-source-stage-grid { grid-template-columns:1fr; }
+}
+@media (max-width:767px) {
+  #macd-app .macd-extra-inner-tabs { width:100% !important; min-width:0 !important; }
+  #macd-app .macd-source-map-grid > div { grid-template-columns:1fr; gap:4px; }
+  #macd-app .macd-source-map-grid span { text-align:left; }
+}
+
+
+/* =========================================================
+   MOBILE APP SHELL — matched to supplied Replit mobile reference
+   ========================================================= */
+@media (max-width: 767px) {
+  html, body {
+    overflow-x: hidden !important;
+  }
+
+  #macd-app {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    background: #f4f7fb !important;
+  }
+
+  /* Real mobile drawer instead of squeezing desktop sidebar */
+  #macd-app .macd-app-sidebar {
+    display: block !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    width: min(286px, 84vw) !important;
+    height: 100dvh !important;
+    padding: 18px 14px !important;
+    z-index: 10020 !important;
+    transform: translateX(-105%) !important;
+    transition: transform .22s ease !important;
+    overflow-y: auto !important;
+    box-shadow: 18px 0 40px rgba(10,27,48,.22) !important;
+  }
+
+  #macd-app.mobile-nav-open .macd-app-sidebar {
+    transform: translateX(0) !important;
+  }
+
+  #macd-app .macd-mobile-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 10010;
+    background: rgba(10, 24, 43, .42);
+    backdrop-filter: blur(2px);
+  }
+
+  #macd-app.mobile-nav-open .macd-mobile-backdrop {
+    display: block;
+  }
+
+  #macd-app .macd-shell {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    padding: 0 8px 32px !important;
+    overflow: visible !important;
+  }
+
+  /* Compact sticky mobile header like the live Replit app */
+  #macd-app .macd-app-topbar {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 10000 !important;
+    display: grid !important;
+    grid-template-columns: 32px minmax(0,1fr) 34px !important;
+    align-items: center !important;
+    gap: 7px !important;
+    width: auto !important;
+    min-height: 55px !important;
+    margin: 0 -8px 12px !important;
+    padding: 6px 8px !important;
+    background: rgba(249, 252, 255, .98) !important;
+    border-bottom: 1px solid #dce6f1 !important;
+    box-shadow: 0 2px 7px rgba(31,58,94,.035) !important;
+    backdrop-filter: blur(10px) !important;
+  }
+
+  #macd-app .macd-app-topbar > div:nth-child(2) {
+    min-width: 0 !important;
+  }
+
+  #macd-app .macd-mobile-menu-btn,
+  #macd-app .macd-mobile-search-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 32px !important;
+    height: 32px !important;
+    padding: 0 !important;
+    border: 1px solid #d3dfeb !important;
+    border-radius: 7px !important;
+    background: #fff !important;
+    color: #657a98 !important;
+    box-shadow: none !important;
+  }
+
+  #macd-app .macd-mobile-menu-btn svg,
+  #macd-app .macd-mobile-search-btn svg {
+    width: 16px !important;
+    height: 16px !important;
+    fill: none !important;
+    stroke: currentColor !important;
+    stroke-width: 1.8 !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+  }
+
+  #macd-app .macd-top-breadcrumb {
+    margin: 0 0 2px !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    text-overflow: ellipsis !important;
+    color: #0a83d8 !important;
+    font-size: 8.5px !important;
+    line-height: 1.1 !important;
+    font-weight: 800 !important;
+    letter-spacing: .045em !important;
+  }
+
+  #macd-app .macd-top-title {
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    text-overflow: ellipsis !important;
+    color: #15243c !important;
+    font-size: 11.5px !important;
+    line-height: 1.15 !important;
+    font-weight: 700 !important;
+  }
+
+  #macd-app .macd-global-search {
+    display: none !important;
+  }
+
+  /* Hero proportions from mobile reference */
+  #macd-app .macd-hero {
+    min-height: 0 !important;
+    margin: 0 0 12px !important;
+    padding: 22px 18px 24px !important;
+    border-radius: 16px !important;
+  }
+
+  #macd-app .macd-hero .macd-eyebrow {
+    min-height: 27px !important;
+    margin: 0 0 12px !important;
+    padding: 5px 10px !important;
+    font-size: 9.5px !important;
+  }
+
+  #macd-app .macd-hero h1 {
+    max-width: 100% !important;
+    margin: 0 0 9px !important;
+    font-size: 29px !important;
+    line-height: 1.02 !important;
+    letter-spacing: -.035em !important;
+  }
+
+  #macd-app .macd-subtitle {
+    margin-bottom: 14px !important;
+    font-size: 13.5px !important;
+    line-height: 1.48 !important;
+  }
+
+  #macd-app .macd-intro {
+    font-size: 13.5px !important;
+    line-height: 1.62 !important;
+  }
+
+  /* Workspace tabs: horizontal and intentionally scrollable */
+  #macd-app .macd-mode-tabs {
+    display: flex !important;
+    width: 100% !important;
+    min-height: 49px !important;
+    margin: 0 0 10px !important;
+    padding: 4px !important;
+    gap: 4px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    border-radius: 9px !important;
+    scrollbar-width: thin !important;
+    scroll-snap-type: x proximity;
+  }
+
+  #macd-app .macd-mode-tab {
+    flex: 0 0 auto !important;
+    min-width: max-content !important;
+    min-height: 39px !important;
+    padding: 8px 13px !important;
+    border-radius: 7px !important;
+    font-size: 11.5px !important;
+    scroll-snap-align: start;
+  }
+
+  /* Testing / Diagnosis: exactly two stable columns */
+  #macd-app .macd-main-tabs,
+  #macd-app .macd-ecom-inner-tabs,
+  #macd-app .macd-extra-inner-tabs {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0,1fr)) !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 46px !important;
+    margin: 0 0 10px !important;
+    padding: 4px !important;
+    border-radius: 9px !important;
+  }
+
+  #macd-app .macd-main-tab,
+  #macd-app .macd-ecom-main-tab,
+  #macd-app .macd-extra-main-tab {
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 36px !important;
+    padding: 7px 8px !important;
+    font-size: 11px !important;
+    line-height: 1.15 !important;
+  }
+
+  /* Section-nav pills stay in one row and scroll like the reference */
+  #macd-app .macd-section-nav {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 6px !important;
+    width: 100% !important;
+    margin: 0 0 12px !important;
+    padding: 0 0 6px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scrollbar-width: thin !important;
+  }
+
+  #macd-app .macd-section-nav a {
+    flex: 0 0 auto !important;
+    min-height: 32px !important;
+    padding: 7px 10px !important;
+    border-radius: 7px !important;
+    font-size: 10px !important;
+    white-space: nowrap !important;
+  }
+
+  /* Content cards — edge-to-edge feel with small mobile gutters */
+  #macd-app .macd-card,
+  #macd-app .macd-content-section,
+  #macd-app .macd-special-card {
+    width: 100% !important;
+    margin: 0 0 10px !important;
+    padding: 20px 17px !important;
+    border-radius: 13px !important;
+  }
+
+  #macd-app .macd-section-kicker {
+    min-width: 32px !important;
+    min-height: 24px !important;
+    margin-bottom: 10px !important;
+    padding: 3px 8px !important;
+    font-size: 9px !important;
+  }
+
+  #macd-app h2,
+  #macd-app .macd-content-section h2,
+  #macd-app .macd-special-card h2 {
+    margin-bottom: 10px !important;
+    font-size: 22px !important;
+    line-height: 1.12 !important;
+    letter-spacing: -.025em !important;
+  }
+
+  #macd-app h3 {
+    font-size: 17px !important;
+    line-height: 1.22 !important;
+  }
+
+  #macd-app p,
+  #macd-app li,
+  #macd-app dd {
+    font-size: 13.5px !important;
+    line-height: 1.58 !important;
+  }
+
+  #macd-app .macd-callout,
+  #macd-app .macd-question,
+  #macd-app .macd-warning,
+  #macd-app .macd-do-not,
+  #macd-app .macd-example {
+    padding: 13px 14px !important;
+    border-radius: 9px !important;
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+  }
+
+  /* Grids become stacked cards, as in supplied reference */
+  #macd-app .macd-grid-5,
+  #macd-app .macd-grid-4,
+  #macd-app .macd-grid-3,
+  #macd-app .macd-grid-2,
+  #macd-app .macd-two-col,
+  #macd-app .macd-compare-grid,
+  #macd-app .macd-source-stage-grid,
+  #macd-app .macd-source-map-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  #macd-app .macd-mini-card,
+  #macd-app .macd-step,
+  #macd-app .macd-compare-box,
+  #macd-app .macd-source-map-grid > div,
+  #macd-app .macd-source-stage-grid > div {
+    padding: 13px !important;
+    border-radius: 9px !important;
+  }
+
+  /* Tables: preserve content without crushing columns */
+  #macd-app .macd-table-wrap,
+  #macd-app .macd-table-scroll {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #macd-app .macd-table {
+    min-width: 650px;
+  }
+
+  /* Diagnosis */
+  #macd-app .macd-diagnosis-head h2,
+  #macd-app .macd-special-heading h2 {
+    font-size: 23px !important;
+  }
+
+  #macd-app .macd-quick-grid,
+  #macd-app .macd-cheat-sheet {
+    grid-template-columns: 1fr !important;
+  }
+
+  #macd-app .macd-diagnosis-case-zone .macd-tools {
+    top: 62px !important;
+    padding: 10px !important;
+    border-radius: 10px !important;
+  }
+
+  #macd-app .macd-tools {
+    grid-template-columns: minmax(0,1fr) auto !important;
+  }
+
+  #macd-app .macd-search-box {
+    min-height: 42px !important;
+  }
+
+  #macd-app .macd-search-box input {
+    font-size: 13px !important;
+  }
+
+  #macd-app .macd-accordion-trigger {
+    grid-template-columns: 56px minmax(0,1fr) 20px !important;
+    gap: 8px !important;
+    min-height: 60px !important;
+    padding: 11px 12px !important;
+  }
+
+  #macd-app .macd-case-title {
+    font-size: 14.5px !important;
+    line-height: 1.2 !important;
+  }
+
+  #macd-app .macd-case-hint {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+    margin-top: 3px !important;
+    font-size: 10.5px !important;
+    text-align: left !important;
+  }
+
+  #macd-app .macd-chevron {
+    grid-column: 3 !important;
+    grid-row: 1 / span 2 !important;
+  }
+
+  #macd-app .macd-diagnosis-grid {
+    grid-template-columns: 1fr !important;
+    padding: 0 12px 12px !important;
+  }
+
+  /* Formula rows remain horizontally scrollable instead of breaking */
+  #macd-app .macd-master-formula,
+  #macd-app .macd-flow,
+  #macd-app .macd-output-flow {
+    overflow-x: auto !important;
+    flex-wrap: nowrap !important;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Hide mobile-only controls on tablet/desktop */
+@media (min-width: 768px) {
+  #macd-app .macd-mobile-menu-btn,
+  #macd-app .macd-mobile-search-btn,
+  #macd-app .macd-mobile-backdrop {
+    display: none !important;
+  }
+}
+
+
+/* =========================================================
+   AUDIENCE & CREATIVE STRATEGY — APP UI
+   Source: FINAL corrected DOCX
+   ========================================================= */
+#macd-app .aud-hero,
+#macd-app .aud-diagnosis-hero {
+  padding: 34px 36px;
+  margin: 0 0 18px;
+  border: 1px solid #cfe0ee;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 85% 18%, rgba(13,134,220,.10), transparent 32%),
+    linear-gradient(135deg,#f4faff 0%,#fffdf8 100%);
+}
+
+#macd-app .aud-kicker {
+  margin-bottom: 8px;
+  color: #0d86dc;
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: .09em;
+}
+
+#macd-app .aud-hero h2,
+#macd-app .aud-diagnosis-hero h2 {
+  margin: 0 0 10px;
+  color: #11213d;
+  font-size: 34px !important;
+  line-height: 1.1 !important;
+  letter-spacing: -.03em;
+}
+
+#macd-app .aud-hero p,
+#macd-app .aud-diagnosis-hero p {
+  max-width: 900px;
+  margin: 0;
+  color: #526b8e;
+  font-size: 15px !important;
+}
+
+#macd-app .aud-rule-card {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 16px;
+  align-items: start;
+  margin: 0 0 18px;
+  padding: 22px 24px;
+  border: 1px solid #cfe0ee;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 5px 18px rgba(31,58,94,.035);
+}
+#macd-app .aud-rule-icon {
+  display:grid; place-items:center; width:48px; height:48px;
+  border-radius:12px; background:#eaf6ff; color:#0d86dc; font-size:20px;
+}
+#macd-app .aud-rule-card span { color:#0d86dc; font-size:10px; font-weight:850; letter-spacing:.08em; }
+#macd-app .aud-rule-card h3 { margin:5px 0 7px; font-size:20px !important; }
+#macd-app .aud-rule-card p { margin:0; }
+
+#macd-app .aud-section {
+  margin: 0 0 18px;
+  padding: 26px;
+  border: 1px solid #d7e2ee;
+  border-radius: 16px;
+  background: #fff;
+}
+#macd-app .aud-section-head {
+  display:flex; gap:12px; align-items:flex-start; margin-bottom:18px;
+}
+#macd-app .aud-section-head > span {
+  display:inline-flex; align-items:center; justify-content:center;
+  min-width:36px; height:28px; padding:0 8px; border-radius:8px;
+  background:#eaf6ff; color:#0d86dc; font-size:10px; font-weight:850;
+}
+#macd-app .aud-section-head h2 { margin:0 0 4px; font-size:26px !important; }
+#macd-app .aud-section-head p { margin:0; color:#71839c; font-size:13px !important; }
+
+#macd-app .aud-funnel {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+  position:relative;
+}
+#macd-app .aud-funnel-card {
+  padding:18px;
+  border:1px solid #d9e4ef;
+  border-radius:14px;
+  background:#f8fbff;
+}
+#macd-app .aud-funnel-card.mof { background:#fbfbff; }
+#macd-app .aud-funnel-card.bof { background:#fffaf5; }
+#macd-app .aud-stage-badge {
+  display:inline-flex; padding:5px 8px; border-radius:999px;
+  background:#0d86dc; color:#fff; font-size:10px; font-weight:850;
+}
+#macd-app .aud-funnel-card h3 { margin:10px 0 6px; font-size:18px !important; }
+#macd-app .aud-funnel-card p { margin:0 0 12px; font-size:13.5px !important; }
+#macd-app .aud-meta-row {
+  padding:9px 10px; border-radius:9px; background:#fff; border:1px solid #e1e9f2;
+}
+#macd-app .aud-meta-row span { display:block; color:#8190a4; font-size:9px; font-weight:800; text-transform:uppercase; }
+#macd-app .aud-meta-row strong { display:block; margin-top:3px; font-size:12px; }
+#macd-app .aud-question { margin-top:10px; color:#405a7d; font-size:12px; font-weight:650; }
+
+#macd-app .aud-term-grid {
+  display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px;
+}
+#macd-app .aud-term-card {
+  padding:15px; border:1px solid #d8e3ef; border-radius:12px; background:#f9fbfe;
+}
+#macd-app .aud-term-chip {
+  display:inline-flex; margin-bottom:8px; padding:4px 7px;
+  border-radius:7px; background:#eaf6ff; color:#0d86dc;
+  font-size:10px; font-weight:850;
+}
+#macd-app .aud-term-card p { margin:0 0 7px; font-size:13px !important; }
+#macd-app .aud-term-card small { color:#7689a2; font-size:11px; line-height:1.4; }
+
+#macd-app .aud-stage-layout,
+#macd-app .aud-compare-grid,
+#macd-app .aud-example-grid {
+  display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-bottom:18px;
+}
+#macd-app .aud-content-card,
+#macd-app .aud-example-card {
+  padding:20px; border:1px solid #d7e2ee; border-radius:14px; background:#fff;
+}
+#macd-app .aud-content-card p { margin:0 0 9px; }
+#macd-app .aud-content-card .aud-bullet { margin-bottom:8px; }
+
+#macd-app .aud-bullet { display:grid; grid-template-columns:16px 1fr; gap:6px; align-items:start; }
+#macd-app .aud-bullet > span { color:#0d86dc; font-weight:900; }
+#macd-app .aud-bullet p { margin:0; }
+
+#macd-app .aud-table-wrap { overflow-x:auto; border:1px solid #d7e2ee; border-radius:12px; }
+#macd-app .aud-table { width:100%; min-width:720px; border-collapse:collapse; background:#fff; }
+#macd-app .aud-table th, #macd-app .aud-table td { padding:12px 13px; border-bottom:1px solid #e6edf5; text-align:left; vertical-align:top; }
+#macd-app .aud-table th { background:#f5f9fd; color:#5f7491; font-size:10px; text-transform:uppercase; letter-spacing:.04em; }
+#macd-app .aud-table td { font-size:12.5px; line-height:1.45; }
+
+#macd-app .aud-stepper { display:grid; gap:10px; }
+#macd-app .aud-step {
+  display:grid; grid-template-columns:38px 1fr; gap:12px; padding:15px;
+  border:1px solid #d9e4ef; border-radius:12px; background:#f9fbfe;
+}
+#macd-app .aud-step-num {
+  display:grid; place-items:center; width:34px; height:34px; border-radius:10px;
+  background:#0d86dc; color:#fff; font-size:12px; font-weight:850;
+}
+#macd-app .aud-step h3 { margin:1px 0 7px; font-size:16px !important; }
+#macd-app .aud-step p { margin:4px 0; font-size:12.5px !important; }
+
+#macd-app .aud-master-grid {
+  display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px;
+}
+#macd-app .aud-master-grid > div { padding:18px; border-radius:12px; background:#f7fbff; border:1px solid #d8e4ef; }
+#macd-app .aud-master-grid span { color:#0d86dc; font-size:10px; font-weight:850; }
+#macd-app .aud-master-grid p { margin:7px 0 0; font-weight:650; }
+#macd-app .aud-master-formula,
+#macd-app .aud-final-formula {
+  margin-top:12px; padding:18px; border-radius:12px; background:#10203d; color:#fff;
+  font-size:14px; font-weight:750; text-align:center;
+}
+#macd-app .aud-final-formula span { display:block; color:#8fcff4; font-size:10px; letter-spacing:.08em; margin-bottom:7px; }
+#macd-app .aud-final-formula h2 { margin:0; color:#fff !important; font-size:20px !important; }
+
+#macd-app .aud-decision-flow {
+  display:flex; align-items:center; gap:7px; flex-wrap:wrap; margin-top:18px;
+}
+#macd-app .aud-decision-flow span {
+  padding:7px 9px; border-radius:8px; background:#fff; border:1px solid #cfe0ee;
+  color:#314d70; font-size:10px; font-weight:800;
+}
+#macd-app .aud-decision-flow b { color:#0d86dc; }
+
+#macd-app .aud-diagnosis-list { display:grid; gap:10px; }
+#macd-app .aud-diagnosis-card {
+  border:1px solid #d7e2ee; border-radius:13px; background:#fff; overflow:hidden;
+}
+#macd-app .aud-diag-head {
+  display:flex; align-items:center; gap:12px; padding:14px 16px; background:#f8fbff; border-bottom:1px solid #e4ebf3;
+}
+#macd-app .aud-diag-head span { color:#0d86dc; font-size:9px; font-weight:850; }
+#macd-app .aud-diag-head h3 { margin:0; font-size:16px !important; }
+#macd-app .aud-diag-grid {
+  display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0;
+}
+#macd-app .aud-diag-grid > div { padding:13px 15px; border-right:1px solid #edf1f6; border-bottom:1px solid #edf1f6; }
+#macd-app .aud-diag-grid label { display:block; margin-bottom:4px; color:#7b8da5; font-size:9px; font-weight:800; text-transform:uppercase; }
+#macd-app .aud-diag-grid p { margin:0; font-size:12.5px !important; }
+
+#macd-app .aud-signal-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+#macd-app .aud-signal-card { padding:16px; border:1px solid #d7e2ee; border-radius:12px; background:#fbfdff; }
+#macd-app .aud-signal-card > strong { display:block; margin-bottom:10px; font-size:15px; }
+#macd-app .aud-signal-card span { display:block; color:#0d86dc; font-size:9px; font-weight:800; text-transform:uppercase; }
+#macd-app .aud-signal-card p { margin:3px 0 8px; font-size:12.5px !important; }
+
+#macd-app .aud-output-card {
+  margin-bottom:18px; padding:24px; border-radius:16px;
+  background:linear-gradient(135deg,#10203d,#18365f); color:#fff;
+}
+#macd-app .aud-output-card > span { color:#8fcff4; font-size:10px; font-weight:850; letter-spacing:.08em; }
+#macd-app .aud-output-card h2 { color:#fff !important; margin:6px 0 15px; }
+#macd-app .aud-output-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+#macd-app .aud-output-grid > div { padding:11px 12px; border-radius:9px; background:rgba(255,255,255,.08); }
+#macd-app .aud-output-grid strong, #macd-app .aud-output-grid span { display:block; }
+#macd-app .aud-output-grid strong { font-size:11px; }
+#macd-app .aud-output-grid span { margin-top:3px; color:#bed5ec; font-size:10px; }
+
+#macd-app .aud-example-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+#macd-app .aud-example-card > span { color:#0d86dc; font-size:9px; font-weight:850; letter-spacing:.08em; }
+#macd-app .aud-example-card h3 { margin:6px 0 8px; }
+
+@media (max-width: 980px) {
+  #macd-app .aud-term-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  #macd-app .aud-funnel, #macd-app .aud-master-grid, #macd-app .aud-stage-layout, #macd-app .aud-compare-grid { grid-template-columns:1fr; }
+  #macd-app .aud-diag-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 767px) {
+  #macd-app .aud-hero, #macd-app .aud-diagnosis-hero { padding:22px 18px; border-radius:14px; }
+  #macd-app .aud-hero h2, #macd-app .aud-diagnosis-hero h2 { font-size:26px !important; }
+  #macd-app .aud-rule-card { grid-template-columns:38px 1fr; padding:17px; }
+  #macd-app .aud-rule-icon { width:38px; height:38px; }
+  #macd-app .aud-section { padding:18px 14px; border-radius:13px; }
+  #macd-app .aud-section-head h2 { font-size:22px !important; }
+  #macd-app .aud-term-grid, #macd-app .aud-diag-grid, #macd-app .aud-signal-grid, #macd-app .aud-output-grid, #macd-app .aud-example-grid { grid-template-columns:1fr; }
+  #macd-app .aud-decision-flow { display:grid; grid-template-columns:1fr; }
+  #macd-app .aud-decision-flow b { text-align:center; }
+}
+
+
+/* =========================================================
+   AUDIENCE UI ALIGNMENT — MATCH APPROVED LEAD / E-COMMERCE
+   ========================================================= */
+
+/* Typography: inherit the same app hierarchy instead of custom oversized audience type */
+#macd-app #macd-mode-audience .aud-hero h2,
+#macd-app #macd-mode-audience .aud-diagnosis-hero h2 {
+  font-size: 30px !important;
+  line-height: 1.12 !important;
+  font-weight: 700 !important;
+  letter-spacing: -.025em !important;
+}
+
+#macd-app #macd-mode-audience .aud-section-head h2 {
+  font-size: 28px !important;
+  line-height: 1.16 !important;
+  font-weight: 700 !important;
+  letter-spacing: -.02em !important;
+}
+
+#macd-app #macd-mode-audience h3 {
+  font-size: 20px !important;
+  line-height: 1.28 !important;
+  font-weight: 700 !important;
+}
+
+#macd-app #macd-mode-audience p,
+#macd-app #macd-mode-audience li,
+#macd-app #macd-mode-audience td {
+  font-size: 15.5px !important;
+  line-height: 1.62 !important;
+}
+
+#macd-app #macd-mode-audience .aud-section-head p,
+#macd-app #macd-mode-audience .aud-hero > p,
+#macd-app #macd-mode-audience .aud-diagnosis-hero > p {
+  font-size: 15px !important;
+  line-height: 1.55 !important;
+}
+
+/* Main sections: same calm full-width container feel as Lead/E-commerce */
+#macd-app #macd-mode-audience .aud-section {
+  margin: 0 0 16px !important;
+  padding: 26px 26px !important;
+  border: 1px solid #d7e2ee !important;
+  border-radius: 14px !important;
+  background: #fff !important;
+  box-shadow: none !important;
+}
+
+#macd-app #macd-mode-audience .aud-section-head {
+  gap: 12px !important;
+  margin-bottom: 20px !important;
+}
+
+#macd-app #macd-mode-audience .aud-section-head > span {
+  min-width: 42px !important;
+  height: 28px !important;
+  padding: 0 9px !important;
+  border-radius: 8px !important;
+  background: #eaf6ff !important;
+  color: #0d86dc !important;
+  font-size: 10px !important;
+  font-weight: 800 !important;
+}
+
+/* Technical Terms:
+   3 items per desktop row, each item is a structured horizontal glossary strip
+   rather than a tiny floating tile. */
+#macd-app #macd-mode-audience .aud-term-list {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+}
+
+#macd-app #macd-mode-audience .aud-term-row {
+  display: grid !important;
+  grid-template-columns: auto minmax(0, 1fr) !important;
+  align-items: start !important;
+  gap: 12px !important;
+  min-height: 142px !important;
+  padding: 17px 18px !important;
+  border: 1px solid #d7e2ee !important;
+  border-radius: 11px !important;
+  background:
+    linear-gradient(180deg, rgba(247,251,255,.95), rgba(255,255,255,1)) !important;
+}
+
+#macd-app #macd-mode-audience .aud-term-index {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 68px !important;
+  min-height: 30px !important;
+  padding: 5px 9px !important;
+  border-radius: 8px !important;
+  background: #eaf6ff !important;
+  color: #0d86dc !important;
+  font-size: 11px !important;
+  line-height: 1 !important;
+  font-weight: 850 !important;
+  letter-spacing: .035em !important;
+}
+
+#macd-app #macd-mode-audience .aud-term-copy p {
+  margin: 0 0 10px !important;
+  color: #17304f !important;
+  font-size: 14.5px !important;
+  line-height: 1.5 !important;
+}
+
+#macd-app #macd-mode-audience .aud-term-example {
+  padding-top: 9px !important;
+  border-top: 1px solid #e5edf5 !important;
+  color: #6f8199 !important;
+  font-size: 13px !important;
+  line-height: 1.45 !important;
+}
+
+#macd-app #macd-mode-audience .aud-term-example span {
+  display: block !important;
+  margin-bottom: 3px !important;
+  color: #0d86dc !important;
+  font-size: 9px !important;
+  font-weight: 850 !important;
+  letter-spacing: .07em !important;
+  text-transform: uppercase !important;
+}
+
+/* 15 / 16 / 17 are true independent sections now */
+#macd-app #macd-mode-audience .aud-source-section .aud-section-body {
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+#macd-app #macd-mode-audience .aud-source-section .aud-section-body > p:first-child {
+  margin-top: 0 !important;
+}
+
+#macd-app #macd-mode-audience .aud-source-section .aud-table-wrap {
+  margin-top: 10px !important;
+}
+
+/* Previous 4-column term grid styles no longer participate */
+#macd-app #macd-mode-audience .aud-term-grid,
+#macd-app #macd-mode-audience .aud-compare-grid {
+  display: contents !important;
+}
+
+/* Keep internal tables readable without forcing page-level horizontal overflow */
+#macd-app #macd-mode-audience .aud-table-wrap {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+#macd-app #macd-mode-audience .aud-table {
+  width: 100% !important;
+}
+
+/* Align full-width cards with approved module density */
+#macd-app #macd-mode-audience .aud-content-card {
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+
+/* Tablet */
+@media (max-width: 1100px) {
+  #macd-app #macd-mode-audience .aud-term-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  #macd-app #macd-mode-audience .aud-section {
+    padding: 20px 16px !important;
+    border-radius: 12px !important;
+  }
+
+  #macd-app #macd-mode-audience .aud-hero h2,
+  #macd-app #macd-mode-audience .aud-diagnosis-hero h2 {
+    font-size: 27px !important;
+  }
+
+  #macd-app #macd-mode-audience .aud-section-head h2 {
+    font-size: 22px !important;
+  }
+
+  #macd-app #macd-mode-audience p,
+  #macd-app #macd-mode-audience li,
+  #macd-app #macd-mode-audience td {
+    font-size: 14px !important;
+    line-height: 1.58 !important;
+  }
+
+  #macd-app #macd-mode-audience .aud-term-list {
+    grid-template-columns: 1fr !important;
+    gap: 9px !important;
+  }
+
+  #macd-app #macd-mode-audience .aud-term-row {
+    min-height: 0 !important;
+    padding: 14px !important;
+  }
+}
+
+
+/* =========================================================
+   AUDIENCE FULL CONCEPT — SEQUENTIAL LEAD-GEN DESIGN SYSTEM
+   01 -> 22, all content directly visible
+   ========================================================= */
+
+#macd-app #macd-audience-panel-full .aud-seq-hero {
+  margin-bottom: 16px !important;
+}
+
+/* Same base sizing as approved Lead Generation cards */
+#macd-app #macd-audience-panel-full .aud-seq-card {
+  margin-bottom: 16px !important;
+}
+
+#macd-app #macd-audience-panel-full .aud-seq-card > h2 {
+  margin: 0 0 14px !important;
+}
+
+/* Never hide/collapse source content inside Full Concept */
+/* Source bullets use the same comfortable reading density */
+#macd-app .macd-aud-list-row {
+  display: grid;
+  grid-template-columns: 16px minmax(0,1fr);
+  gap: 6px;
+  align-items: start;
+  margin: 7px 0;
+}
+
+#macd-app .macd-aud-list-row > span {
+  color: #0d86dc;
+  font-weight: 850;
+}
+
+#macd-app .macd-aud-list-row p {
+  margin: 0;
+}
+
+/* Section 02 */
+#macd-app .macd-aud-funnel-grid {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 10px;
+}
+
+#macd-app .macd-aud-funnel-stage {
+  padding: 18px;
+  border: 1px solid #d9e2ec;
+  border-radius: 12px;
+  background: #fbfdff;
+}
+
+#macd-app .macd-aud-funnel-stage h3 {
+  margin: 8px 0 8px;
+}
+
+#macd-app .macd-aud-funnel-stage > p {
+  margin: 0 0 12px;
+}
+
+#macd-app .macd-aud-stage-meta {
+  padding: 10px 11px;
+  margin-bottom: 10px;
+  border: 1px solid #e2eaf2;
+  border-radius: 9px;
+  background: #fff;
+}
+
+#macd-app .macd-aud-stage-meta strong,
+#macd-app .macd-aud-stage-meta span {
+  display: block;
+}
+
+#macd-app .macd-aud-stage-meta strong {
+  margin-bottom: 3px;
+  color: #6f8199;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+/* Section 03: exactly 3 per desktop row, direct visible */
+#macd-app .macd-aud-terms-grid {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 10px;
+}
+
+#macd-app .macd-aud-term-item {
+  min-height: 150px;
+  padding: 16px;
+  border: 1px solid #d8e1eb;
+  border-radius: 11px;
+  background: #fbfdff;
+}
+
+#macd-app .macd-aud-term-title {
+  display: inline-flex;
+  margin-bottom: 9px;
+  padding: 5px 8px;
+  border-radius: 7px;
+  background: #eaf6ff;
+  color: #0d86dc;
+  font-size: 11px;
+  font-weight: 850;
+}
+
+#macd-app .macd-aud-term-item > p {
+  margin: 0 0 10px;
+}
+
+#macd-app .macd-aud-term-example {
+  padding-top: 9px;
+  border-top: 1px solid #e3ebf3;
+  color: #6f8199;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+#macd-app .macd-aud-term-example span {
+  display: block;
+  margin-bottom: 3px;
+  color: #0d86dc;
+  font-size: 9px;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+/* Section 20 */
+#macd-app .aud-process .aud-process-step {
+  margin-top: 12px;
+}
+
+#macd-app .aud-process .aud-step-detail {
+  margin-left: 46px;
+}
+
+/* Keep Audience typography governed by same global Lead/E-commerce rules */
+#macd-app #macd-audience-panel-full .macd-content-section h2 {
+  font-size: 30px !important;
+  line-height: 1.16 !important;
+}
+
+#macd-app #macd-audience-panel-full .macd-content-section h3 {
+  font-size: 18px !important;
+  line-height: 1.28 !important;
+}
+
+#macd-app #macd-audience-panel-full .macd-content-section p,
+#macd-app #macd-audience-panel-full .macd-content-section li,
+#macd-app #macd-audience-panel-full .macd-content-section td {
+  font-size: 15.5px !important;
+  line-height: 1.62 !important;
+}
+
+/* Internal tables scroll only inside their own container */
+#macd-app #macd-audience-panel-full .macd-table-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 1100px) {
+  #macd-app .macd-aud-terms-grid {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  #macd-app .macd-aud-funnel-grid,
+  #macd-app .macd-aud-terms-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #macd-app #macd-audience-panel-full .macd-content-section h2 {
+    font-size: 22px !important;
+  }
+
+  #macd-app #macd-audience-panel-full .macd-content-section p,
+  #macd-app #macd-audience-panel-full .macd-content-section li,
+  #macd-app #macd-audience-panel-full .macd-content-section td {
+    font-size: 14px !important;
+    line-height: 1.58 !important;
+  }
+
+  #macd-app .aud-process .aud-step-detail {
+    margin-left: 0;
+  }
+}
+
+
+/* SCALING FRAMEWORK — same layout language as Lead Generation / E-commerce */
+#macd-app #macd-mode-scaling .scaling-seq-card{margin-bottom:16px!important}
+#macd-app #macd-mode-scaling .scaling-seq-card>h2{margin:0 0 14px!important}
+#macd-app #macd-mode-scaling .macd-content-section h2{font-size:30px!important;line-height:1.16!important;font-weight:700!important;letter-spacing:-.02em!important}
+#macd-app #macd-mode-scaling .macd-content-section h3{font-size:18px!important;line-height:1.28!important}
+#macd-app #macd-mode-scaling .macd-content-section p,
+#macd-app #macd-mode-scaling .macd-content-section li,
+#macd-app #macd-mode-scaling .macd-content-section td{font-size:15.5px!important;line-height:1.62!important}
+#macd-app #macd-mode-scaling .macd-aud-list-row{display:grid;grid-template-columns:16px minmax(0,1fr);gap:6px;align-items:start;margin:7px 0}
+#macd-app #macd-mode-scaling .macd-aud-list-row>span{color:#0d86dc;font-weight:850}
+#macd-app #macd-mode-scaling .macd-aud-list-row p{margin:0}
+#macd-app #macd-mode-scaling .macd-table-wrap{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+#macd-app #macd-mode-scaling .scaling-decision-card{border-bottom:3px solid #dcebf6!important}
+#macd-app #macd-mode-scaling .scaling-journey-card{border-bottom:3px solid #e6edf4!important}
+@media(max-width:767px){
+  #macd-app #macd-mode-scaling .macd-content-section h2{font-size:22px!important}
+  #macd-app #macd-mode-scaling .macd-content-section p,
+  #macd-app #macd-mode-scaling .macd-content-section li,
+  #macd-app #macd-mode-scaling .macd-content-section td{font-size:14px!important;line-height:1.58!important}
+}
+
+#macd-app #macd-mode-budget .budget-seq-card{margin-bottom:16px!important}#macd-app #macd-mode-budget .budget-seq-card>h2{margin:0 0 14px!important}#macd-app #macd-mode-budget .macd-content-section h2{font-size:30px!important;line-height:1.16!important;font-weight:700!important;letter-spacing:-.02em!important}#macd-app #macd-mode-budget .macd-content-section h3{font-size:18px!important;line-height:1.28!important}#macd-app #macd-mode-budget .macd-content-section p,#macd-app #macd-mode-budget .macd-content-section li,#macd-app #macd-mode-budget .macd-content-section td{font-size:15.5px!important;line-height:1.62!important}#macd-app #macd-mode-budget .macd-aud-list-row{display:grid;grid-template-columns:16px minmax(0,1fr);gap:6px;align-items:start;margin:7px 0}#macd-app #macd-mode-budget .macd-aud-list-row>span{color:#0d86dc;font-weight:850}#macd-app #macd-mode-budget .macd-aud-list-row p{margin:0}#macd-app #macd-mode-budget .macd-table-wrap{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}#macd-app #macd-mode-budget .budget-diagnose-card{border-bottom:3px solid #dcebf6!important}@media(max-width:767px){#macd-app #macd-mode-budget .macd-content-section h2{font-size:22px!important}#macd-app #macd-mode-budget .macd-content-section p,#macd-app #macd-mode-budget .macd-content-section li,#macd-app #macd-mode-budget .macd-content-section td{font-size:14px!important;line-height:1.58!important}}
+/* =========================================================
+   FINAL UI SYNC + LEAD/ECOM CONTENT LANGUAGE
+   ========================================================= */
+
+#macd-app .macd-subhead-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 9px !important;
+  margin: 17px 0 9px !important;
+  color: #14213b !important;
+}
+
+#macd-app .macd-subhead-row strong {
+  font-size: 16px !important;
+  line-height: 1.35 !important;
+  font-weight: 750 !important;
+}
+
+#macd-app .macd-subhead-dot {
+  width: 9px !important;
+  height: 9px !important;
+  flex: 0 0 9px !important;
+  border-radius: 50% !important;
+  background: #0d86dc !important;
+}
+
+#macd-app .macd-framework-bar {
+  margin: 14px 0 !important;
+  padding: 14px 16px !important;
+  border-radius: 9px !important;
+  background: #10203d !important;
+  color: #fff !important;
+  font-size: 13px !important;
+  line-height: 1.55 !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  overflow-x: auto !important;
+}
+
+#macd-app .macd-highlight-bar {
+  margin: 12px 0 !important;
+  padding: 13px 15px !important;
+  border-left: 3px solid #0d9ddd !important;
+  border-radius: 8px !important;
+  background: #f3f9fd !important;
+  color: #17304f !important;
+  font-size: 13.5px !important;
+  line-height: 1.55 !important;
+  font-weight: 650 !important;
+}
+
+#macd-app .macd-diagnosis-note,
+#macd-app .macd-action-note {
+  display: grid !important;
+  grid-template-columns: 84px minmax(0,1fr) !important;
+  gap: 10px !important;
+  margin: 8px 0 !important;
+  padding: 11px 13px !important;
+  border-radius: 8px !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+}
+
+#macd-app .macd-diagnosis-note {
+  background: #fff6e9 !important;
+  border: 1px solid #f0dec1 !important;
+}
+
+#macd-app .macd-action-note {
+  background: #eef8f1 !important;
+  border: 1px solid #d4e8d9 !important;
+}
+
+#macd-app .macd-diagnosis-note strong,
+#macd-app .macd-action-note strong {
+  font-size: 10px !important;
+  font-weight: 850 !important;
+  letter-spacing: .05em !important;
+  text-transform: uppercase !important;
+}
+
+/* Scaling and Budget sections use the same card proportions as Lead/E-commerce */
+#macd-app #macd-mode-scaling .macd-content-section,
+#macd-app #macd-mode-budget .macd-content-section {
+  padding: 24px 26px !important;
+  border: 1px solid #d8e2ed !important;
+  border-radius: 14px !important;
+  background: #fff !important;
+  box-shadow: none !important;
+}
+
+#macd-app #macd-mode-scaling .macd-content-section h2,
+#macd-app #macd-mode-budget .macd-content-section h2 {
+  font-size: 28px !important;
+  line-height: 1.18 !important;
+  font-weight: 700 !important;
+}
+
+#macd-app #macd-mode-scaling .macd-content-section p,
+#macd-app #macd-mode-budget .macd-content-section p,
+#macd-app #macd-mode-scaling .macd-content-section td,
+#macd-app #macd-mode-budget .macd-content-section td {
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+}
+
+/* Side navigation active state must visually follow actual mode */
+#macd-app .macd-side-group.is-active > .macd-side-group-head {
+  background: #27496f !important;
+  color: #fff !important;
+}
+
+#macd-app .macd-side-link.is-active {
+  background: #1295db !important;
+  color: #fff !important;
+}
+
+@media (max-width: 767px) {
+  #macd-app #macd-mode-scaling .macd-content-section,
+  #macd-app #macd-mode-budget .macd-content-section {
+    padding: 18px 15px !important;
+  }
+
+  #macd-app #macd-mode-scaling .macd-content-section h2,
+  #macd-app #macd-mode-budget .macd-content-section h2 {
+    font-size: 22px !important;
+  }
+
+  #macd-app .macd-diagnosis-note,
+  #macd-app .macd-action-note {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+
+
+#macd-app .macd-mode-panel[hidden],
+#macd-app .macd-extra-tab-panel[hidden],
+#macd-app .macd-tab-panel[hidden],
+#macd-app .macd-ecom-tab-panel[hidden] {
+  display: none !important;
+}
+
+#macd-app .macd-mode-panel.is-active:not([hidden]) {
+  display: block !important;
+}
+
+#macd-app #macd-mode-budget .macd-extra-tab-panel.is-active:not([hidden]),
+#macd-app #macd-mode-scaling .macd-extra-tab-panel.is-active:not([hidden]),
+#macd-app #macd-mode-audience .macd-extra-tab-panel.is-active:not([hidden]) {
+  display: block !important;
+}
+
+
+html,body{margin:0;background:#f4f7fb}
+.rewrite-app{min-height:100dvh;background:#f4f7fb;color:#11213d}
+.rewrite-sidebar{position:fixed;left:0;top:0;bottom:0;width:266px;background:#0f2138;color:#fff;padding:18px 10px;overflow:auto;z-index:50}
+.rewrite-main{margin-left:266px;min-height:100dvh}
+.rewrite-topbar{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:18px;padding:14px 42px;background:#f8fbff;border-bottom:1px solid #dce6f1}
+.rewrite-headcopy{flex:1;min-width:0}
+.rewrite-breadcrumb{color:#0d86dc;font-size:12px;font-weight:800;letter-spacing:.04em}
+.rewrite-title{margin-top:4px;font-size:15px;font-weight:700}
+.rewrite-search{width:min(480px,42vw);min-height:42px;padding:0 14px;border:1px solid #cfdceb;border-radius:10px;background:#fff}
+.rewrite-content{padding:22px 42px 44px;max-width:1500px;margin:0 auto}
+.rewrite-mode-tabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;padding:5px;margin-bottom:14px;background:#fff;border:1px solid #d7e2ed;border-radius:12px}
+.rewrite-mode-tab,.rewrite-subtab{min-height:46px;border:0;border-radius:9px;background:transparent;color:#526987;font:inherit;font-weight:700;cursor:pointer;padding:10px 14px}
+.rewrite-mode-tab.active{background:#1295db;color:#fff}
+.rewrite-subtabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;width:min(520px,100%);padding:4px;margin-bottom:14px;border:1px solid #d2dfeb;border-radius:10px;background:#eaf2f8}
+.rewrite-subtab.active{background:#fff;color:#14213b;box-shadow:0 1px 4px rgba(20,40,70,.08)}
+.brand-row{display:flex;align-items:center;gap:10px;padding:4px 8px 18px}
+.brand-logo{display:grid;place-items:center;width:38px;height:38px;border-radius:10px;background:#16a6dc;font-weight:800}
+.brand-copy small,.brand-copy strong{display:block}.brand-copy small{color:#6fb5e9;font-size:10px;letter-spacing:.08em}.brand-copy strong{font-size:15px}
+.side-label{padding:10px 8px;color:#79a1c7;font-size:10px;font-weight:800;text-transform:uppercase}
+.side-group{margin-bottom:8px}.side-head{width:100%;display:flex;justify-content:space-between;align-items:center;min-height:46px;padding:9px 10px;border:0;border-radius:10px;background:transparent;color:#fff;font:inherit;font-weight:700;text-align:left;cursor:pointer}
+.side-group.active>.side-head{background:#294c73}.side-sub{padding:4px 0 4px 34px;display:none}.side-group.active .side-sub{display:grid;gap:5px}
+.side-link{min-height:40px;border:0;border-radius:9px;background:transparent;color:#9bb9d8;text-align:left;padding:8px 12px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.side-link.active{background:#1295db;color:#fff}.mobile-menu{display:none}
+@media(max-width:900px){.rewrite-sidebar{transform:translateX(-100%);transition:.2s ease}.rewrite-app.menu-open .rewrite-sidebar{transform:translateX(0)}.rewrite-main{margin-left:0}.rewrite-topbar{padding:10px 12px}.rewrite-content{padding:12px}.rewrite-search{display:none}.mobile-menu{display:inline-flex;width:36px;height:36px;align-items:center;justify-content:center;border:1px solid #d3dfeb;border-radius:8px;background:#fff}.rewrite-mode-tabs{display:flex;overflow-x:auto}.rewrite-mode-tab{flex:0 0 auto;white-space:nowrap}}

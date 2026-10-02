@@ -1,0 +1,554 @@
+
+<div class="macd-diagnosis-head">
+<div>
+<p class="macd-section-kicker-text">Practical Diagnosis System</p>
+<h2>Campaign mein problem aa rahi hai — ab kya check aur test karna hai?</h2>
+<p>
+            Diagnosis ka matlab sirf metric ko Good/Bad bolna nahi hai.
+            Pehle problem ki funnel position samjho, phir focused next test choose karo.
+          </p>
+</div>
+</div>
+<div class="macd-callout macd-diagnosis-rule">
+<strong>Golden Diagnosis Rule:</strong>
+        Ek metric ko akela dekhkar exact reason assume mat karo.
+        Pehle us metric ko funnel ke previous aur next stage ke context mein dekho.
+      </div>
+ QUICK DIAGNOSIS 
+<article class="macd-card macd-quick-diagnosis">
+<div class="macd-section-kicker">Quick</div>
+<h2>Quick Diagnosis</h2>
+<div class="macd-quick-grid">
+<div><strong>3-sec Hold ↓</strong><span>Hook investigate karo.</span></div>
+<div><strong>3-sec good + 5-sec ↓</strong><span>Hook ke baad ka content / continuation investigate karo.</span></div>
+<div><strong>5-sec good + 10-sec ↓</strong><span>Middle section investigate karo.</span></div>
+<div><strong>Hold good + CTR ↓</strong><span>CTA / Offer / Reason to Click investigate karo.</span></div>
+<div><strong>CTR (All) good + Link CTR ↓</strong><span>CTA / Offer / Message / Reason to Click diagnose karo.</span></div>
+<div><strong>CTR good + Leads ↓</strong><span>Landing Page / Form / Offer investigate karo.</span></div>
+<div><strong>CPL ↑ + CTR ↓</strong><span>Creative / Message investigate karo.</span></div>
+<div><strong>CPL ↑ + CTR good</strong><span>Post-click side investigate karo.</span></div>
+<div><strong>Leads good + Quality ↓</strong><span>Message / Offer / Audience / Qualification investigate karo.</span></div>
+<div><strong>Frequency ↑ + CTR ↓</strong><span>Creative fatigue ka signal ho sakta hai; trend check karo.</span></div>
+</div>
+</article>
+ SEARCH &amp; FILTERS 
+<div class="macd-tools" id="macd-tools">
+<div class="macd-search-wrap">
+<label for="macd-search">Search diagnosis</label>
+<div class="macd-search-box">
+<svg aria-hidden="true" viewbox="0 0 24 24"><path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z"></path></svg>
+<input autocomplete="off" id="macd-search" placeholder="Try: CTR low, 5 sec hold, lead quality, frequency, CPL, hook..." type="search"/>
+<button aria-label="Clear diagnosis search" id="macd-clear-search" type="button">Clear</button>
+</div>
+</div>
+<div class="macd-filter-wrap">
+<span class="macd-filter-label">Filter</span>
+<div aria-label="Diagnosis filters" class="macd-filter-list" role="group">
+<button class="macd-filter is-active" data-filter="all">All</button>
+<button class="macd-filter" data-filter="delivery">Delivery</button>
+<button class="macd-filter" data-filter="hook">Hook</button>
+<button class="macd-filter" data-filter="hold">Hold</button>
+<button class="macd-filter" data-filter="ctr">CTR</button>
+<button class="macd-filter" data-filter="link-ctr">Link CTR</button>
+<button class="macd-filter" data-filter="cpl">CPL</button>
+<button class="macd-filter" data-filter="leads">Leads</button>
+<button class="macd-filter" data-filter="quality">Quality</button>
+<button class="macd-filter" data-filter="fatigue">Fatigue</button>
+</div>
+</div>
+<div aria-live="polite" class="macd-result-meta">
+<span id="macd-result-count">14 diagnosis cases</span>
+<button id="macd-expand-visible" type="button">Expand visible</button>
+<button id="macd-collapse-all" type="button">Collapse all</button>
+</div>
+</div>
+<div class="macd-no-results" id="macd-no-results">
+<strong>No matching diagnosis found.</strong>
+<span>Search ko thoda broad karo ya filter “All” select karo.</span>
+</div>
+ DIAGNOSIS CARDS 
+<div class="macd-diagnosis-list" id="macd-diagnosis-list">
+<article class="macd-diagnosis-card" data-tags="delivery impressions low campaign setup budget audience approval competition">
+<button aria-expanded="false" class="macd-accordion-trigger">
+<span class="macd-case-no">Case 01</span>
+<span class="macd-case-title">Impressions Low</span>
+<span class="macd-case-hint">Delivery / Setup first</span>
+<span aria-hidden="true" class="macd-chevron"></span>
+</button>
+<div class="macd-accordion-panel">
+<div class="macd-diagnosis-grid">
+<div><h4>What is happening?</h4><p>Ad ko enough people dekh nahi rahe.</p></div>
+<div><h4>Simple meaning</h4><p>Problem creative se pehle delivery/setup side par bhi ho sakti hai.</p></div>
+<div><h4>Possible reason</h4><p>Budget, audience size, campaign delivery, setup, ad approval ya competition ka impact ho sakta hai.</p></div>
+<div><h4>What to check</h4><p>Budget, audience size, delivery, campaign setup, ad approval, competition.</p></div>
+<div><h4>What to test</h4><p>Pehle delivery/setup check karo. Automatically new creative mat banao.</p></div>
+<div><h4>Why this test?</h4><p>Low impressions ka solution automatically creative change nahi hota.</p></div>
+<div class="macd-not-change"><h4>What not to change yet</h4><p>Sirf low impressions dekhkar creative ko immediately replace mat karo.</p></div>
+</div>
+</div>
+</article>
+<article class="macd-diagnosis-card" data-tags="ctr hook visual message offer cta impressions">
+<button aria-expanded="false" class="macd-accordion-trigger">
+<span class="macd-case-no">Case 02</span>
+<span class="macd-case-title">Impressions Good + CTR Low</span>
+<span class="macd-case-hint">Creative / Message investigate</span>
+<span aria-hidden="true" class="macd-chevron"></span>
+</button>
+<div class="macd-accordion-panel">
+<div class="macd-diagnosis-grid">
+<div><h4>What is happening?</h4><p>Log ad dekh rahe hain, lekin enough people click nahi kar rahe.</p></div>
+<div><h4>Simple meaning</h4><p>Delivery aa rahi hai, lekin click stage weak hai.</p></div>
+<div><h4>Possible reason</h4><p>Hook, visual, message, offer ya CTA enough strong/clear nahi ho sakta.</p></div>
+<div><h4>What to check</h4><p>Hook, visual, message, offer, CTA.</p></div>
+<div><h4>What to test</h4><p>Stronger hook, different visual, problem/benefit message, clearer offer test karo.</p></div>
+<div><h4>Why this test?</h4><p>Click stage weak hai, isliye creative/message investigate karna logical hai.</p></div>
+<div class="macd-not-change"><h4>What not to change yet</h4><p>Ek hi test mein audience + landing page + offer + creative sab mat badlo.</p></div>
+</div>
+</div>
+</article>
+<article class="macd-diagnosis-card" data-tags="hook hold 3 sec video opening visual problem readability speed">
+<button aria-expanded="false" class="macd-accordion-trigger">
+<span class="macd-case-no">Case 03</span>
+<span class="macd-case-title">3-sec Hold Low</span>
+<span class="macd-case-hint">Opening / Hook investigate</span>
+<span aria-hidden="true" class="macd-chevron"></span>
+</button>
+<div class="macd-accordion-panel">
+<div class="macd-diagnosis-grid">
+<div><h4>What is happening?</h4><p>Bahut log first few seconds mein video chhod rahe hain.</p></div>
+<div><h4>Simple meaning</h4><p>Opening attention hold nahi kar pa rahi.</p></div>
+<div><h4>Possible reason</h4><p>First line weak, first visual unclear, problem clarity low, text readability issue ya opening slow ho sakti hai.</p></div>
+<div><h4>What to check</h4><p>First 1–3 sec, first line, first visual, problem clarity, text readability, opening speed.</p></div>
+<div><h4>What to test</h4><p>Problem / Benefit / Question hook ya new opening visual test karo.</p></div>
+<div><h4>Why this test?</h4><p>Pehle opening attention improve karo.</p></div>
+<div class="macd-not-change"><h4>What not to change yet</h4><p>Opening signal weak hai, isliye bina evidence ke landing page ko primary problem mat samjho.</p></div>
+</div>
+</div>
+</article>
+<article class="macd-diagnosis-card" data-tags="hook hold 3 sec 5 sec continuation pacing immediate value video">
+<button aria-expanded="false" class="macd-accordion-trigger">
+<span class="macd-case-no">Case 04</span>
+<span class="macd-case-title">3-sec Hold Good + 5-sec Hold Sharp Drop</span>
+<span class="macd-case-hint">Continuation investigate</span>
+<span aria-hidden="true" class="macd-chevron"></span>
+</button>
+<div class="macd-accordion-panel">
+<div class="macd-diagnosis-grid">
+<div><h4>What is happening?</h4><p>Starting ne attention liya, lekin 3–5 sec mein interest toot raha hai.</p></div>
+<div><h4>Simple meaning</h4><p>Hook attention le raha hai; problem Hook ke baad ke content mein ho sakti hai.</p></div>
+<div><h4>Possible reason</h4><p>Immediate value missing, unnecessary intro, slow pacing, ya Hook aur next line disconnected ho sakte hain.</p></div>
+<div><h4>What to check</h4><p>Hook ke baad kya aa raha hai? Immediate value? Unnecessary intro? Pacing? Hook-next-line connection?</p></div>
+<div><h4>What to test</h4><p>Same Hook rakho + first 3–5 sec continuation change karo.</p></div>
+<div><h4>Why this test?</h4><p>Hook already attention le raha hai; pehle Hook ko change karna zaroori nahi.</p></div>
+<div class="macd-not-change"><h4>What not to change yet</h4><p>Hook, audience, offer aur landing page ko automatically mat badlo.</p></div>
+</div>
+</div>
+</article>
+<article class="macd-diagnosis-card" data-tags="hold 5 sec 10 sec middle video pacing repetition visual proof solution">
+<button aria-expanded="false" class="macd-accordion-trigger">
+<span class="macd-case-no">Case 05</span>
+<span class="macd-case-title">5-sec Hold Good + 10-sec Drop</span>
+<span class="macd-case-hint">Middle section investigate</span>
+<span aria-hidden="true" class="macd-chevron"></span>
+</button>
+<div class="macd-accordion-panel">
+<div class="macd-diagnosis-grid">
+<div><h4>What is happening?</h4><p>Beginning strong hai, middle weak ho sakta hai.</p></div>
+<div><h4>Simple meaning</h4><p>Opening retain kar rahi hai, lekin deeper section mein users drop kar rahe hain.</p></div>
+<div><h4>Possible reason</h4><p>Long explanation, repetition, slow pacing, same visual ya no new information.</p></div>
+<div><h4>What to check</h4><p>Long explanation, repetition, slow pacing, same visual, no new information.</p></div>
+<div><h4>What to test</h4><p>Shorter explanation, visual changes, demonstration, proof, filler remove karo.</p></div>
+<div><h4>Why this test?</h4><p>Middle ko improve karo; opening ko bina reason mat badlo.</p></div>
+<div class="macd-not-change"><h4>What not to change yet</h4><p>Opening/Hook ko unnecessary replace mat karo.</p></div>
+</div>
+</div>
+</article>
+<article class="macd-diagnosis-card" data-tags="hold ctr cta offer benefit reason to click message clarity">
+<button aria-expanded="false" class="macd-accordion-trigger">
+<span class="macd-case-no">Case 06</span>
+<span class="macd-case-title">Hold Good + CTR Low</span>
+<span class="macd-case-hint">Action reason investigate</span>
+<span aria-hidden="true" class="macd-chevron"></span>
+</button>
+<div class="macd-accordion-panel">
+<div class="macd-diagnosis-grid">
+<div><h4>What is happening?</h4><p>Log video dekh rahe hain, lekin click nahi kar rahe.</p></div>
+<div><h4>Simple meaning</h4><p>Retention good hai, lekin action lene ka reason weak ho sakta hai.</p></div>
+<div><h4>Possible reason</h4><p>CTA, offer, benefit, reason to click ya message clarity weak ho sakti hai.</p></div>
+<div><h4>What to check</h4><p>CTA, offer, benefit, reason to click, message clarity.</p></div>
+<div><h4>What to test</h4><p>Stronger CTA, clearer offer, specific benefit test karo.</p></div>
+<div><h4>Why this test?</h4><p>Retention good hai; action lene ka reason investigate karo.</p></div>
+<div class="macd-not-change"><h4>What not to change yet</h4><p>Hook ko automatically problem mat samjho.</p></div>
+</div>
+<div class="macd-example macd-inside-example">
+<div class="macd-example-title">Example</div>
+<p>Video useful tha: “Gas leakage ke 3 signs.” Customer ne dekha. Lekin end mein sirf “Thank you for watching.”</p>
+<p><strong>Test:</strong> “Apne gas stove ki problem ke liye technician book karne ke liye Call Now karein.”</p>
+</div>
+</div>
+</article>
+<article class="macd-diagnosis-card" data-tags="ctr link-ctr link ctr cta offer message reason to click website">
+<button aria-expanded="false" class="macd-accordion-trigger">
+<span class="macd-case-no">Case 07</span>
+<span class="macd-case-title">CTR (All) Good + Link CTR Low</span>
+<span class="macd-case-hint">Website-click intent investigate</span>
+<span aria-hidden="true" class="macd-chevron"></span>
+</button>
+<div class="macd-accordion-panel">
+<div class="macd-callout">
+<strong>Simple Meaning:</strong>
+              CTR (All) = ad par kisi bhi type ka click/action.
+              Link CTR = specifically website/landing page link par click.
+            </div>
+<p>
+              Agar CTR (All) good hai aur Link CTR low hai, to log ad ke saath interact kar rahe hain,
+              lekin website par jaane ke liye enough reason nahi mil raha ho sakta.
+            </p>
+<div class="macd-diagnosis-grid">
+<div><h4>What is happening?</h4><p>Overall interaction aa rahi hai, lekin actual link-click intent weak hai.</p></div>
+<div><h4>Simple meaning</h4><p>Engagement ko website traffic samajhna sahi nahi; Link CTR ko separately dekho.</p></div>
+<div><h4>Possible reason</h4><p>CTA generic ho sakta hai, offer unclear ho sakta hai, message action tak naturally lead nahi kar raha ho sakta.</p></div>
+<div><h4>What to check</h4><p>CTA, Offer, Message, Reason to Click, Creative-to-CTA connection.</p></div>
+<div><h4>What to test</h4><p>Same creative + stronger CTA, clearer offer/benefit, ya stronger reason-to-click.</p></div>
+<div><h4>Why this test?</h4><p>Agar attention metrics already achhe hain, to pehle action layer isolate karke test karna logical hai.</p></div>
+<div class="macd-not-change"><h4>What not to change yet</h4><p>Hook ko turant change mat karo agar Hook/attention metrics already achhe hain.</p></div>
+</div>
+<div class="macd-example macd-inside-example">
+<div class="macd-example-title">Example</div>
+<p><strong>Hook:</strong> “Gas leakage ko ignore mat karein!”</p>
+<p><strong>Weak CTA:</strong> “Contact Us”</p>
+<p><strong>Better CTA:</strong> “Apne area mein gas technician book karein — Book Now.”</p>
+</div>
+<div class="macd-callout">
+<strong>Important:</strong> CTR (All) good hona website traffic good hone ki guarantee nahi hai.
+              Link CTR actual website-click intent ko samajhne mein zyada useful hai.
+            </div>
+</div>
+</article>
+<article class="macd-diagnosis-card" data-tags="ctr leads landing page form page speed trust offer message match conversion">
+<button aria-expanded="false" class="macd-accordion-trigger">
+<span class="macd-case-no">Case 08</span>
+<span class="macd-case-title">CTR Good + Leads Low</span>
+<span class="macd-case-hint">Post-click experience investigate</span>
+<span aria-hidden="true" class="macd-chevron"></span>
+</button>
+<div class="macd-accordion-panel">
+<div class="macd-diagnosis-grid">
+<div><h4>What is happening?</h4><p>Click aa raha hai, lekin lead conversion weak hai.</p></div>
+<div><h4>Simple meaning</h4><p>Ad interest create kar raha hai; click ke baad ka part weak ho sakta hai.</p></div>
+<div><h4>Possible reason</h4><p>Landing page, form, speed, trust, offer, ad-to-page message match ya tracking issue.</p></div>
+<div><h4>What to check</h4><p>Landing page headline, message match, form length, page speed, trust, offer clarity, tracking.</p></div>
+<div><h4>What to test</h4><p>Better landing page headline, shorter form, clearer offer, stronger trust elements.</p></div>
+<div><h4>Why this test?</h4><p>Customer click kar raha hai; creative ko immediately blame mat karo.</p></div>
+<div class="macd-not-change"><h4>What not to change yet</h4><p>Creative/Hook ko unnecessary replace mat karo.</p></div>
+</div>
+</div>
+</article>
+<article class="macd-diagnosis-card" data-tags="cpl ctr hook visual angle message offer creative">
+<button aria-expanded="false" class="macd-accordion-trigger">
+<span class="macd-case-no">Case 09</span>
+<span class="macd-case-title">CPL High + CTR Low</span>
+<span class="macd-case-hint">Creative / Message investigate</span>
+<span aria-hidden="true" class="macd-chevron"></span>
+</button>
+<div class="macd-accordion-panel">
+<div class="macd-diagnosis-grid">
+<div><h4>What is happening?</h4><p>Click interest weak hai aur lead cost high hai.</p></div>
+<div><h4>Simple meaning</h4><p>Lead cost problem ka signal upstream click stage par bhi dikh raha hai.</p></div>
+<div><h4>Possible reason</h4><p>Hook, visual, angle, message ya offer weak ho sakta hai.</p></div>
+<div><h4>What to check</h4><p>Hook, visual, angle, message, offer.</p></div>
+<div><h4>What to test</h4><p>New hook + new creative angle test karo.</p></div>
+<div><h4>Why this test?</h4><p>Click stage weak hai.</p></div>
+<div class="macd-not-change"><h4>What not to change yet</h4><p>Ek saath landing page + audience + offer + creative sab mat badlo.</p></div>
+</div>
+</div>
+</article>
+<article class="macd-diagnosis-card" data-tags="cpl ctr leads landing page form conversion offer audience tracking quality post click">
+<button aria-expanded="false" class="macd-accordion-trigger">
+<span class="macd-case-no">Case 10</span>
+<span class="macd-case-title">CPL High + CTR Good</span>
+<span class="macd-case-hint">Post-click side investigate</span>
+<span aria-hidden="true" class="macd-chevron"></span>
+</button>
+<div class="macd-accordion-panel">
+<div class="macd-diagnosis-grid">
+<div><h4>What is happening?</h4><p>Click aa raha hai, lekin lead expensive hai.</p></div>
+<div><h4>Simple meaning</h4><p>Creative click generate kar raha hai; conversion efficiency weak ho sakti hai.</p></div>
+<div><h4>Possible reason</h4><p>Landing page, form, conversion rate, offer, audience, tracking ya lead quality.</p></div>
+<div><h4>What to check</h4><p>Landing page, form, conversion rate, offer, audience, tracking, lead quality.</p></div>
+<div><h4>What to test</h4><p>Post-click/page/form/offer/audience tests karo.</p></div>
+<div><h4>Why this test?</h4><p>Creative click generate kar raha hai; upstream creative ko unnecessarily change mat karo.</p></div>
+<div class="macd-not-change"><h4>What not to change yet</h4><p>CTR good hai to creative ko automatically replace mat karo.</p></div>
+</div>
+</div>
+</article>
+<article class="macd-diagnosis-card" data-tags="leads quality qualified leads message offer audience form questions qualification">
+<button aria-expanded="false" class="macd-accordion-trigger">
+<span class="macd-case-no">Case 11</span>
+<span class="macd-case-title">Leads Good + Qualified Leads Low</span>
+<span class="macd-case-hint">Qualification investigate</span>
+<span aria-hidden="true" class="macd-chevron"></span>
+</button>
+<div class="macd-accordion-panel">
+<div class="macd-diagnosis-grid">
+<div><h4>What is happening?</h4><p>Lead quantity achhi hai, lekin useful leads kam hain.</p></div>
+<div><h4>Simple meaning</h4><p>Cheap ya high-volume leads business success ki guarantee nahi hain.</p></div>
+<div><h4>Possible reason</h4><p>Ad message too generic, offer wrong-fit users ko attract kar raha, audience mismatch, form qualification weak.</p></div>
+<div><h4>What to check</h4><p>Ad message, offer, audience, form questions, qualification.</p></div>
+<div><h4>What to test</h4><p>Message ko more specific banao aur qualification improve karo.</p></div>
+<div><h4>Why this test?</h4><p>Cheap lead ko business success mat samjho.</p></div>
+<div class="macd-not-change"><h4>What not to change yet</h4><p>Sirf CPL low dekhkar current setup ko “winner” mat declare karo.</p></div>
+</div>
+</div>
+</article>
+<article class="macd-diagnosis-card" data-tags="fatigue ctr frequency audience spend hook visual angle format">
+<button aria-expanded="false" class="macd-accordion-trigger">
+<span class="macd-case-no">Case 12</span>
+<span class="macd-case-title">CTR Down + Frequency Up</span>
+<span class="macd-case-hint">Fatigue investigate</span>
+<span aria-hidden="true" class="macd-chevron"></span>
+</button>
+<div class="macd-accordion-panel">
+<div class="macd-diagnosis-grid">
+<div><h4>What is happening?</h4><p>Same audience ko ad zyada baar dikh raha ho sakta hai aur interest kam ho raha ho sakta hai.</p></div>
+<div><h4>Simple meaning</h4><p>Creative fatigue ka signal ho sakta hai, lekin frequency alone proof nahi hai.</p></div>
+<div><h4>Possible reason</h4><p>Audience repetition ke saath creative novelty/interest reduce ho raha ho sakta hai.</p></div>
+<div><h4>What to check</h4><p>Frequency trend, CTR trend, audience size, spend.</p></div>
+<div><h4>What to test</h4><p>New Hook, Visual, Angle ya Format test karo.</p></div>
+<div><h4>Why this test?</h4><p>Frequency alone se fatigue declare mat karo; CTR trend bhi dekho.</p></div>
+<div class="macd-not-change"><h4>What not to change yet</h4><p>Sirf frequency high hone par fatigue final mat declare karo.</p></div>
+</div>
+</div>
+</article>
+<article class="macd-diagnosis-card" data-tags="hold ctr leads landing page form offer trust speed tracking conversion">
+<button aria-expanded="false" class="macd-accordion-trigger">
+<span class="macd-case-no">Case 13</span>
+<span class="macd-case-title">Hold Good + CTR Good + Leads Low</span>
+<span class="macd-case-hint">Conversion layer investigate</span>
+<span aria-hidden="true" class="macd-chevron"></span>
+</button>
+<div class="macd-accordion-panel">
+<div class="macd-diagnosis-grid">
+<div><h4>What is happening?</h4><p>Attention aur clicks dono aa rahe hain, lekin conversion weak hai.</p></div>
+<div><h4>Simple meaning</h4><p>Creative ka upper-funnel signal healthy hai; problem post-click conversion side par ho sakti hai.</p></div>
+<div><h4>Possible reason</h4><p>Landing page, form, offer, trust, page speed ya tracking.</p></div>
+<div><h4>What to check</h4><p>Landing page, form, offer, trust, page speed, tracking.</p></div>
+<div><h4>What to test</h4><p>Page/form/offer/trust test karo.</p></div>
+<div><h4>Why this test?</h4><p>Creative ko unnecessary replace mat karo.</p></div>
+<div class="macd-not-change"><h4>What not to change yet</h4><p>Hold aur CTR good hain to creative ko bina reason replace mat karo.</p></div>
+</div>
+</div>
+</article>
+<article class="macd-diagnosis-card" data-tags="leads quality qualified message offer audience qualification form">
+<button aria-expanded="false" class="macd-accordion-trigger">
+<span class="macd-case-no">Case 14</span>
+<span class="macd-case-title">Leads Good But Quality Bad</span>
+<span class="macd-case-hint">Right-customer fit investigate</span>
+<span aria-hidden="true" class="macd-chevron"></span>
+</button>
+<div class="macd-accordion-panel">
+<div class="macd-diagnosis-grid">
+<div><h4>What is happening?</h4><p>Leads aa rahi hain, lekin right customers nahi aa rahe.</p></div>
+<div><h4>Simple meaning</h4><p>Lead volume theek hai, business-fit weak hai.</p></div>
+<div><h4>Possible reason</h4><p>Message, offer, audience, qualification ya form wrong-fit leads attract/allow kar raha ho sakta hai.</p></div>
+<div><h4>What to check</h4><p>Message, offer, audience, qualification, form.</p></div>
+<div><h4>What to test</h4><p>More specific messaging aur qualification test karo.</p></div>
+<div><h4>Why this test?</h4><p>Sirf CPL ko success metric mat samjho.</p></div>
+<div class="macd-not-change"><h4>What not to change yet</h4><p>Lead quantity ko dekhkar quality issue ignore mat karo.</p></div>
+</div>
+<div class="macd-example macd-inside-example">
+<div class="macd-example-title">Example</div>
+<p>CPL ₹100 hai, lekin 100 leads mein sirf 15 qualified hain. Business ke liye actual problem quality ho sakti hai.</p>
+<p><strong>Test:</strong> Generic offer ke bajay specific customer/problem ko address karo.</p>
+</div>
+</div>
+</article>
+</div>
+ SPECIAL DIAGNOSIS 
+<section class="macd-special-section">
+<div class="macd-special-heading">
+<p class="macd-section-kicker-text">Special Diagnosis</p>
+<h2>High-priority situations ko kaise read karein</h2>
+</div>
+<article class="macd-card macd-special-card">
+<div class="macd-section-kicker">A</div>
+<h2>3-sec → 5-sec Diagnosis</h2>
+<div class="macd-split-signal">
+<div><strong>3-sec GOOD</strong><span>Hook works</span></div>
+<div><strong>5-sec SHARP DROP</strong><span>Hook ke baad ka content investigate karo</span></div>
+</div>
+<div class="macd-example">
+<div class="macd-example-title">Gas Service Example</div>
+<p><strong>0–3 sec:</strong> “Gas leakage ko ignore mat karein.”</p>
+<p><strong>BAD continuation:</strong> “Hum XYZ Gas Service hain aur hum pichhle 10 saal se...”</p>
+<p><strong>BETTER continuation:</strong> “Agar gas ki smell aa rahi hai, sabse pehle ye 3 cheezein check karein.”</p>
+</div>
+<p>
+            Customer ne Hook par attention diya, lekin usko aage continue karne ka reason nahi mila.
+            Isliye pehle Hook ko change karne ke bajay continuation test karo.
+          </p>
+<div class="macd-two-col-list">
+<div>
+<h3>What to check</h3>
+<ul>
+<li>Hook ke immediately baad kya aa raha hai?</li>
+<li>Kya useful information immediately mil rahi hai?</li>
+<li>Kya unnecessary company introduction aa raha hai?</li>
+<li>Kya video slow ho raha hai?</li>
+<li>Kya Hook aur next sentence connected hain?</li>
+<li>Kya customer ko continue karne ka reason mil raha hai?</li>
+</ul>
+</div>
+<div>
+<h3>What to test</h3>
+<ul>
+<li>Same Hook + new 3–5 sec continuation</li>
+<li>Direct value immediately</li>
+<li>Shorter sentence</li>
+<li>Faster opening</li>
+<li>Visual change</li>
+<li>Real situation/demo</li>
+</ul>
+</div>
+</div>
+<div class="macd-do-not">
+<h3>Abhi automatically kya change nahi karna?</h3>
+<ul>
+<li>Hook — agar 3-sec Hold already strong hai</li>
+<li>Audience</li>
+<li>Offer</li>
+<li>Landing Page — jab tak data kisi aur issue ki taraf signal na kare</li>
+</ul>
+</div>
+</article>
+<article class="macd-card macd-special-card">
+<div class="macd-section-kicker">B</div>
+<h2>Video Timeline Diagnosis</h2>
+<div class="macd-timeline">
+<div><span>0–3 sec</span><strong>Hook</strong><p>Attention lena.</p></div>
+<div><span>3–5 sec</span><strong>Promise / Reason to Continue</strong><p>Customer ko reason dena ki video kyun continue kare.</p></div>
+<div><span>5–10 sec</span><strong>Value / Proof / Solution</strong><p>Useful information, proof ya solution dena.</p></div>
+<div><span>10 sec+</span><strong>Deeper Explanation</strong><p>Agar zaroori ho to detail dena.</p></div>
+<div><span>End</span><strong>CTA</strong><p>Customer ko next action batana.</p></div>
+</div>
+</article>
+<article class="macd-card macd-special-card">
+<div class="macd-section-kicker">C</div>
+<h2>Creative Fatigue</h2>
+<p>
+            Creative Fatigue = same audience ko same creative baar-baar dikhne ke baad interest kam hona.
+          </p>
+<div class="macd-golden-rule smaller">Frequency high alone = fatigue nahi.</div>
+<div class="macd-two-col-list">
+<div>
+<h3>Check</h3>
+<ul>
+<li>Frequency trend</li>
+<li>CTR trend</li>
+<li>Audience size</li>
+<li>Spend</li>
+</ul>
+</div>
+<div>
+<h3>If Frequency ↑ and CTR ↓, test</h3>
+<ul>
+<li>New Hook</li>
+<li>New Visual</li>
+<li>New Angle</li>
+<li>New Format</li>
+</ul>
+</div>
+</div>
+</article>
+<article class="macd-card macd-special-card">
+<div class="macd-section-kicker">D</div>
+<h2>Universal Benchmark Warning</h2>
+<div class="macd-warning">
+            “CTR below X = bad” ya “Landing page below Y = bad” ko rigid universal rule mat banao.
+          </div>
+<p>
+            Benchmark <strong>industry, objective, audience, placement, creative, account aur campaign context</strong>
+            ke according change ho sakta hai.
+          </p>
+<div class="macd-benchmark-grid">
+<span>Control comparison</span>
+<span>Previous creative comparison</span>
+<span>Trend</span>
+<span>Stage-to-stage drop</span>
+<span>User-defined benchmark</span>
+</div>
+<div class="macd-callout">
+            Agar context insufficient ho: <strong>“Needs more context.”</strong>
+</div>
+</article>
+<article class="macd-card macd-special-card">
+<div class="macd-section-kicker">E</div>
+<h2>Exact Diagnosis Output Format</h2>
+<div class="macd-output-flow">
+<div><span>1</span><strong>WHAT IS HAPPENING?</strong><p>Exact signal batao.</p></div>
+<div><span>2</span><strong>SIMPLE MEANING</strong><p>Normal Hinglish mein iska matlab.</p></div>
+<div><span>3</span><strong>POSSIBLE REASON</strong><p>Possible reason do, absolute claim nahi.</p></div>
+<div><span>4</span><strong>WHAT TO CHECK</strong><p>Specific checklist.</p></div>
+<div><span>5</span><strong>WHAT TO TEST</strong><p>Ek focused next test.</p></div>
+<div><span>6</span><strong>WHY THIS TEST?</strong><p>Current signal se iska connection.</p></div>
+<div><span>7</span><strong>WHAT NOT TO CHANGE YET</strong><p>Jo part currently okay signal de raha hai, use unnecessarily mat badlo.</p></div>
+</div>
+<div class="macd-example">
+<div class="macd-example-title">Example Output</div>
+<p><strong>WHAT IS HAPPENING?</strong> 3-sec Hold good hai, 5-sec Hold sharply down hai.</p>
+<p><strong>SIMPLE MEANING:</strong> Hook ne attention liya, lekin Hook ke baad interest maintain nahi hua.</p>
+<p><strong>POSSIBLE REASON:</strong> Hook ke baad useful information immediately nahi mili ho sakti.</p>
+<p><strong>WHAT TO CHECK:</strong> First sentence, pacing, visual change, value delivery.</p>
+<p><strong>WHAT TO TEST:</strong> Same Hook + new 3–5 second continuation.</p>
+<p><strong>WHY THIS TEST?</strong> Kyunki Hook already attention le raha hai.</p>
+<p><strong>WHAT NOT TO CHANGE YET:</strong> Hook, audience aur offer ko ek saath change mat karo.</p>
+</div>
+</article>
+<article class="macd-card macd-special-card">
+<div class="macd-section-kicker">F</div>
+<h2>Real End-to-End Example</h2>
+<p><strong>Business:</strong> Gas servicing lead generation</p>
+<div class="macd-end-example">
+<div><span>Problem</span><p>3-sec Hold good hai, 5-sec Hold mein sharp drop.</p></div>
+<div><span>Observation</span><p>Starting Hook attention le raha hai.</p></div>
+<div><span>Diagnosis</span><p>Hook ke baad interest maintain nahi ho raha.</p></div>
+<div><span>Check</span><p>Hook ke baad first sentence, pacing, visual, immediate value.</p></div>
+<div><span>Control</span><p>Existing Hook + existing continuation.</p></div>
+<div><span>Variant</span><p>Same Hook + stronger 3–5 sec continuation.</p></div>
+<div><span>What are we testing?</span><p>Hook ke baad ka continuation.</p></div>
+<div><span>Why?</span><p>Hook already attention le raha hai; continuation isolate karke test karna logical hai.</p></div>
+<div><span>Learning</span><p>Agar Variant 5-sec/10-sec Hold improve karta hai, opening ke baad immediate value important ho sakti hai.</p></div>
+<div><span>Next test</span><p>Same strong continuation ke saath different visual test karo.</p></div>
+<div><span>Do not change yet</span><p>Audience + offer + landing page sab ek saath.</p></div>
+</div>
+</article>
+<article class="macd-card macd-special-card">
+<div class="macd-section-kicker">G</div>
+<h2>Quick Diagnosis Cheat Sheet</h2>
+<div class="macd-cheat-sheet">
+<div><strong>3-sec Hold ↓</strong><span>Hook investigate karo.</span></div>
+<div><strong>3-sec good → 5-sec ↓</strong><span>Hook ke baad ka content/continuation investigate karo.</span></div>
+<div><strong>5-sec good → 10-sec ↓</strong><span>Middle section investigate karo.</span></div>
+<div><strong>Hold good → CTR ↓</strong><span>CTA / Offer / Reason to click investigate karo.</span></div>
+<div><strong>CTR (All) good + Link CTR low</strong><span>CTA / Offer / Message / Reason to Click diagnose karo.</span></div>
+<div><strong>CTR good → Leads ↓</strong><span>Landing Page / Form / Offer investigate karo.</span></div>
+<div><strong>CPL ↑ + CTR ↓</strong><span>Creative/message investigate karo.</span></div>
+<div><strong>CPL ↑ + CTR good</strong><span>Post-click side investigate karo.</span></div>
+<div><strong>Leads good + Quality ↓</strong><span>Message / Offer / Audience / Qualification investigate karo.</span></div>
+<div><strong>Frequency ↑ + CTR ↓</strong><span>Creative fatigue ka signal ho sakta hai; trend check karo.</span></div>
+</div>
+</article>
+<article class="macd-card macd-special-card macd-final-formula">
+<div class="macd-section-kicker">Final</div>
+<h2>Diagnosis Formula</h2>
+<div class="macd-master-formula">
+<span>Kya ho raha hai?</span><b>→</b>
+<span>Simple meaning</span><b>→</b>
+<span>Possible reason</span><b>→</b>
+<span>Kya check karna hai?</span><b>→</b>
+<span>Kya test karna hai?</span><b>→</b>
+<span>Kyun test karna hai?</span><b>→</b>
+<span>Abhi kya change nahi karna?</span>
+</div>
+</article>
+</section>

@@ -10,7 +10,7 @@ body {
 }
 
 body {
-  overflow: hidden;
+  overflow-x: hidden;
   background: #f4f7fb;
   font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
