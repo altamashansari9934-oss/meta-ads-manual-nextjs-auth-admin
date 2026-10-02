@@ -32,6 +32,8 @@ export default async function LoginPage({
           <AuthSubmitButton idleText="Login" pendingText="Logging in..." />
         </form>
 
+        <p className="auth-small"><a href="/forgot-password">Forgot Password?</a></p>
+
         <p className="auth-small">
           New user? <Link href="/signup">Create account</Link>
         </p>

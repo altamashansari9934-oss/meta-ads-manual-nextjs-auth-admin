@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { requestPasswordReset } from "@/app/password-actions";
-import AuthSubmitButton from "@/components/AuthSubmitButton";
 
 export default async function ForgotPasswordPage({
   searchParams,
@@ -12,26 +11,24 @@ export default async function ForgotPasswordPage({
   return (
     <main className="auth-screen">
       <section className="auth-card">
-        <div className="auth-logo">M</div>
         <div className="auth-kicker">RESET PASSWORD</div>
-        <h1>Forgot password?</h1>
-        <p>
-          Apna registered email enter karein. Hum us email par password reset link bhejenge.
-        </p>
+        <h1>Forgot Password?</h1>
+        <p>Apna registered email enter karein. Reset link aapke email par bheja jayega.</p>
 
         {params.error ? <div className="form-alert error">{params.error}</div> : null}
         {params.message ? <div className="form-alert success">{params.message}</div> : null}
 
         <form className="auth-form" action={requestPasswordReset}>
           <label>
-            Registered Email
+            Email
             <input name="email" type="email" autoComplete="email" required />
           </label>
-          <AuthSubmitButton idleText="Send Reset Link" pendingText="Sending..." />
+
+          <button className="primary-btn" type="submit">Send Reset Link</button>
         </form>
 
         <p className="auth-small">
-          Password yaad aa gaya? <Link href="/login">Back to Login</Link>
+          <Link href="/login">Back to Login</Link>
         </p>
       </section>
     </main>
