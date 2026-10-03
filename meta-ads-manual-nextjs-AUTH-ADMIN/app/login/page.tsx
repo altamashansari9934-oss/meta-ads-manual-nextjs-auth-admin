@@ -15,7 +15,7 @@ export default async function LoginPage({
         <div className="auth-logo">M</div>
         <div className="auth-kicker">META ADS</div>
         <h1>Login</h1>
-        <p>Approved users hi Creative Field Manual access kar sakte hain.</p>
+        <p>Approved users hi Meta AdDiagnosis access kar sakte hain.</p>
 
         {params.error ? <div className="form-alert error">{params.error}</div> : null}
         {params.message ? <div className="form-alert success">{params.message}</div> : null}

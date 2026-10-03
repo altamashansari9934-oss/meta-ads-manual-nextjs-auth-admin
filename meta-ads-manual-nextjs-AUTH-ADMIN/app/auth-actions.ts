@@ -14,7 +14,7 @@ export async function signUp(formData: FormData) {
   const password = String(formData.get("password") || "");
 
   if (!name || !email || password.length < 8) {
-    redirect(`/signup?error=${enc("Name, email aur minimum 8-character password required hai.")}`);
+    redirect(`/signup?error=${enc("Please enter your name, email address, and a password with at least 8 characters.")}`);
   }
 
   const supabase = await createSupabaseServerClient();

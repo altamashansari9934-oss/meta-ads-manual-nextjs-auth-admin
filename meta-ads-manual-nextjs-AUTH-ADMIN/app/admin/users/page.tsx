@@ -10,6 +10,20 @@ function formatDate(value: string | null) {
   }).format(new Date(value));
 }
 
+
+function accessDurationValue(value: string | null) {
+  if (!value) return "permanent";
+
+  const remainingDays = Math.max(
+    0,
+    (new Date(value).getTime() - Date.now()) / (1000 * 60 * 60 * 24)
+  );
+
+  if (remainingDays <= 45) return "30d";
+  if (remainingDays <= 140) return "90d";
+  return "1y";
+}
+
 export const dynamic = "force-dynamic";
 
 export default async function AdminUsersPage() {
@@ -82,7 +96,7 @@ export default async function AdminUsersPage() {
                     ) : (
                       <form className="inline-access-form" action={approveUser}>
                         <input type="hidden" name="userId" value={user.id} />
-                        <select name="duration" defaultValue="permanent">
+                        <select name="duration" defaultValue={accessDurationValue(user.access_expires_at)}>
                           <option value="30d">30 days</option>
                           <option value="90d">90 days</option>
                           <option value="1y">1 year</option>

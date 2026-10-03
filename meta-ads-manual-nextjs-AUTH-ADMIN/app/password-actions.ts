@@ -23,7 +23,7 @@ export async function requestPasswordReset(formData: FormData) {
   const email = String(formData.get("email") || "").trim();
 
   if (!email) {
-    redirect(`/forgot-password?error=${enc("Registered email required hai.")}`);
+    redirect(`/forgot-password?error=${enc("Please enter your registered email address.")}`);
   }
 
   const supabase = await createSupabaseServerClient();
@@ -35,7 +35,7 @@ export async function requestPasswordReset(formData: FormData) {
   // Generic response to avoid revealing whether an email exists.
   redirect(
     `/forgot-password?message=${enc(
-      "Agar ye email registered hai to password reset link bhej diya gaya hai."
+      "If an account exists for this email, a password reset link has been sent."
     )}`
   );
 }
@@ -47,13 +47,13 @@ export async function updatePassword(formData: FormData) {
   if (password.length < 8) {
     redirect(
       `/update-password?error=${enc(
-        "Password minimum 8 characters ka hona chahiye."
+        "Your password must be at least 8 characters long."
       )}`
     );
   }
 
   if (password !== confirmPassword) {
-    redirect(`/update-password?error=${enc("Passwords match nahi kar rahe.")}`);
+    redirect(`/update-password?error=${enc("The passwords do not match.")}`);
   }
 
   const supabase = await createSupabaseServerClient();
@@ -65,7 +65,7 @@ export async function updatePassword(formData: FormData) {
   if (!user) {
     redirect(
       `/forgot-password?error=${enc(
-        "Reset link invalid ya expire ho gaya hai. Naya reset link request karein."
+        "This reset link is invalid or has expired. Please request a new password reset link."
       )}`
     );
   }
@@ -75,7 +75,7 @@ export async function updatePassword(formData: FormData) {
   if (error) {
     redirect(
       `/update-password?error=${enc(
-        "Password update nahi ho saka. Naya reset link request karein."
+        "We could not update your password. Please request a new password reset link."
       )}`
     );
   }
@@ -84,7 +84,7 @@ export async function updatePassword(formData: FormData) {
 
   redirect(
     `/login?message=${enc(
-      "Password successfully update ho gaya. Ab new password se login karein."
+      "Your password has been updated successfully. You can now sign in with your new password."
     )}`
   );
 }

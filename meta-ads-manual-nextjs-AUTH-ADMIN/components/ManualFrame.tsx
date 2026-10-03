@@ -7,7 +7,7 @@ export default function ManualFrame({ html }: ManualFrameProps) {
     <main className="manual-app-shell">
       <iframe
         className="manual-app-frame is-ready"
-        title="Meta Ads Creative Field Manual"
+        title="Meta Ads Meta AdDiagnosis"
         srcDoc={html}
       />
     </main>

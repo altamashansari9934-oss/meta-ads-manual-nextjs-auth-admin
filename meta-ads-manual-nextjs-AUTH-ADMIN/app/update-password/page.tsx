@@ -13,7 +13,7 @@ export default async function UpdatePasswordPage({
       <section className="auth-card">
         <div className="auth-kicker">NEW PASSWORD</div>
         <h1>Create New Password</h1>
-        <p>Apne account ke liye naya password set karein.</p>
+        <p>Set a new password for your account.</p>
 
         {params.error ? <div className="form-alert error">{params.error}</div> : null}
 

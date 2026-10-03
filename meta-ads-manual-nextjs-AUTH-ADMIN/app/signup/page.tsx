@@ -15,7 +15,7 @@ export default async function SignUpPage({
         <div className="auth-logo">M</div>
         <div className="auth-kicker">META ADS</div>
         <h1>Create account</h1>
-        <p>Account create hone ke baad admin approval required hoga.</p>
+        <p>After creating your account, access will require admin approval.</p>
 
         {params.error ? <div className="form-alert error">{params.error}</div> : null}
 

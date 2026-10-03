@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Meta Ads Creative Field Manual",
+  title: "Meta Ads Meta AdDiagnosis",
   description: "Meta Ads creative testing, diagnosis, audience strategy and data interpretation field manual.",
 };
 

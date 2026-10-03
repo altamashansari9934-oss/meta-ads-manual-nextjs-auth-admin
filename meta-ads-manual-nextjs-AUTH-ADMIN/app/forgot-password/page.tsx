@@ -13,7 +13,7 @@ export default async function ForgotPasswordPage({
       <section className="auth-card">
         <div className="auth-kicker">RESET PASSWORD</div>
         <h1>Forgot Password?</h1>
-        <p>Apna registered email enter karein. Reset link aapke email par bheja jayega.</p>
+        <p>Enter your registered email address and we’ll send you a password reset link.</p>
 
         {params.error ? <div className="form-alert error">{params.error}</div> : null}
         {params.message ? <div className="form-alert success">{params.message}</div> : null}
