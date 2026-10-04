@@ -37,8 +37,8 @@ Paste this entire code into ONE Elementor HTML widget.
 <p class="macd-intro">Controlled scaling ka focus sirf budget badhana nahi, balki acceptable business outcome ko zyada volume tak le jaana hai.</p>
 </header></template><template id="macd-hero-budget"><header class="macd-hero budget-hero"><div class="macd-eyebrow">BUDGET ALLOCATION</div><h1>Meta Ads — Budget Allocation</h1><p class="macd-subtitle">ZERO TO ADVANCED · Detailed Practical Hinglish Notes | Lead Generation + E-commerce + Real Estate</p><div class="macd-flow macd-engaging-flow">Goal: Kisi bhi campaign mein budget allocation se related problem aaye to WHAT → WHY → CHECK → ACTION ke through turant diagnose kar sako.</div></header></template></div>
 <nav aria-label="Meta Ads manual sections" class="macd-mode-tabs" role="tablist">
-<button aria-controls="macd-mode-audience" aria-selected="true" class="macd-mode-tab" data-mode="audience" id="macd-mode-tab-audience" role="tab" tabindex="0">Audience &amp; Creative Strategy</button>
-<button aria-controls="macd-mode-lead" aria-selected="false" class="macd-mode-tab is-active is-open" data-mode="lead" id="macd-mode-tab-lead" role="tab" tabindex="-1">Lead Generation</button>
+<button aria-controls="macd-mode-audience" aria-selected="false" class="macd-mode-tab" data-mode="audience" id="macd-mode-tab-audience" role="tab" tabindex="-1">Audience &amp; Creative Strategy</button>
+<button aria-controls="macd-mode-lead" aria-selected="true" class="macd-mode-tab is-active" data-mode="lead" id="macd-mode-tab-lead" role="tab" tabindex="0">Lead Generation</button>
 <button aria-controls="macd-mode-ecommerce" aria-selected="false" class="macd-mode-tab" data-mode="ecommerce" id="macd-mode-tab-ecommerce" role="tab" tabindex="-1">E-commerce</button>
 <button aria-controls="macd-mode-scaling" aria-selected="false" class="macd-mode-tab" data-mode="scaling" id="macd-mode-tab-scaling" role="tab" tabindex="-1">Scaling Framework</button>
 <button aria-controls="macd-mode-budget" aria-selected="false" class="macd-mode-tab" data-mode="budget" id="macd-mode-tab-budget" role="tab" tabindex="-1">Budget Allocation</button>
@@ -6772,6 +6772,67 @@ Paste this entire code into ONE Elementor HTML widget.
     font-weight: 800 !important;
   }
 }
+
+
+/* =========================================================
+   FINAL AUDIENCE TYPOGRAPHY OVERRIDE
+   Requested reading size:
+   Desktop 17.5px | Mobile 16px | Subheads 18px bold
+   ========================================================= */
+#macd-app #macd-mode-audience .macd-content-section p,
+#macd-app #macd-mode-audience .macd-content-section li,
+#macd-app #macd-mode-audience .macd-content-section td,
+#macd-app #macd-mode-audience .macd-content-section .macd-aud-list-row p,
+#macd-app #macd-mode-audience .macd-content-section .macd-callout,
+#macd-app #macd-mode-audience .macd-content-section .macd-example,
+#macd-app #macd-mode-audience .macd-content-section .macd-question,
+#macd-app #macd-mode-audience .macd-content-section .macd-flow,
+#macd-app #macd-mode-audience .macd-content-section .macd-framework-bar,
+#macd-app #macd-mode-audience .macd-content-section .macd-highlight-bar {
+  font-size: 17.5px !important;
+  line-height: 1.65 !important;
+}
+
+#macd-app #macd-mode-audience .macd-engaging-subhead strong,
+#macd-app #macd-mode-audience .macd-content-section .macd-subhead,
+#macd-app #macd-mode-audience .macd-content-section .macd-mini-heading,
+#macd-app #macd-mode-audience .macd-content-section .macd-label-heading,
+#macd-app #macd-mode-audience .macd-content-section p > strong:first-child,
+#macd-app #macd-mode-audience .macd-content-section .macd-callout > strong:first-child,
+#macd-app #macd-mode-audience .macd-content-section .macd-example > strong:first-child,
+#macd-app #macd-mode-audience .macd-content-section .macd-question > strong:first-child {
+  font-size: 18px !important;
+  line-height: 1.5 !important;
+  font-weight: 800 !important;
+}
+
+@media (max-width: 700px) {
+  #macd-app #macd-mode-audience .macd-content-section p,
+  #macd-app #macd-mode-audience .macd-content-section li,
+  #macd-app #macd-mode-audience .macd-content-section td,
+  #macd-app #macd-mode-audience .macd-content-section .macd-aud-list-row p,
+  #macd-app #macd-mode-audience .macd-content-section .macd-callout,
+  #macd-app #macd-mode-audience .macd-content-section .macd-example,
+  #macd-app #macd-mode-audience .macd-content-section .macd-question,
+  #macd-app #macd-mode-audience .macd-content-section .macd-flow,
+  #macd-app #macd-mode-audience .macd-content-section .macd-framework-bar,
+  #macd-app #macd-mode-audience .macd-content-section .macd-highlight-bar {
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+  }
+
+  #macd-app #macd-mode-audience .macd-engaging-subhead strong,
+  #macd-app #macd-mode-audience .macd-content-section .macd-subhead,
+  #macd-app #macd-mode-audience .macd-content-section .macd-mini-heading,
+  #macd-app #macd-mode-audience .macd-content-section .macd-label-heading,
+  #macd-app #macd-mode-audience .macd-content-section p > strong:first-child,
+  #macd-app #macd-mode-audience .macd-content-section .macd-callout > strong:first-child,
+  #macd-app #macd-mode-audience .macd-content-section .macd-example > strong:first-child,
+  #macd-app #macd-mode-audience .macd-content-section .macd-question > strong:first-child {
+    font-size: 18px !important;
+    font-weight: 800 !important;
+  }
+}
 </style>
 <script>
 (function () {
@@ -7191,18 +7252,18 @@ Paste this entire code into ONE Elementor HTML widget.
       '</div>' +
       '<div class="macd-side-label">Workspaces</div>' +
 
-      '<div class="macd-side-group is-active" data-side-mode="audience">' +
+      '<div class="macd-side-group" data-side-mode="audience">' +
         '<button class="macd-side-group-head" type="button"><span>Audience &amp; Creative Strategy</span><span class="macd-side-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m8 10 4 4 4-4"/></svg></span></button>' +
         '<div class="macd-side-subnav">' +
-          '<button class="macd-side-link is-active" type="button" data-side-mode-link="audience" data-side-panel="full"><span class="macd-side-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H11v16H6.5A2.5 2.5 0 0 0 4 21.5Z"/><path d="M20 5.5A2.5 2.5 0 0 0 17.5 3H13v16h4.5a2.5 2.5 0 0 1 2.5 2.5Z"/></svg></span><span>Full Concept</span></button>' +
+          '<button class="macd-side-link" type="button" data-side-mode-link="audience" data-side-panel="full"><span class="macd-side-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H11v16H6.5A2.5 2.5 0 0 0 4 21.5Z"/><path d="M20 5.5A2.5 2.5 0 0 0 17.5 3H13v16h4.5a2.5 2.5 0 0 1 2.5 2.5Z"/></svg></span><span>Full Concept</span></button>' +
           '<button class="macd-side-link" type="button" data-side-mode-link="audience" data-side-panel="quick"><span class="macd-side-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m13 2-8 12h7l-1 8 8-12h-7z"/></svg></span><span>Quick Diagnosis</span></button>' +
         '</div>' +
       '</div>' +
 
-      '<div class="macd-side-group" data-side-mode="lead">' +
+      '<div class="macd-side-group is-active" data-side-mode="lead">' +
         '<button class="macd-side-group-head" type="button"><span>Lead Generation</span><span class="macd-side-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m8 10 4 4 4-4"/></svg></span></button>' +
         '<div class="macd-side-subnav">' +
-          '<button class="macd-side-link" type="button" data-side-mode-link="lead" data-side-panel="testing"><span class="macd-side-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 5h6"/><path d="M9 3h6a1 1 0 0 1 1 1v2H8V4a1 1 0 0 1 1-1Z"/><rect x="5" y="5" width="14" height="16" rx="2"/><path d="m9 13 2 2 4-4"/></svg></span><span>Testing Framework</span></button>' +
+          '<button class="macd-side-link is-active" type="button" data-side-mode-link="lead" data-side-panel="testing"><span class="macd-side-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 5h6"/><path d="M9 3h6a1 1 0 0 1 1 1v2H8V4a1 1 0 0 1 1-1Z"/><rect x="5" y="5" width="14" height="16" rx="2"/><path d="m9 13 2 2 4-4"/></svg></span><span>Testing Framework</span></button>' +
           '<button class="macd-side-link" type="button" data-side-mode-link="lead" data-side-panel="diagnosis"><span class="macd-side-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3v5a4 4 0 0 0 8 0V3"/><path d="M6 3H4"/><path d="M16 3h-2"/><path d="M10 12v2a5 5 0 0 0 5 5h1"/><circle cx="18" cy="19" r="2"/></svg></span><span>Diagnosis</span></button>' +
         '</div>' +
       '</div>' +

@@ -472,27 +472,81 @@ body {
   to { transform: rotate(360deg); }
 }
 
+
 /* =========================================================
-   ADMIN MOBILE OPTIMIZATION
+   SAFE ADMIN MOBILE OPTIMIZATION
+   Keeps the real table structure and enables touch scrolling.
    ========================================================= */
 @media (max-width: 760px) {
-  .admin-screen { padding: 14px !important; }
-  .admin-top { gap: 16px !important; align-items: flex-start !important; flex-wrap: wrap !important; }
-  .admin-top-actions { width: 100%; display: flex !important; gap: 10px !important; flex-wrap: wrap !important; }
-  .admin-top-actions a, .admin-top-actions form, .admin-top-actions button { flex: 1 1 auto; }
-  .admin-summary { display: grid !important; grid-template-columns: repeat(2,minmax(0,1fr)) !important; gap: 10px !important; }
-  .admin-table-wrap { overflow-x: visible !important; }
-  .admin-table, .admin-table thead, .admin-table tbody, .admin-table tr, .admin-table th, .admin-table td { display: block !important; width: 100% !important; }
-  .admin-table thead { display: none !important; }
-  .admin-table tr { border: 1px solid #d7e2ee; border-radius: 12px; margin-bottom: 12px; padding: 12px; background: #fff; }
-  .admin-table td { border: 0 !important; padding: 7px 0 !important; }
-  .inline-access-form, .action-buttons { display: flex !important; flex-wrap: wrap !important; gap: 8px !important; }
-  .inline-access-form select { min-width: 140px; flex: 1 1 140px; }
-  .inline-access-form button, .action-buttons form, .action-buttons button { flex: 1 1 auto; }
-  .mini-btn { min-height: 38px; }
+  .admin-screen {
+    padding: 12px !important;
+  }
+
+  .admin-top {
+    padding: 18px !important;
+    gap: 14px !important;
+  }
+
+  .admin-top-actions {
+    width: 100%;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px !important;
+  }
+
+  .admin-top-actions a,
+  .admin-top-actions form,
+  .admin-top-actions button {
+    width: 100% !important;
+  }
+
+  .admin-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  .admin-summary > div {
+    padding: 13px !important;
+  }
+
+  .admin-table-wrap {
+    width: 100%;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 12px;
+  }
+
+  .admin-table {
+    min-width: 860px !important;
+  }
+
+  .admin-table th,
+  .admin-table td {
+    padding: 11px 10px !important;
+  }
+
+  .inline-access-form {
+    gap: 6px !important;
+    flex-wrap: nowrap !important;
+  }
+
+  .inline-access-form select {
+    width: 112px !important;
+    min-width: 112px !important;
+  }
+
+  .mini-btn {
+    min-height: 34px !important;
+    padding: 6px 9px !important;
+  }
 }
-@media (max-width: 480px) {
-  .admin-summary { grid-template-columns: 1fr !important; }
-  .admin-top-actions { flex-direction: column !important; }
-  .admin-top-actions a, .admin-top-actions button { width: 100% !important; }
+
+@media (max-width: 520px) {
+  .admin-top-actions {
+    grid-template-columns: 1fr !important;
+  }
+
+  .admin-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
 }
