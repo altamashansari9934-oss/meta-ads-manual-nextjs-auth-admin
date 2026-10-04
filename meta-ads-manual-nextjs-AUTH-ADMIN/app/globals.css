@@ -550,3 +550,26 @@ body {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 }
+
+
+/* =========================================================
+   ADMIN PAGE VERTICAL SCROLL FIX
+   Scoped only when the admin screen is present.
+   Keeps manual/auth body behavior unchanged.
+   ========================================================= */
+html:has(.admin-screen),
+body:has(.admin-screen) {
+  min-height: 100% !important;
+  height: auto !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+
+body:has(.admin-screen) {
+  position: static !important;
+}
+
+.admin-screen {
+  min-height: 100vh;
+  overflow: visible !important;
+}
