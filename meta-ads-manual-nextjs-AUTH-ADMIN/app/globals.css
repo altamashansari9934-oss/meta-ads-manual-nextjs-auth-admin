@@ -66,14 +66,14 @@ body {
   background: #10a2dc;
   color: #fff;
   font-size: 20px;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .auth-kicker {
   margin-bottom: 6px;
   color: #0d86dc;
   font-size: 11px;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: .09em;
 }
 
@@ -317,7 +317,7 @@ body {
   color: #0d86dc;
   font-size: 10px;
   font-style: normal;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .status-pill {
@@ -325,7 +325,7 @@ body {
   padding: 5px 9px;
   border-radius: 999px;
   font-size: 11px;
-  font-weight: 800;
+  font-weight: 600;
   text-transform: capitalize;
 }
 
